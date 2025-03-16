@@ -2,7 +2,7 @@
 GoodeeAcademy_ Boot Camp_Web
 
 # D-DAY
-25.01.31~25.08.13
+25.03.13~25.04.11
 
 ## 2M(DB) 🏆[회고록](https://dongin97.tistory.com/category/HTML_CSS)
 - 1주차 : 
