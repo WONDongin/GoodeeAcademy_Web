@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test02</title>
+        <style>
+            tr{text-align: left;}
+        </style>
+    </head>
+    <body>
+        <form action="?" method="post">
+            <!-- 납품자 정보 -->
+            <fieldset>
+                <legend>납품자 정보</legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <li>
+                                        <label for="name">납품자명 :</label>
+                                        <input id="name" type="text" name="name" minlength="1" maxlength="10" placeholder="name">
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <label for="email">e-mail :</label>
+                                        <input id="email" type="email" name="email" placeholder="answs@naver.com">
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <label for="homepage">홈페이지 :</label>
+                                        <input id="homepage" type="text" name="homepage" placeholder="http://">
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <!-- 납품정보-->
+            <fieldset>
+                <legend>납품정보</legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <label for="p_name">상품명 : </label>
+                                        <input type="text" id="p_name" name="p_name">
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <label for="p_cont">납품수량 : </label>
+                                        <input type="number" id="p_cont" name="p_cont" placeholder="최소 100">
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <label for="p_grade">납품등급 : </label>
+                                        <input type="range" id="p_grade" name="p_grade" min="1" max="5" step="1">
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <label for="p_details">기타사항 : </label>
+                                        <textarea id="p_details" name="p_details" cols="20" rows="2"></textarea>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <br/>
+    
+            <input type="submit" value="send message">
+        </form>        
+    </body>
+</html>

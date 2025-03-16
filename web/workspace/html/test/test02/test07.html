@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test07</title>
+        <style>
+            .TL{text-align: left;}
+        </style>
+    </head>
+    <body>
+        <h1>백엔드 개발자 지원서</h1>
+        <p><b>java,Spring, DataBase</b>에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+        <hr>
+        <form action="?" method="post">
+            <table class="TL">
+                <tbody>
+                    <tr>
+                        <th colspan="3">개인정보</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <label for="user_name">이름</label>
+                        </td>
+                        <td>
+                            <input type="text" id="user_name" name="user_name" placeholder="공백없이 입력하세요">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <label for="user_tel">연락처</label>
+                        </td>
+                        <td>
+                            <input type="number" id="user_tel" name="user_tel">
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <th colspan="3">
+                            <label>지원분야</label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td >
+                            <input type="radio" id="dev_01" name="dev[]" value="dev_01">
+                        </td>
+                        <td>
+                            <label for="dev_01">백엔드 개발</label><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td >
+                            <input type="radio" id="dev_02" name="dev[]" value="dev_02">
+                        </td>
+                        <td>
+                            <label for="dev_02">서버 개발</label><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td >
+                            <input type="radio" id="dev_03" name="dev[]" value="dev_03">
+                        </td>
+                        <td>
+                            <label for="dev_03">개발 환경 개선</label><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">
+                            <br/>
+                            <label for="user_info">지원동기</label><br/>
+                            <textarea id="user_info" name="user_info" rows="5" cols="37" ></textarea>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <input type="submit" value="접수하기">
+        <input type="reset" value="다시쓰기">
+    </body>
+</html>

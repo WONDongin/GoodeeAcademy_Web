@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+inline 방식
+- 태그 내부에 스타일을 지정하는 방식
+- 우선순위가 가장 높은 방식(기존 css 속성을 덮어쓰기)
+- !important : 우선순위 조정가능. 사용 자제
+
+우선순위
+- inline 방식
+- internal 방식
+- external 방식
+-->
+<html lang="ko">
+    <head>
+        <title>inline css</title>
+        <link rel="stylesheet" href="ex02_external.css">
+        <style>
+            h1{color: green;}
+        </style>
+    </head>
+    <body>
+        <h1>반갑습니다. 홍길동</h1>
+        <h1 style="color: red;">Hello World</h1> <!-- 초록색 출력하기 -->
+    </body>
+</html>

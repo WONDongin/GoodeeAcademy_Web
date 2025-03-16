@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test03</title>
+        <style>
+            .TL{text-align: left;}
+        </style>
+    </head>
+    <body>
+        <form action="?" method="post" style="width: 50%;">
+            <!-- 필수 입력 사항 -->
+            <fieldset>
+                <legend>필수 입력 사항</legend>
+                <table class="t1">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <label for="user_id">ID</label>
+                                
+                            </th>
+                            <td>
+                                <input type="text" id="user_id" name="user_id" size="30" maxlength="10" placeholder="아이디 10글자 이내" required>
+                                <input type="button" id="user_id_ck_btn" name="user_id_ck_btn" value="중복확인" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="user_pw">비밀번호</label>
+                            </th>
+                            <td>
+                                <input type="password" id="user_pw" name="user_pw" size="30" maxlength="15" placeholder="영문,숫자,특수문자 포함 8자 이상"  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="user_pw_re">비밀번호 확인</label>
+                            </th>
+                            <td>
+                                <input type="password" id="user_pw_re" name="user_pw_re" size="30" maxlength="15" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="user_email">Emaile</label>
+                            </th>
+                            <td>
+                                <input type="email" id="user_email" name="user_email" size="30" required>
+                                <select name="email_url" id="email_url">
+                                    <option value="#">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <!-- 추가정보-->
+            <fieldset>
+                <legend>추가정보</legend>
+                <table class="TL">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="profile">프로필 사진 :</label>
+                                <input type="file" id="profile" name="profile">
+                            </td>
+                        </tr>
+                      
+                        <tr>
+                            <td>
+                                <br/>
+                                <label>성별 :</label>
+                                <input type="radio" id="gender_b" name="gender" value="male"  checked>
+                                <label for="gender_b">남자</label>
+                                <input type="radio" id="gender_w" name="gender" value="female">
+                                <label for="gender_w">여자</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/>
+                                <label for="user_birth">생년월일 :</label>
+                                <input type="date" id="user_birth" name="user_birth">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/>
+                                <label>취미</label><br/>
+                                <input type="checkbox" id="hobbies_01" name="hobbies[]" value="야구">
+                                <label for="hobbies_01">야구</label>
+                                <input type="checkbox" id="hobbies_02" name="hobbies[]" value="농구">
+                                <label for="hobbies_02">농구</label>
+                                <input type="checkbox" id="hobbies_03" name="hobbies[]" value="축구">
+                                <label for="hobbies_03">축구</label><br/>
+                                <input type="checkbox" id="hobbies_06" name="hobbies[]" value="공부" checked>
+                                <label for="hobbies_06">공부</label>
+                                <input type="checkbox" id="hobbies_04" name="hobbies[]" value="음악감상">
+                                <label for="hobbies_04">음악감상</label><br/>
+                                <input type="checkbox" id="hobbies_05" name="hobbies[]" value="기타">
+                                <label for="hobbies_05">기타:
+                                    <input type="text" id="hobbies_05_detail" name="hobbies_05_detail">
+                                </label>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <br/>
+                                <label for="user_info">자기소개</label><br/>
+                                <textarea style="resize: none;" id="user_info" name="user_info" rows="5" cols="50" ></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <br/>
+    
+            <input type="submit" value="submit">
+            <input type="reset" value="reset">
+            <button onclick="history.go(-1);">이전 페이지로</button>
+        </form>
+    </body>
+</html>

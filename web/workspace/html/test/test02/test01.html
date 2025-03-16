@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test01</title>
+        <style>
+            tr{text-align: left;}
+        </style>
+    </head>
+    <body>
+        <form action="?.php" method="post">
+            <!-- 고객정보 -->
+            <fieldset>
+                <legend>고객정보</legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><label for="name">고객명:</label></th>
+                            <td><input id="name" name="name" type="text" maxlength="10" minlength="1" autofocus required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="tel">전화번호:</label></th>
+                            <td><input id="tel" name="tel" type="text" required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="email">E-mail:</label></th>
+                            <td><input id="email" name="email" type="email" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        
+            <!-- 피자 사이즈 -->
+            <fieldset>
+                <legend>피자 사이즈</legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <input type="radio" id="p_size_s" name="p_size" value="Small" required>
+                                <label for="p_size_s">Small</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="radio" id="p_size_m" name="p_size" value="Medium">
+                                <label for="p_size_m">Medium</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="radio" id="p_size_l" name="p_size" value="Large">
+                                <label for="p_size_l">Large</label>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        
+            <!-- 토핑 선택 -->
+            <fieldset>
+                <legend>토핑 선택</legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="p_t_01" name="p_topping[]" value="베이컨">
+                                <label for="p_t_01">베이컨</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="p_t_02" name="p_topping[]" value="치즈">
+                                <label for="p_t_02">치즈</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="p_t_03" name="p_topping[]" value="양파">
+                                <label for="p_t_03">양파</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="p_t_04" name="p_topping[]" value="버섯">
+                                <label for="p_t_04">버섯</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        
+            <br/>
+        
+            <label for="time">희망 배송 시간:</label>
+            <input type="time" id="time" name="delivery_time">
+            <br/><br/>
+        
+            <input type="submit" value="주문하기">
+        </form>
+        
+    </body>
+</html>

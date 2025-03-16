@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test04</title>
+        <style>
+            .TL{text-align: left;}
+        </style>
+    </head>
+    <body>
+        <form action="?" method="post">
+            <!-- 공지사항 작성하기 -->
+            <fieldset>
+                <legend>공지사항 작성하기</legend>
+                <table class="t1">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <label for="title">제목</label>
+                                
+                            </th>
+                            <td>
+                                <input type="text" id="title" name="title" size="30" maxlength="10" placeholder="제목을 입력하시오.">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="detail">내용</label>
+                            </th>
+                            <td>
+                               <textarea style="resize: none;" id="detail" name="detail" cols="32" rows="10" placeholder="내용을 입력하시오."></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="attachment">첨부파일</label>
+                            </th>
+                            <td>
+                                <input type="file" id="attachment" name="attachment">
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <br/>
+                                <button type="submit" value="submit">작성하기</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </fieldset>
+           
+        </form>
+
+        <br/><br/>
+
+        <table border="1">
+            <colgroup>
+                <col>
+                <col style="width:65%;">
+                <col>
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 5%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th colspan="2">제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="TL">9</th>
+                    <td>공지사항 제목 9</td>
+                    <td>
+                        <!-- window.location.href : 페이지 이동-->
+                        <input type="button" value="바로가기" onclick="window.open('/workspace/html/test/test02/test01.html', '_blank');">
+                    </td>
+                    <td>user01</td>
+                    <td>2021-03-29</td>
+                    <td>34</td>
+                </tr>
+                <tr>
+                    <th class="TL">6</th>
+                    <td>공지사항 제목 6</td>
+                    <td>
+                        <input type="button" value="바로가기" onclick="window.open('/workspace/html/test/test02/test02.html', '_blank');">
+                    </td>
+                    <td>answ445</td>
+                    <td>2021-03-12</td>
+                    <td>67</td>
+                </tr>
+                <tr>
+                    <th class="TL">3</th>
+                    <td>공지사항 제목 3</td>
+                    <td>
+                        <input type="button" value="바로가기" onclick="window.open('/workspace/html/test/test02/test03.html', '_blank');">
+                    </td>
+                    <td>testg12</td>
+                    <td>2021-03-01</td>
+                    <td>98</td>
+                </tr>
+                <tr>
+                    <th class="TL">2</th>
+                    <td>공지사항 제목 2</td>
+                    <td>
+                        <input type="button" value="바로가기" onclick="window.open('/workspace/html/test/test02/test04.html', '_blank');">
+                    </td>
+                    <td>palw3</td>
+                    <td>2021-01-02</td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <th class="TL">1</th>
+                    <td>공지사항 제목 1</td>
+                    <td>
+                        <input type="button" value="바로가기" onclick="window.open('/workspace/html/test/test02/test05.html', '_blank');">
+                    </td>
+                    <td>testg12</td>
+                    <td>2020-12-24</td>
+                    <td>124</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4">전체공지사항 갯수</th>
+                    <th colspan="2">5개</th>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>

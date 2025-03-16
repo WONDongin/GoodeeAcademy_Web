@@ -1,0 +1,56 @@
+<!-- ex06_fontawesom.html -->
+<!--
+    CDN
+    1. Content Delivery Network
+    2. 웹 상에서 제공받는 각종 콘텐츠를 의미한다.
+    3. CDN 제공 사이트 : https://cdnjs.com
+-->
+<!--
+    fontawesome
+    1. 무료(유료) 아이콘을 제공하는 사이트이다.
+    2. 아이콘을 CDN의 형태로 제공 받아서 사용한다.
+        1) fontawesome에서 개인 이메일을 입력하면 CDN을 제공해 준다.
+        2) CDN 제공 사이트를 통해서 fontawesome의 CDN을 알아낸다.
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+       <title>Document</title>
+    <!--
+        fontawesome CDN 가져오기
+        1. <link> 태그
+        2. @import url()
+    -->
+    <!-- 1. <link> 태그 -->
+    <!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    -->
+    <!-- 2. @import url() -->
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+    </style>
+</head>
+<body>
+    <!-- 아이콘 : fontawesome에서 <i> 태그로 제공된다. -->
+    <p>
+        휴지통 <i class="fa-solid fa-trash "></i>
+    </p>
+    <p>
+        <button>
+            <i class="fa-brands fa-searchengin"></i>
+        </button>
+    </p>
+    <p>
+        <a href="https://twitter.com/i/flow/login">
+            <i class="fa-brands fa-twitter"></i>
+        </a>
+    </p>
+    <p>
+        <i class="fa-regular fa-envelope"></i>
+        <i class="fa-regular fa-envelope fa-2x"></i>
+        <i class="fa-regular fa-envelope fa-3x"></i>
+        <i class="fa-regular fa-envelope fa-4x"></i>
+        <i class="fa-regular fa-envelope fa-5x"></i>
+    </p>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>font 관련 css</title>
+        <style>
+            p{
+                font-family: '맑은고딕', sans-serif;    /* '맑은 고딕'이 없으면 고딕 계열(sans-serif)을 사용한다.*/
+                font-family: '궁서', serif;             /* '궁서'가 없으면 명조 계열(serif)을 사용하시오 */
+                font-size: 32px;                        /*  디폴트 16px */
+                font-weight: 900;                       /*  디폴트 400, 100 ~ 900 */
+                font-style: italic;                     /* italic : 기울임, none : 기울임 없애기 */
+
+                /* 블록요소는 정렬이 된다. */
+                text-align: center;                     /* 텍스트 정렬 : left, right, center, justify*/
+                text-decoration: underline;             /* underline : 밑줄, line-through : 취소선, none : 선 없애기*/
+                text-shadow: 5px 5px 1px rgb(229, 255, 81);        /* 그림자 : x크기 y크기 blur 색상*/
+
+            }
+            
+            pre {
+            line-height: 32px;           /* 행 높이 : 세로 가운데 정렬에서 주로 활용 */
+            letter-spacing: -1px;        /* 글자 간격 */
+
+            /* Red Green Blue : 0~255, 0~255, 0~255*/
+            color: rgb(0, 0, 0);       /* 검정색 */
+            color: rgb(255, 255, 255); /* 흰색 */
+
+            /* RGB : #RRGGBB 16진수 표기법 */
+            color: #000000;            /* 검정색 */
+            color: #FFFFFF;            /* 흰색 */
+            color: rgba(0, 0, 0, 0.5); /* alpha(투명도) : 0(투명) ~ 1(불투명) */
+            }
+
+            h1 {
+            /*
+                브라우저 별로 글자의 외각선 효과 처리 표준화 추진중
+                벤터 프리픽스(vender Prefix) : 속성 앞에 브라우저 표현
+                1) -webkit- : 크롬, 사파리
+                2) -moz-    : 파이어폭스
+                3) -o-      : 오페라
+            */
+            -webkit-text-stroke-color: crimson;
+            -webkit-text-stroke-width: 1px;
+            }
+            a{text-align: center;} /* 인라인태그는 정렬 안됨*/
+        </style>
+    </head>
+    <body>
+        <p>Hello World</p>
+        <pre>Nice to meet you</pre>
+        <pre>You good?</pre>
+        <h1>I'm fine</h1>
+        <a>Contact Us</a>
+    </body>
+</html>

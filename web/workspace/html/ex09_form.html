@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>폼관련 태그</title>
+    </head>
+    <body>
+        <form action="">
+            <!-- 1. <input type="text"> 태그-->
+            <!-- 디폴트 type="text" 적용 -->
+            <input type="text">
+            <br/>
+            <input type="text" size="5"><!--입력 상자의 크기를 5로 지정-->
+            <br/>
+            <input type="text" maxlength="4"><!--입력 값의 크기 4로 지정-->
+            <br/>
+            <input type="text" placeholder="검색어를 입력하세요."><!--입력 메세지-->
+            <br/>
+            <input type="text" required><!--필수 입력사항-->
+            <br/>
+            <input type="text" value="날씨"><!--입력값을 미리 설정-->
+            <br/>
+            <input type="text" value="변경불가" readonly><!--읽기 전용-->
+            <br/>
+            <input type="text" value="변경불가" disabled><!--사용 불가(비활성화)-->
+
+            <!-- input 태그의 type 종류-->
+            <p>
+            <!--비밀번호 입력용-->
+            <input type="password" placeholder="비밀번호">
+            <br/>
+            <!--숫자 입력용-->
+            <input type="number" min="1" max="12">
+            <br/>
+            <!--이메일 입력용-->
+            <input type="email" placeholder="이메일" autofocus>
+            <br/>
+             <!--색상-->
+            <input type="color" name="color" value="색상 값">
+            <br/>
+            <!--날짜 입력용-->
+            <input type="date" placeholder="날짜">
+            <br/>
+            <!--화면에 보이지 않는 값을 처리시-->
+            <input type="hidden" placeholder="절대 화면에 보이지 않음">
+            <!--업로드 파일 선택-->
+            <input type="file" placeholder="업로드 파일 선택"><br/>
+            <!--버튼 입력-->
+            <input type="button" value="버튼">
+            <!--전송 폼내부의 입력값을 다른 페이지로 전송-->
+            <input type="submit" value="전송">
+            <!--폼에 입력된 값을 초기화-->
+            <input type="reset" value="초기화">
+            </p>
+
+            <p>
+                <!-- radio(단일선택)-->
+                <!-- radio  : value 속성필요
+                            => 어떤 radio를 선택했는지 알기 위해서 반드시 추가
+                            같은 이름을 가진 radio 선택이어야 단일 선택이 가능
+                -->
+                <input type="radio" name="grade" value="male">남
+                <input type="radio" name="grade" value="female">여
+                <input type="radio" name="pass" value="1">합격
+                <input type="radio" name="pass" value="0">불합격
+            </p>
+
+            <p>
+                <!-- checkbox (다중선택)-->
+                <input type="checkbox">모두 동의합니다. <br/>
+                <input type="checkbox" name="hobbies" value="1">운동
+                <input type="checkbox" name="hobbies" value="2">여행 <br/>
+            </p>
+            <p>
+                <!-- 폼태그의 하위 기타 태그-->
+                <!-- 1. select 태그 : 목록 선택-->
+                <select name="이메일 선택" id="email">
+                    <option value="naver">naver.com</option>
+                    <option value="kakao">kakao.com</option>
+                    <option value="gmail">gmail.com</option>
+                </select>
+                <!-- 여러개 option을 선택할 수 있다.-->
+                <select multiple>
+                    <option>서울</option>
+                    <option>부산</option>
+                    <option>인천</option>
+                </select>
+            </p>
+            <p>
+                <!-- textarea : 여러행 태그입력-->
+                <textarea style="resize: none;"></textarea><br/>
+                <textarea rows="3" cols="30"></textarea><br/>
+                <textarea></textarea>
+            </p>
+            <p>
+                <!-- for 속성 : 입력요소의 id 속성값 -->
+                <label for="male">
+                    <input type="radio" name="gender" value="male" id="male">남
+                </label>
+                <label for="female">
+                    <input type="radio" name="gender" value="female" id="female">여
+                </label>
+            </p>
+            <p>
+                <!-- fieldset : 입력 요소들을 그룹화-->
+                <fieldset>
+                    <legend>성별</legend>
+                    <label for="male">
+                        <input type="radio" name="gender" value="male" id="male">남
+                    </label>
+                    <label for="female">
+                        <input type="radio" name="gender" value="female" id="female">여
+                    </label>
+                </fieldset>
+                <img src="images/bgsample.jpg" alt="">
+            </p>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>이미지관련 태그</title>
+    </head>
+    <body>
+        <!--
+        img 태그
+        1. 인라인 레벨
+        2. 속성
+            - alt : 이미지 대체 텍스트(이미지 없는 경우 대비)
+            - src : 이미지의 경로 설정
+            - width : 이미지의 넓이 설정
+            - height : 이미지의 높이 설정
+            =>  높이나 넓이를 지정하면 자동으로 설정
+                높이 지정하면 넓이가 자동으로 설정
+        
+        figure 태그 : 이미지를 설명할때 사용되는 태그
+        -->
+        <p>
+            <img src="D:/web/workspace/html/images/flower1.jpg" height="200px" alt="절대경로 꽃1">
+            <figcaption>꽃이 활짝 피었습니다.</figcaption>
+        </p>
+        <p>
+            <img src="images/flower1.jpg" height="200px" alt="상대경로 꽃1">
+        </p>
+        <p>
+            <img src="images/flower11.jpg" height="200px" alt="이미지 없음">
+        </p>
+    </body>
+</html>

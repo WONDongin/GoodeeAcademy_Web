@@ -1,0 +1,35 @@
+<!-- ex07_class.t.html -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- class 속성의 값은 하나 이상의 값이 가능함
+        class = "red_text big_text" 태그는
+                 red_text 값과 big_text 값을 2개 가진다.
+        class = "red_text" 태그는 red_text 값을 1개 가진다.
+
+        id 속성은 한개의 값만 가능함.
+
+        HTML의 태그의 속성의 이름은 유일해야 함.
+        <T a="1" b="2" a="3"> => 오류
+
+        class 속성
+        1. 전역속성 : 모든 태그에 설정 가능함
+        2. 같은 스타일 가진 경우 같은 class 속성을 설정
+        3. 하나의 태그는 여러 class 속성을 가질 수 있다. 공백으로 구분함
+        4. style에서 class 속성의 선택자는 .이다.
+            .클래스 속성의값
+        -->
+        <style>
+            .red_text{color: #ff0000;}
+            .big_text{font-size: 32px;}
+        </style>
+        <p class="red_text big_text">Hello World</p>
+        <p class="red_text">Nice to meet you</p>
+        <p>일반적인 p태그</p>
+    </body>
+</html> 
