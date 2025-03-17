@@ -1,0 +1,66 @@
+<!-- ex13_목록관련 스타일 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록 관련 스타일</title>
+    <style>
+        ul{
+            list-style: disc;
+            list-style: circle;
+            list-style: square;
+            list-style: none;
+            list-style-image: url("icon.png");
+        }
+        ol{
+            list-style: disc;
+            list-style: circle;
+            list-style: square;
+            list-style: none;
+            /* list-style-image: url("icon.png"); */
+            list-style-type: decimal-leading-zero;
+            list-style-type: lower-alpha;
+            list-style-type: upper-alpha;
+            list-style-type: upper-latin;
+            list-style-type: upper-roman;
+            list-style-type: lower-roman;
+            list-style-position: inside;
+            list-style-position: outside;
+        }
+    </style>
+</head>
+<body>
+    <h1>목록 관련 스타일 (list~)</h1>
+    <h3>list-style-type : 불릿기호 변경시 사용</h3>
+    <h3>list-style-image : 불릿기호로 이미지를 적용시키고자 할때 </h3>
+    <h3>list-style-postion : 불릿기호의 위치를 조정할때 사용</h3>
+    <pre>
+    * 순서없는 목록(ul)
+    선택자 {
+        list-style-type : disc|circle|square|none;
+        list-style-image: url("이미지의 경로");
+        list-style-position: inside|outside;
+    }
+    * 순서있는 목록(ol)
+    선택자 {
+        list-style-type : decimal|decimal-leading-zero;
+               "        : lower-alpha|upper-alpha;
+               "        : lower-roman|upper-roman;
+    }
+    </pre>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+    <br><br>
+    <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+    </ol>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test02</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+            *{margin: 0; padding: 0; font-size: 16px; letter-spacing: -0.05rem; font-weight: 500; color: #333;}
+            li{list-style: none;}
+            a{text-decoration: none;}
+            body{padding: 10px; box-sizing: border-box; background-color: #eee;}
+
+            header{width: 100%; max-width: 1920px; height: 100px; margin: 0 auto; background-color: #fff; display: flex; justify-content: center; align-items: center; font-size: 100px; }
+            header h1{font-size: 30px; font-weight: 700;}
+            nav .gnb{width: 100%; height: 50px; display: flex; align-items: center; gap: 20px; background-color: #333;}
+            nav .gnb li{width: 100%; max-width: 100px; height: 100%; text-align: center; line-height: 50px;} 
+            nav .gnb li a{display: block; color: #fff; font-size: 14px;}
+            nav .gnb li a:hover{background-color: #999; color: #333; transition: 0.3s ease-in;}
+
+            .main_section{display: flex; gap: 10px; width: 100%; height: 350px;}
+            .main_section article{background-color: #fff; padding: 10px; box-sizing: border-box; margin: 5px 0;}
+            .main_section article h2{font-size: 20px; font-weight: 700;}
+            .main_section article p{font-size: 14px;}
+            .main_section article .img{display: block; width: 100%; height: 30px; background-color: #999;}
+
+            .left_section{width: 70%; border: 1px solid #999; padding: 5px; box-sizing: border-box; background-color: #eee;}   
+            .right_section{width: 30%; border: 1px solid #999; padding: 5px; box-sizing: border-box; background-color: #eee;}
+            
+            footer{width: 100%; height: 100px; display: flex; justify-content: center; align-items: center; background-color: #fff; margin-top: 5px;}
+        </style>
+    </head>
+    <body>
+        
+        <header>
+            <h1>Website</h1>
+        </header>
+        <nav>
+            <ul class="gnb">
+                <li><a href="javascript:void(0)">Menu1</a></li>
+                <li><a href="javascript:void(0)">Menu2</a></li>
+                <li><a href="javascript:void(0)">Menu3</a></li>
+                <li><a href="javascript:void(0)">Menu4</a></li>
+                <li><a href="javascript:void(0)">Menu5</a></li>
+            </ul>
+        </nav>
+
+        <section class="main_section">
+            <section class="left_section">
+                <article>
+                    <h2>Title1</h2>
+                    <p>Description1</p>
+                    <div class="img"></div>
+                    <p>Content1</p>
+                </article>
+                <article>
+                    <h2>Title2</h2>
+                    <p>Description2</p>
+                    <div class="img"></div>
+                    <p>Content2</p>
+                </article>
+            </section>
+            <section class="right_section">
+                <article>
+                    <h2>Title3</h2>
+                    <div class="img"></div>
+                    <p>Content3</p>
+                </article>
+                <article>
+                    <h2>Title3</h2>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </article>
+                <article>
+                    <h2>Title3</h2>
+                    <p>Description3</p>
+                    <p>Content3</p>
+                </article>
+            </section>
+        </section>
+
+        <footer>
+            <p>footer area</p>
+        </footer>
+            
+    </body>
+</html>
