@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>선택자 우선순위</title>
+        <style>
+            /* h1 태그를 pink 바탕에 yellow 글씨로 변경하기 */
+            h1{background-color: pink; color: yellow;}
+            /* 중복된 경우 최종 설정 선택 */
+            h1{background-color: red; color: yellow;}
+            #id1{background-color: pink;}
+            .class1{background-color: yellowgreen;}
+            div{background-color: teal !important; color: red !important; width: 200px; height: 200px;}
+        </style>
+    </head>
+    <body>
+        <h1>선택자 우선순위</h1>
+        <p>
+            다양한 선택자를 이용해서 동일한 요소를 선택했을 경우 작성순서에 상관없이
+            우선순위에 따라 적용됨 <br>
+            태그선택자 -> 클래스선택자 -> 아이디선택자 -> 인라인스타일방식 -> !important
+        </p>
+        <div id="id1" class="class1">우선순위테스트</div>
+    </body>
+</html>

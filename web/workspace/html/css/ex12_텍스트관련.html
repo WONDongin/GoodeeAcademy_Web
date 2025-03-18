@@ -1,0 +1,117 @@
+<!-- ex12_텍스트관련스타일.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트관련 스타일</title>
+    <style>
+        #c{
+            color: red; 
+            color: #878912;                  /* #rrggbb */
+            color: rgb(68, 233, 78);         /* (red,green,blue) */
+            color: rgba(68, 223, 78, 0.5);   /* (red,green,blue,투명도) */
+            color: hsl(200, 50%, 50%);       /* 색조,채도,밝기 */
+            color: hsla(200, 50%, 50%, 0.5); /* 색조,채도,밝기, 투명도 */
+        }
+        #td1{text-decoration: underline;}
+        #td2{text-decoration: line-through;}
+        #td3{text-decoration: overline;}
+        /* #td4 태그에 밑줄 없애고, 글자색 검정으로 */
+        #td4{text-decoration: none; color: black;}
+        /* #td4 태그에 마우스가 영역내에 있는 경우 밑줄이 생기도록*/
+        #td4:hover{text-decoration: underline;}
+        #tt1{text-transform: uppercase;}
+        #tt2{text-transform: lowercase;}
+        #tt3{text-transform: capitalize;}
+        .shadow{font-size: 50px; font-weight: bold;}
+        /* 번짐정도 : x,y 번짐정도:0, 색상:월래색상*/
+        #ts1{
+            color: orange; 
+            text-shadow: 5px 5px;
+            text-shadow: 5px 5px 15px gray;
+        }
+        #ts2{
+            color: white; 
+            text-shadow: 5px 5px;
+            text-shadow: 0px 0px 10px yellowgreen;
+        }
+        #ts3{
+            text-shadow:0px -5px 4px yellow,
+                        0px -10px 8px orange,
+                        0px -15px 15px blue;
+        }    
+
+
+
+    </style>
+</head>
+<body>
+    <h1>텍스트관련 스타일(text~)</h1>
+    <h3>color: 텍스트의 색상을 지정</h3>
+    <pre id="c">
+    선택자{
+        color: 색상명|16진수|rgb(x,x,x)|rgba(x,x,x,x)|hsl(x,x,x)|hsla(x,x,x,x);
+    }
+    </pre>
+    <hr>
+    <h3>text-decoration : 텍스트에 줄을 긋거나 기존의 줄을 없앨 때 사용</h3>
+    <pre>
+    선택자{
+        text-decoration: none|underline|overline|line-through;
+    }
+    </pre>
+    <!-- ul>li#td$*3 -->
+    <ul>
+        <li id="td1">텍스트 영역 아래 줄 긋기</li>
+        <li id="td2">텍스트 영역 중간에 줄 긋기</li>
+        <li id="td3">텍스트 영역 위에 줄 긋기</li>
+    </ul>
+    <a id="td4" href="http://www.naver.com" target="_blank">네이버로</a>
+    <hr>
+    <h3>text-transform : 영문 텍스트의 대소문자 변환시 사용</h3>
+    <pre>
+    선택자{
+        text-transform:uppercase|lowercase|capitalize;
+    }
+    </pre>
+    <ol>
+        <li id="tt1">uppercase : 대문자로</li>
+        <li id="tt2">LowerCase : 소문자로</li>
+        <li id="tt3">capitalize test : 영문자의 첫문자만 대문자</li>
+    </ol>
+    <hr>
+    <h3>text-shadow : 텍스트에 그림자 효과를 줄 때 사용</h3>
+    <pre>
+    선택자 {
+        text-shadow : 가로거리(x) 세로거리(y) [번짐정도] [색상];
+    }
+    </pre>
+    <div>
+        <span class="shadow" id="ts1">HTML</span> <br><br>
+        <span class="shadow" id="ts2">HTML</span> <br><br>
+        <span class="shadow" id="ts3">HTML</span>
+    </div>
+    <hr>
+    <h3>text-align : 텍스트 정렬시킬때 사용</h3>
+    <pre>
+    선택자{
+        text-align:left(기본값)|right|center|justify;
+    }
+    </pre>
+    <h3>line-height : 줄간격 조절할때 사용</h3>
+    <h4>왼쪽정렬(기본값)</h4>
+    <p style="text-align:left; line-height:30px;">공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국가는 사회보장·사회복지의 증진에 노력할 의무를 진다. 국가원로자문회의의 의장은 직전대통령이 된다. 다만, 직전대통령이 없을 때에는 대통령이 지명한다.
+    대통령으로 선거될 수 있는 자는 국회의원의 피선거권이 있고 선거일 현재 40세에 달하여야 한다. 국가는 농업 및 어업을 보호·육성하기 위하여 농·어촌종합개발과 그 지원등 필요한 계획을 수립·시행하여야 한다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다.</p>
+    <h4>오른쪽정렬</h4>
+    <p style="text-align:right; line-height:3em;">공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국가는 사회보장·사회복지의 증진에 노력할 의무를 진다. 국가원로자문회의의 의장은 직전대통령이 된다. 다만, 직전대통령이 없을 때에는 대통령이 지명한다.
+    대통령으로 선거될 수 있는 자는 국회의원의 피선거권이 있고 선거일 현재 40세에 달하여야 한다. 국가는 농업 및 어업을 보호·육성하기 위하여 농·어촌종합개발과 그 지원등 필요한 계획을 수립·시행하여야 한다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다.</p>
+    <h4 style="text-align:center;">가운데정렬</h4>
+    <p style="text-align:center; line-height:200%">공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국가는 사회보장·사회복지의 증진에 노력할 의무를 진다. 국가원로자문회의의 의장은 직전대통령이 된다. 다만, 직전대통령이 없을 때에는 대통령이 지명한다.
+    대통령으로 선거될 수 있는 자는 국회의원의 피선거권이 있고 선거일 현재 40세에 달하여야 한다. 국가는 농업 및 어업을 보호·육성하기 위하여 농·어촌종합개발과 그 지원등 필요한 계획을 수립·시행하여야 한다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다.</p>
+    <h4>양쪽정렬</h4>
+    <p style="text-align:justify;">공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 국가는 사회보장·사회복지의 증진에 노력할 의무를 진다. 국가원로자문회의의 의장은 직전대통령이 된다. 다만, 직전대통령이 없을 때에는 대통령이 지명한다.
+    대통령으로 선거될 수 있는 자는 국회의원의 피선거권이 있고 선거일 현재 40세에 달하여야 한다. 국가는 농업 및 어업을 보호·육성하기 위하여 농·어촌종합개발과 그 지원등 필요한 계획을 수립·시행하여야 한다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다.</p>
+    <b style="text-align:center">** text-align은 블럭요소에서만 적용 가능 **</b>
+</body>
+</html> 

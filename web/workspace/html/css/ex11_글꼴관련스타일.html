@@ -1,0 +1,67 @@
+<!-- ex11-글꼴관련스타일.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&family=Single+Day&family=Stylish&display=swap" rel="stylesheet">
+    <title>글꼴 관련 스타일</title>
+    <style>
+        #ff1{font-family: '궁서체';}
+        #ff2{font-family: '고딕체';}
+        #ff3{font-family: '구디체', '궁서체';}
+        #ff4{font-size: 30px; font-family: 'Stylish', serif;}
+        #fs1{font-size: 40px;} /* 40px 설정 */
+        #fs2{font-size: 2em;} /* 상위 태그의 2배 설정 */
+        #fs3{font-size: 200%;} /* 상위 태그의 200% 설정 */
+    </style>
+</head>
+<body>
+    <h1>글꼴 관련 스타일 (font~)</h1>
+    <h3>font-family : 글꼴 지정시 사용</h3>
+    <pre>선택자{font-family:글꼴명, 글꼴명;}</pre>
+    <p id="ff1">궁서체 글꼴 Test1</p>
+    <p id="ff2">고딕체 글꼴 Test2</p>
+    <p id="ff3">구디체 궁서체 글꼴 Test3</p>
+    <h3>* 외부 웹 폰트 사용법</h3>
+    <p>
+        웹 폰트 제공 사이트 :
+        <a href="http://fonts.google.com" target="_blank">구글 웹 폰트 사이트로 이동</a>
+    </p>
+    <p id="ff4">글꼴 테스트 Font Style Test</p>
+    <hr>
+    <h3>font-size : 글꼴의 크기를 변경할때 사용</h3>
+    <pre>선택자{font-size:글꼴크기(px|em|%);}</pre>
+    <ul style="font-size:15px;">
+        <li>일반글꼴</li>
+        <li id="fs1">px테스트</li>
+        <li id="fs2">em테스트</li>
+        <li id="fs3">%테스트</li>
+    </ul>
+    <hr>
+    <h3>font-weight: 글꼴의 굵기를 표현할 때 사용</h3>
+    <pre>
+    선택자{
+        font-weight:normal|bold|bolder|lighter|100|400|900;
+    }
+    </pre>
+    <ul>
+        <li>원래 굵기</li>
+        <li style="font-weight:bold">굵은 글꼴로 변경</li>
+        <li style="font-weight:900">원래 굵기보다 더 굵게</li> <!--bolder-->
+        <li style="font-weight:100">원래 굵기보다 더 가늘게</li> <!--lighter-->
+    </ul>
+    <hr>
+    <h3>font-variant : 영문텍스트문구를 작은 대문자로 변경</h3>
+    <pre>선택자{font-variant:small-caps;}</pre>
+    <p>I LOVE YOU</p>
+    <p style="font-variant:small-caps">i love you</p>
+    <hr>
+    <h3>font-style : 텍스트 문구를 기울이고자 할때 사용</h3>
+    <pre>선택자{font-style:normal|italic|oblique;}</pre>
+    <p style="font-style:italic;">italic 기울임 글꼴</p>
+    <p style="font-style:oblique;">oblique 원래 글자를 기울인셈</p>
+</body>
+</html>
