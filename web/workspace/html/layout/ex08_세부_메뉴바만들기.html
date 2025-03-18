@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+    <style>
+        a{text-decoration: none;}
+        div, nav{box-sizing: border-box; border: 1px solid red;}
+        .header_nav{height: 20%;}
+        .menu_wrap{display: flex; width: 100%; height: 100%;}
+        .main_menu{position: relative; display: flex; justify-content: center; align-items: center; width: 20%;}
+        .main_menu > a{font-size: 20px; font-weight: bold; color: orange;}
+        .sub_wrap{position: absolute; left: 0; top: 30px; width: 100%; display: none;}
+        .main_menu:hover > div{display: block;}
+        .sub_menu{font-size: 18px; font-weight: bold; display: flex; justify-content: center; align-items: center;}
+        .sub_menu > a{color: pink;}
+    </style>
+</head>
+<body>
+    <!-- 메뉴바 영역 따로 진행 -->
+    <nav class="header_nav">
+        <div class="menu_wrap">
+            <div class="main_menu"><a href="">Java</a></div>
+            <div class="main_menu"><a href="">Mariadb</a></div>
+            
+            <div class="main_menu">
+                <a href="">Front-End</a>
+                <div class="sub_wrap">
+                    <div class="sub_menu"><a href="">HTML</a></div>
+                    <div class="sub_menu"><a href="">CSS</a></div>
+                    <div class="sub_menu"><a href="">JavaScript</a></div>
+                    <div class="sub_menu"><a href="">jQuery</a></div>
+                </div>
+            </div>
+
+            <div class="main_menu">
+                <a href="">Server</a>
+                <div class="sub_wrap">
+                    <div class="sub_menu"><a href="">JDBC</a></div>
+                    <div class="sub_menu"><a href="">Servlet</a></div>
+                    <div class="sub_menu"><a href="">JSP</a></div>
+                    <div class="sub_menu"><a href="">AJAX</a></div>
+                </div>
+            </div>
+
+            <div class="main_menu">
+                <a href="">Framework</a>
+                <div class="sub_wrap">
+                    <div class="sub_menu"><a href="">MyBatis</a></div>
+                    <div class="sub_menu"><a href="">Spring</a></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- -------------------- -->
+</body>
+</html>

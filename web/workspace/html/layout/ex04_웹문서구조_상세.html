@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ex4</title>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            .wrap{width: 100%; max-width: 1300px; margin: 0 auto; border: 1px solid red; display: flex; flex-direction: column;}
+
+            .header,.footer{display: flex; flex-direction: column; width: 100%; height: 150px;} 
+            .header div, .header nav, .content_wrap div, footer div{border: 1px solid red;}
+
+            .header_top{display: flex; height: 100px;}
+            .header_logo, .header_alarm{width: 15%;}
+            .header_search{width: 70%;}
+            .header_nav{height: 50px;}
+
+            .content_wrap{min-height: 500px; display: flex;}
+            .content_news{flex: 3;}
+            .content_side{display: flex; flex-direction: column; flex: 1; }
+            .content_side_myinfo, .footer_link{height: 20%;}
+            .content_side_ad, .footer_info{height: 80%;}
+        </style>
+    </head>
+    <body>
+        <!--  
+        시맨틱 태그 :html5 이후 가능
+                    IE8이하에서는 인라인 요소를 인식 → 블럭요소를 처리. display:block 처리 안전
+                    div 구조 동일.
+
+            header : 가장 위에 나타나는 머리말
+            nav    : 메뉴바
+            sectiom: 본문 내용. 콘텐츠 의미
+            article: 내용 중 따로 분할하여 묶는 태그
+            aside  : 본문이외의 내용. 광고,링크 등...
+            footer : 바닥글(저작권, 회사정보, ...)
+        -->
+        <div class="wrap">
+            <header class="header">
+                <div class="header_top">
+                    <div class="header_logo"> header_logo</div>
+                    <!-- 검색창 영역 따로 진행 -->
+                    <div class="header_search">header_search</div>
+                    <!-- ------------------- -->
+                    <div class="header_alarm">header_alarm</div>
+                </div>
+                <!-- 메뉴바 영역 따로 진행 -->
+                <nav class="header_nav">header_nav</nav>
+                <!-- -------------------- -->
+            </header>
+
+            <section class="content_wrap">
+                <div class="content_news">content_news</div>
+                <div class="content_side">
+                    <!-- 로그인 폼 영역 따로 진행 -->
+                    <div class="content_side_myinfo">content_side_myinfo</div>
+                    <!-- ---------------------- -->
+                    <div class="content_side_ad">content_side_ad</div>
+                </div>
+            </section>
+
+            <!-- 푸터바 영역 따로 진행 -->
+            <footer class="footer">
+                <div class="footer_link">footer_link</div>
+                <div class="footer_info">footer_info</div>
+            </footer>
+            <!-- ------------------- -->
+        </div>
+    </body>
+</html>

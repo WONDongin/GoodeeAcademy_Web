@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO GREEN</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        li{list-style: none;}
+        a{text-decoration: none;}
+        img{display: block; max-width: 100%;}
+
+        .wrap{width: 100%; max-width: 1000px; margin: 0 auto;}
+        .header{display: flex; justify-content: center; align-items: center;}
+        .header_logo_mini, .header_etc{width: 15%;}
+        .header_logo_mini a img{width: 80px;}
+        .header_logo_big{width: 70%;}
+        .header_logo_big img{margin: 0 auto;}
+
+        .nav ul{display: flex; justify-content: center; align-items: center; height: 50px; background-color: #61b047;}
+        .nav ul li{flex: 1; text-align: center;}
+        .nav ul li a{font-size: 14px; font-weight: 700; color: #fff;}
+
+        .content_wrap{display: flex;}
+        .content_side{}
+
+        .content_img{display: flex; flex-direction: column; gap: 15px; width: 70%; padding: 5px;}
+        .content_img_top, .content_img_bottom{display: flex; justify-content: center; gap: 10px; text-align: center}
+        .content_img_top p, .content_img_bottom p{font-size: 14px;margin-top: 5px;}
+
+        .content_etc{display: flex; flex-direction: column;}
+
+
+        .footer{height: 100px; border: 1px solid red;}
+        .footer img{margin: 0 auto; height: 100%;}
+       
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <div class="header_logo_mini">
+                <a href=""><img src="t1/logo.jpg" alt=""></a>
+            </div>
+            <div class="header_logo_big">
+                <a href=""><img src="t1/mainlogo.jpg" alt=""></a>
+            </div>
+            <div class="header_etc">header_etc</div>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Board</a></li>
+                <li><a href="#">Contact</a></li> 
+            </ul>
+        </nav>
+        
+        <section class="content_wrap">
+            <div class="content_side">
+                <img src="t1/left_img.jpg" alt="">
+            </div>
+
+            <div class="content_img">
+                <div class="content_img_top">
+                    <div>
+                        <img src="t1/main_img1.jpg" alt="">
+                        <p>나무를 심는 사람들</p>
+                    </div>
+                    <div>
+                        <img src="t1/main_img2.jpg" alt="">
+                        <p>아이들에게 녹색 미래를..</p>
+                    </div>
+                </div>
+                <div class="content_img_bottom">
+                    <div>
+                        <img src="t1/main_img3.jpg" alt="">
+                        <p>설악산 살리는 길</p>
+                    </div>
+                    <div>
+                        <img src="t1/main_img4.jpg" alt="">
+                        <p>사라지는 북극곰들</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content_etc">
+                <div class="content_login">
+                    <form action="" class="login_form">
+                        <div class="login_input_wrap">
+                            <input type="text" name="userId" placeholder="ID를 입력하세요">
+                            <input type="password" name="userPwd" placeholder="PWD를 입력하세요">
+                        </div>
+                        <div class="login_btn">
+                            <button type="submit">로그인</button>
+                        </div>
+                    </form>
+
+                    <div class="login_etc">
+                        <a href="">회원가입</a>
+                        <a href="">ID/PW 찾기</a>
+                    </div>
+                </div>
+
+                <div class="content_poster">
+                    <img src="t1/right_img.jpg" alt="">
+                </div>
+                <div class="content_message">
+                    <img src="t1/me_chat.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <img src="t1/footer.JPG">
+        </footer>
+    </div>
+    
+</body>
+</html>

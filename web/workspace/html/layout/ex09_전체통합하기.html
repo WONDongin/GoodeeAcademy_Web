@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex09</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        a{text-decoration: none;}
+
+        header, nav,section,article,aside,footer,div{display: block; border: 1px solid red; box-sizing: border-box;}
+        .wrap{width: 100%; max-width: 1300px; display: flex; flex-direction: column; margin: 0 auto}
+        .header{
+            /* 하위 요소들의 가로길이는 부모요소의 100% */ 
+            display: flex; flex-direction: column; 
+            height: 200px;
+        }
+        .header_top{display: flex; height: 80%;}
+        .header_nav{height: 20%;}
+        .header_logo, .header_alarm{width: 20%;}
+        .header_logo{display: flex; justify-content: center; align-items: center;}
+        .header_logo img{ width: 100px; height: 60px;}
+        .header_search{width: 60%; display: flex; justify-content: center; align-items: center;}
+        .search_form{width: 80%; height: 20%; display: flex;}
+        .search_form > input{width: 80%;}
+        .search_form > button{width: 20%;}
+        
+        .header_nav{height: 20%;}
+        .menu_wrap{width: 100%; height: 100%; display: flex;}
+        .main_menu{position: relative; display: flex; justify-content: center; align-items: center; width: 20%;}
+        .main_menu > a{font-size: 20px; font-weight: bold; color: orange;}
+        .sub_wrap{position: absolute; top: 35px; width: 100%; background-color: #fff; display: none;}
+        .sub_menu{font-size: 18px; font-weight: bold; display: flex; justify-content: center; align-items: center;}
+        .sub_menu > a{color: pink;}
+        .main_menu:hover > div{display: block;}
+
+        .content_wrap{display: flex; min-height: 500px;}
+        .content_news{flex: 7;}
+        .content_side{flex: 3; display: flex; flex-direction: column;}
+        .content_side_myinfo{display: flex; flex-direction: column;justify-content: center; align-items: center; height: 150px;}
+        .login_form{display: flex; height: 70%; width: 90%;}
+        .login_input_wrap{display: flex; flex-direction: column; width: 70%;}
+        .login_input_wrap > input{height: 100%;}
+        .login_btn{width: 30%;}
+        .login_btn button{width: 100%; height: 100%;}
+        .login_etc{display: flex; justify-content: center; align-items: center; gap: 10px; width: 90%; height: 20%;}
+        .login_etc a{font-size: 12px; color: #333;}
+        .content_side_ad{height: 350px;}
+    
+        .footer{display: flex; flex-direction: column; height: 200px;}
+        .footer_link{display: flex; justify-content: center; align-items: center; height: 20%;}
+        .footer_link > a{color: #333; font-weight: bold; margin: 15px;}
+        .footer_info{display: flex; flex-direction: column; height: 80%;}
+        .footer_info_company{display: flex; flex-direction: column; gap: 5px; list-style-type: "- "; height: 80%; padding-left: 20px; margin-top: 5px;}
+        .footer_info_company li{font-size: 12px;}
+        .footer_info_copyright{height: 20%; text-align: center;}
+    </style>
+</head>
+<body>
+     <div class="wrap">
+        <header class="header">
+            <div class="header_top">
+                <div class="header_logo">
+                    <img src="../images/icon.png" alt="">
+                </div>
+                <!-- 검색창 영역 따로 진행 -->
+                <div class="header_search">
+                    <form action="search.do" class="search_form">
+                        <input type="search" name="keyword">
+                        <button type="submit">검색</button>
+                    </form>
+                </div>
+                <!-- ------------------- -->
+                <div class="header_alarm"></div>
+            </div>
+            <!-- 메뉴바 영역 따로 진행 -->
+            <nav class="header_nav">
+                <div class="menu_wrap">
+                    <div class="main_menu"><a href="">Java</a></div>
+                    <div class="main_menu"><a href="">Mariadb</a></div>
+                    <div class="main_menu">
+                        <a href="">Front-End</a>
+                        <div class="sub_wrap">
+                            <div class="sub_menu"><a href="">HTML</a></div>
+                            <div class="sub_menu"><a href="">CSS</a></div>
+                            <div class="sub_menu"><a href="">JavaScript</a></div>
+                            <div class="sub_menu"><a href="">jQuery</a></div>
+                        </div>
+                    </div>
+                    <div class="main_menu">
+                        <a href="">Server</a>
+                        <div class="sub_wrap">
+                            <div class="sub_menu"><a href="">JDBC</a></div>
+                            <div class="sub_menu"><a href="">Servlet</a></div>
+                            <div class="sub_menu"><a href="">JSP</a></div>
+                            <div class="sub_menu"><a href="">AJAX</a></div>
+                        </div>
+                    </div>
+                    <div class="main_menu">
+                        <a href="">Framework</a>
+                        <div class="sub_wrap">
+                            <div class="sub_menu"><a href="">MyBatis</a></div>
+                            <div class="sub_menu"><a href="">Spring</a></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- -------------------- -->
+        </header>
+
+        <section class="content_wrap">
+            <div class="content_news">content_news</div>
+            <div class="content_side">
+                <!-- 로그인 폼 영역 따로 진행 -->
+                <div class="content_side_myinfo">
+                    <form action="login.me" class="login_form">
+                        <div class="login_input_wrap">
+                            <input type="text" name="userId" placeholder="아이디 입력" required>
+                            <input type="password" name="userPwd" placeholder="비밀번호 입력" required>
+                        </div>
+                        <div class="login_btn">
+                            <button type="submit">로그인</button>
+                        </div>
+                    </form>
+                    <div class="login_etc">
+                        <a href="">회원가입</a> | 
+                        <a href="">ID/PWD 찾기</a>
+                    </div>
+                </div>
+                <!-- ---------------------- -->
+                <div class="content_side_ad">content_side_ad</div>
+            </div>
+        </section>
+
+        <!-- 푸터바 영역 따로 진행 -->
+        <footer class="footer">
+            <div class="footer_link">
+                <a href="">이용약관</a> | 
+                <a href="">개인정보취급방침</a> | 
+                <a href="">인재채용</a> | 
+                <a href="">고객센터</a>
+            </div>
+            <div class="footer_info">
+                <ul class="footer_info_company">
+                    <li>상호명 : GooDee Academy</li>
+                    <li>대표자 : 이승엽</li>
+                    <li>전화 : 02-818-7950</li>
+                    <li>개인정보책임자 : 주승재 / jsj@goodee.co.kr</li>
+                    <li>본관 : (08505) 서울특별시 금천구 가산디지털2로 95 (가산동, km타워) 2층, 3층</li>
+                </ul>
+                <div class="footer_info_copyright">
+                    Copyright ⓒ GooDee Academy. All rights reserved.
+                </div>
+            </div>
+        </footer>
+        <!-- ------------------- -->
+    </div>
+</body>
+</html>
