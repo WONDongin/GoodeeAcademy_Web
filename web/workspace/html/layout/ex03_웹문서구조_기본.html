@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ex3</title>
+        <style>
+            *{box-sizing: border-box; margin: 0; padding: 0;}
+            div{border: 1px solid red;}
+            .wrap{
+                width: 100%; max-width: 1300px; margin: 0 auto; 
+                /* 하위요소(.header, .content, .footer)들을 배치 */
+                display: flex; flex-direction: column;
+            }
+            .header, .footer{height: 150px;}
+        
+            .header{display: flex;}
+            .header_1,.header_3{width: 20%;}
+            .header_2{width: 60%;}
+            
+            .content{display: flex; min-height: 500px;}
+            .content_1,.content_3{width: 30%;}
+            .content_2{width: 40%;}
+
+            .footer{display: flex; flex-direction: column;}
+            .footer_1{height: 20%;}
+            .footer_2{height: 80%;}
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="header">
+                <!-- 가로 정렬되어야됨 -->
+                <div class="header_1"></div>
+                <div class="header_2"></div>
+                <div class="header_3"></div>
+            </div>
+            <div class="content">
+                <!-- 가로 정렬되어야됨 -->
+                <div class="content_1"></div>
+                <div class="content_2"></div>
+                <div class="content_3"></div>
+            </div>
+            <div class="footer">
+                <!-- 세로 정렬되어야됨 -->
+                <div class="footer_1"></div>
+                <div class="footer_2"></div>
+            </div>
+        </div>
+    </body>
+</html>

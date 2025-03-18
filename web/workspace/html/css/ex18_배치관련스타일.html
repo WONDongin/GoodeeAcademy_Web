@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배치 관련 스타일</title>
+    <style>
+        .outer{
+            /* #frist, #second, #thid의 부모태그 */
+            position: relative;
+            border: 1px solid black;
+        }
+        .positioning{
+            border: 1px solid red;
+        }
+        #first{
+            /* position : static 기본값 */
+            width: 300px; height: 300px;
+            background-color: yellow;
+        }
+        #second{
+            /* 부모요소가 relative로 설정된 경우 부모요소로 부터 left,top 이동 */
+            position: absolute;
+            top: 50px; left: 50px; 
+            width: 200px; height: 200px;
+            background-color: yellowgreen;
+        }
+        #third{
+            position: absolute;
+            top: 100px; left: 100px; 
+            width: 100px; height: 100px;
+            background-color: red;
+        }
+        #fixed-area{
+            /* 위치값 고정 */
+            /* position: fixed; */
+            bottom: 10px;
+            left: 50px;
+            width: 100px; height: 100px;
+            background-color: red;
+        }
+        .z-test{
+            position: absolute;
+            width: 150px; height: 150px;
+            border: 1px solid black;
+        }
+        #z1{
+            /* 숫자가 높을 수록 위쪽에 배치됨 */
+            z-index: -2;
+            top: 70px; left: 70px;
+            background-color: red;
+        }
+        #z2{
+            z-index: 1;
+            background-color: yellow;
+        }
+        #z3{
+            z-index: 0;
+            top: 50px; left: 50px;
+            background-color: green;
+        }
+        .vis-test{
+            width: 100px; height: 100px;
+            border: 1px solid black;
+        }
+        #vis {
+            /* display: none;  - 공간도 없음*/
+            visibility: hidden; /* 공간 존재, 내용 숨김처리 */
+        }
+        .float-test{
+            border: 1px solid black;
+            width: 70px; height: 30px;
+            float: left; /* right */
+        }
+    </style>
+   
+</head>
+<body>
+
+    <h1>배치 관련 스타일</h1>
+    <h3>position : 상대위치(relative)와 절대위치(absolute)</h3>
+
+    <div class="outer">
+        <div class="positioning" id="first">첫번째자식</div>
+        <div class="positioning" id="second">두번째자식</div>
+        <div class="positioning" id="third">세번째자식</div>
+    </div>
+
+    <h3>position: 고정위치(fixed)</h3>
+
+    <div class="positioning" id="fixed-area"></div>
+
+    <hr>
+
+    <h3>z-index: 요소들을 순서대로 위로 쌓는 스타일 속성</h3>
+
+    <div class="outer"> <!--position:relative-->
+        <div class="z-test" id="z1">요소1</div>
+        <div class="z-test" id="z2">요소2</div>
+        <div class="z-test" id="z3">요소3</div>
+    </div>
+
+    <br>
+
+    <hr>
+
+    <h3>visibility : 특정 요소를 보이거나 보이지 않게 하는 스타일 속성</h3>
+
+    <div class="vis-test" >첫번째div</div>
+    <div class="vis-test" id="vis">두번째div</div>
+    <div class="vis-test">세번째div</div>
+
+    <hr>
+
+    <h3>float</h3>
+    <p>페이지 내의 요소들을 화면으로부터 띄워서 왼쪽 또는 오른쪽으로 정렬하는 속성</p>
+
+    <div class="float-test">요소1</div>
+    <div class="float-test">요소2</div>
+    <div class="float-test">요소3</div>
+    <div class="float-test">요소4</div>
+    <div class="float-test">요소5</div>   
+</body>
+</html>

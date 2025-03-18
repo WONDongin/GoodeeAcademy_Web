@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO GREEN</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box; letter-spacing: -0.05rem;}
+        li{list-style: none;}
+        a{text-decoration: none;}
+        img{display: block; max-width: 100%;}
+
+        .wrap{width: 100%; max-width: 1200px; margin: 0 auto;}
+        .header{width: 100%; height: 150px; padding: 0 50px; display: flex; justify-content: space-between; align-items: center;}
+        .header_logo_mini a{display: block;}
+        .header_logo_mini a img, .header_logo_big a img{height: 65px;}
+
+        .nav ul{display: flex; justify-content: center; align-items: center; height: 40px; background-color: #5fca21;}
+        .nav ul li{flex: 1; height: 100%; line-height: 40px; text-align: center;}
+        .nav ul li a{font-size: 14px; font-weight: 500; color: #fff;}
+
+        .content_wrap{display: flex; justify-content: space-between; gap: 5px; padding-top: 10px;}
+        .content_side img{height: 590px;}
+ 
+        .content_img{display: flex;  flex-direction: column; align-items: center; gap: 15px;}
+        .content_img_top, .content_img_bottom{display: flex; justify-content: space-between; gap: 10px;}
+        .content_img_top div, .content_img_bottom div {width: 50%; text-align: center; font-size: 14px; color: #333;}
+        .content_img_top div p, .content_img_bottom div p {padding-top: 5px;}
+        .content_img_top div img, .content_img_bottom div img{height: 260px;}
+
+        .content_etc{width: 300px;}
+        .login_form{display: flex; gap: 10px; width: 100%; height: 80px;} 
+        .login_form .login_input_wrap{display: flex; flex-direction: column; width: 70%;}
+        .login_form .login_input_wrap input{height: 100%;}
+        .login_form .login_btn{width: 30%;}
+        .login_form .login_btn button{width: 100%; height: 100%;}
+        .login_etc{display: flex; align-items: center; justify-content: center; ; gap: 10px; margin-top: 5px; margin-bottom: 10px;}
+        .login_etc a{font-size: 14px; color: #333;}
+
+        .footer img{margin: 0 auto;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <div class="header_logo_mini">
+                <a href=""><img src="t1/logo.jpg" alt="GO GREEN 로고"></a>
+            </div>
+            <div class="header_logo_big">
+                <a href=""><img src="t1/mainlogo.jpg" alt="GO GREEN 회사 타이틀로고"></a>
+            </div>
+            <div class="header_etc" style="visibility: hidden;">header_etc</div>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Board</a></li>
+                <li><a href="#">Contact</a></li> 
+            </ul>
+        </nav>
+        
+        <section class="content_wrap">
+            <div class="content_side">
+                <img src="t1/left_img.jpg" alt="2016 여름 게슈탈트치료 지도자 과정">
+            </div>
+
+            <div class="content_img">
+                <div class="content_img_top">
+                    <div>
+                        <img src="t1/main_img1.jpg" alt="산목 풍경 이미지">
+                        <p>나무를 심는 사람들</p>
+                    </div>
+                    <div>
+                        <img src="t1/main_img2.jpg" alt="꽃밭의 풍경 이미지">
+                        <p>아이들에게 녹색 미래를..</p>
+                    </div>
+                </div>
+                <div class="content_img_bottom">
+                    <div>
+                        <img src="t1/main_img3.jpg" alt="설악산길 가운데 토끼가 서 있는 이미지">
+                        <p>설악산 살리는 길</p>
+                    </div>
+                    <div>
+                        <img src="t1/main_img4.jpg" alt="북극곰이 누워있는 이미지">
+                        <p>사라지는 북극곰들</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content_etc">
+                <div class="content_login">
+                    <form action="" class="login_form">
+                        <div class="login_input_wrap">
+                            <input type="text" name="userId" placeholder="ID를 입력하세요">
+                            <input type="password" name="userPwd" placeholder="PWD를 입력하세요">
+                        </div>
+                        <div class="login_btn">
+                            <button type="submit">로그인</button>
+                        </div>
+                    </form>
+
+                    <div class="login_etc">
+                        <a href="">회원가입</a>
+                        <a href="">ID/PW 찾기</a>
+                    </div>
+                </div>
+
+                <div class="content_poster">
+                    <img src="t1/right_img.jpg" alt="2017 포드 환경 프로그램 물절약, 물 한방울의 힘">
+                </div>
+
+                <div class="content_message">
+                    <img src="t1/me_chat.jpg" alt="게시판 더미 이미지">
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <img src="t1/footer.JPG" alt="푸터 대체 이미지">
+        </footer>
+    </div>
+    
+</body>
+</html>

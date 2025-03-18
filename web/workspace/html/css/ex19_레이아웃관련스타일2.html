@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 관련 스타일2</title>
+    <style>
+        /*
+        1. 배치를 가로로 하는 방식
+            - 부모요소를 overflow : hidden 으로 처리
+            - 자식요소를 float:left(right)으로 처리
+        2. 배치를 가로로 하는 방식
+            - display : flex로 배치
+        */
+        .wrap1{
+             overflow: hidden;
+        }
+        .wrap1 > div{
+            float: left;
+            width: 100px; height: 100px;
+            border: 1px solid gray;
+        }
+        div{
+            box-sizing: border-box;
+        }
+        .wrap2{
+            display: flex;
+            /* wrap : 부모영역을 벗어날수 있는 방식 */
+            flex-wrap: nowrap; /* 기본값. 부모영역에 자식들 모으는 방식 */
+            /* 배치방식 : row(기본값), row-reverse, row-reverse, column, column-reverse */
+            flex-direction: row;
+            justify-content: center; /* 정렬방식:space-between, center, space-around*/
+            width: 600px; height: 100px;
+            background-color: antiquewhite;
+            gap: 10px;
+        }
+        .wrap2 > div{
+            width: 100px; height: 100px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>  
+    <div class="wrap1">
+        <div>BOX1</div>
+        <div>BOX2</div>
+    </div>    
+    <div class="wrap2">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+        <div>BOX4</div>
+        <div>BOX5</div>
+    </div>
+</body>
+</html>

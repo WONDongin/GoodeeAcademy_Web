@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ex7</title>
+        <style>
+            div,form,button{border: 1px solid red; box-sizing: border-box;}
+            .header_search{width: 60%; width: 800px; height: 150px; display: flex; justify-content: center; align-items: center;}
+            .search_form{width: 80%; height: 20%; display: flex;}
+            .search_form > input{width: 80%;}
+            .search_form > button{width: 20%;}
+        </style>
+    </head>
+    <body>
+        <!-- 검색창 영역 따로 진행 -->
+        <div class="header_search">
+            <form action="search.do" class="search_form">
+                <input type="search" name="keyword">
+                <button type="submit">검색</button>
+            </form>
+        </div>
+        <!-- ------------------- -->
+    </body>
+</html>

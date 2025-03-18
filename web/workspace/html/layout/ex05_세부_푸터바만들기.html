@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex05</title>
+    <style>
+        *{box-sizing: border-box; margin: 0; padding: 0; letter-spacing: -0.05rem;}
+        a{text-decoration: none;}
+        li{list-style: none;}
+
+        .footer{width: 100%; max-width: 1300px; margin: 0 auto; border: 1px solid red;}
+        .footer_link{display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 1px solid red;}
+        .footer_link a{font-size: 14px; font-weight: 700; color: #333; }
+
+        .footer_info{ border: 1px solid red; }
+        .footer_info_company{display: flex; flex-direction: column; gap: 5px; padding: 10px; min-height: 150px;}
+        .footer_info_company li{position: relative; font-size: 12px; padding-left: 10px;}
+        .footer_info_company li::after{content: "-"; position: absolute; left: 0; top: 0;}
+        /* list-style-type : "- "  */
+        .footer_info_copyright{border: 1px solid red; text-align: center; padding: 5px;}
+    </style>
+</head>
+<body>
+    <!-- 푸터바 영역 따로 진행 -->
+    <footer class="footer">
+        <div class="footer_link">
+            <a href="">이용약관</a> | 
+            <a href="">개인정보취급방침</a> | 
+            <a href="">인재채용</a> | 
+            <a href="">고객센터</a>
+        </div>
+        <div class="footer_info">
+            <ul class="footer_info_company">
+                <li>상호명 : GooDee Academy</li>
+                <li>대표자 : 이승엽</li>
+                <li>전화 : 02-818-7950</li>
+                <li>개인정보책임자 : 주승재 / jsj@goodee.co.kr</li>
+                <li>본관 : (08505) 서울특별시 금천구 가산디지털2로 95 (가산동, km타워) 2층, 3층</li>
+            </ul>
+            <div class="footer_info_copyright">
+                Copyright ⓒ GooDee Academy. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <!-- ------------------- -->
+</body>
+</html>

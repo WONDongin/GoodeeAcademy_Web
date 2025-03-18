@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 관련 스타일</title>
+    <style>
+        .size-test{border: 10px solid red;}
+        /* test1  가로:400px, 세로: 200px*/
+        #test1{
+            width: 400px; height: 200px;
+            /* 요소전체크기: 가로: 420px, 세로:220px */
+        }
+        /* test2  가로:50%, 세로: 150px*/
+        #test2{width: 50%; height: 150px;}
+
+        .display-test{
+            border: 1px solid black;
+            width: 150px; height: 150px;
+        }
+        .inline{display: inline;}
+
+        .red{background-color: red;}
+        .yellow{background-color: yellow;}
+        .pink{background-color: pink;}
+        .green{background-color: green;}
+        .purple{background-color: purple;}
+        .inline-block{display: inline-block;}
+        .block{display: block;}
+    </style>
+</head>
+<body>
+
+    <h1>레이아웃 관련 스타일</h1>
+    <h3>width, height </h3>
+    <p>기본적으로 content영역의 가로 세로 길이 지정</p>
+
+    <h4>고정크기(px)</h4>
+    <div class="size-test" id="test1"></div>
+
+    <h4>가변크기(%)</h4>
+    <div class="size-test" id="test2"></div>
+
+    <hr>
+
+    <h3>display: 화면에 요소 배치 방법</h3>
+    <pre>
+    선택자{
+        display:block|inline|inline-block;
+    }
+    </pre>
+
+    <h4>블럭요소(div)를 인라인요소로 바꾸기</h4>
+
+    <div class="display-test inline red">첫번째</div>
+    <div class="display-test inline yellow">두번째</div>
+    <div class="display-test inline pink">세번째</div>
+    <div class="display-test inline green">네번째</div>
+    <div class="display-test inline purple">다섯번째</div>
+    <br>
+
+    <b>** display:inline 하게되면 width, height 스타일 속성은 제대로 반영되지 않음</b>
+
+    <h4>블럭요소를 인라인요소로 바꾸되 크기는 그대로 유지하도록</h4>
+    <div class="display-test inline-block red">첫번째</div> 
+    <div class="display-test inline-block yellow">두번째</div>
+    <div class="display-test inline-block pink">세번째</div>
+    <div class="display-test inline-block green">네번째</div>
+    <div class="display-test inline-block purple">다섯번째</div>
+
+    <h4>인라인 요소를 블럭요소로 바꾸는 방법</h4>
+    <span class="display-test block red">첫번째</span> 
+    <span class="display-test block yellow">두번째</span>
+    <span class="display-test block pink">세번째</span>
+    <span class="display-test block green">네번째</span>
+    <span class="display-test block purple">다섯번째</span>
+    
+</body>
+</html>
