@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam</title>
+    </head>
+    <body>
+        <p>
+            합계구하기 버튼을 클릭하면  prompt창을 띄워서 숫자만 입력받아
+            입력받은 수까지의 합계를 출력하기<br>
+            for(i=1;i<=num;i++) 반복문 이용하기<br>
+            계산된 합계는 #total에 출력하기.div태그의 속성 중 value 는 없음.
+            innerHTML 속성에 저장하기
+        </p>
+        <button onclick="totalSum()">합계구하기</button>
+        <div id="total"></div>
+        <script>
+            function totalSum() {
+                let num = prompt("숫자만 입력하세요",0);
+                let sum = 0;
+                for(let i=1;i<=num;i++) {
+                    sum += i;
+                }
+    //          document.getElementById("total").innerHTML = "<h1>"+num + "까지의합:"+sum+"</h1>";
+                document.getElementById("total").innerText = "<h1>"+num + "까지의합:"+sum+"</h1>";
+            }
+        </script>
+    </body>
+</html>
