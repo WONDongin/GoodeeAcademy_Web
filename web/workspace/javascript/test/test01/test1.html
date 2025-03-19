@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- webapp/test/test1.html -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>바구니수 구하기</title>
+  <style type="text/css">
+    input {text-align: right;}
+  </style>
+  </head>
+  <body>
+    <table>
+      <caption>바구니수 계산하기</caption>
+      <tr>
+        <th>바구니당 사과 갯수</th>
+        <td>
+          <select id="cnt">
+            <option value="5">5개</option>
+            <option value="10">10개</option>
+            <option value="15">15개</option>
+            <option value="20">20개</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>사과의 총갯수</th>
+        <td><input type="text" id="apple"></td></tr>      
+      <tr>
+        <td colspan="2" align="right">
+          <input type="button" value="바구니수 계산하기" onclick="calc()" style="width:100%; text-align:center;">
+        </td>
+      </tr>
+      <tr>
+        <th>필요한 바구니수</th>
+        <td>
+          <input type="text" id="basketcnt">
+        </td>
+      </tr>
+    </table>
+    <script>
+      function calc(){
+        let cnt = document.getElementById("cnt").value;
+        let apple = document.getElementById("apple").value;
+        let total = apple / cnt;
+        document.getElementById("basketcnt").value = Math.ceil(total);
+      }
+    </script>
+  </body>
+</html>

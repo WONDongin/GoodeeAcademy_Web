@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자료형</title>
+    </head>
+    <body>
+        <script>
+            /*
+            1. 기본자료형
+            1) number : 정수/실수 구분이 없다.
+            NaN(Not a Number) : 숫자가 아님
+            Infinity/-Infinity : +0/-0으로 나눈 값. 불능
+            2) string : 문자/문자열 구분이 없다. 작음따옴표, 큰따옴표 모두 사용 가능함
+            3) boolean : true/false
+            4) null : 값이 없다.
+            5) undefined : 값이 저장된 적이 없다. 초기화되지 않은 상태의 변수임
+
+            2. 자바스크립트 변수의 특징
+            1) 동적타입. 선언하지 않아도 변수 사용 가능
+            2) 변수선언시에 자료형을 작성하지 않는다.
+            3) 변수에 값을 저장할때 자료형이 결정됨 => 변수에 저장된 값이 수정되면 자료형 변경됨.
+            4) 변수 선언 없이 변수 사용이 가능함.
+
+            3. 변수 선언 키워드
+            1) var
+            (1) 범위 : 함수레벨
+            (2) 변수 선언 생략 가능
+            (3) 같은 변수명으로 다시 선언이 가능
+            (4) 변수의 초기화 생략 가능 (undefined 상태)
+
+            2) let(ES6 표준)
+            (1) 범위 : 블록레벨 {} => 지역변수
+            (2) 변수 선언 생략 가능
+            (3) 같은 변수명으로 다시 선언이 불가능
+            (4) 변수 초기화 생략 가능 (메모리에 변수 생성 전)
+
+            3) const(ES6 표준)
+            (1) 범위 : 블록레벨 {} => 지역변수
+            (2) 변수 선언 생략 불가능
+            (3) 같은 변수명으로 다시 선언이 불가능
+            (4) 변수 초기화 생략 불가능 => 상수
+            (5) 저장된 값을 변경 불가능 => 상수
+
+            4. 호이스팅
+            1) hoisting
+            2) 코드 중 항상 먼저 처리가 되는 코드
+            3) 대상 : 변수선언, 함수 정의 등
+            */
+        </script>
+        <script>
+            var a; // 변수 선언
+            console.log(a); // 초기화 되지 않으므로 undefined 상태. 오류발생 안됨
+            // 동일한 변수명으로 재선언 가능
+            var a;
+            a = 10;
+            console.log(a, typeof a);
+            // 값이 변경시 자료형 변경
+            a = 'hello World'; // 변수 초기화
+            console.log(a, typeof a);
+            b = false;
+            console.log(b, typeof b);
+            //변수선언이 먼저 처리됨 : 호이스팅
+            c = Math.sqrt(25);
+            var c; // 변수 선언
+            console.log(c, typeof c);
+            //let : 중복 선언 불가
+            let user = "user";
+            console.log(user, typeof user);
+            // let user = "use2"; 재선언 불가능
+            // const : 중복선언 불가능, 변수의 값 변경 불가(상수)
+            const pw = "pw1";
+            console.log(pw, typeof pw);
+            // pw = "pw2"; 변수 변경 불가. 상수
+        </script>
+        <script>
+            // 변수의 범위
+            if(true){
+                var age = 29; // var 선언된 변수의 범위(scope)은 함수 영역(functional scope)
+            }
+            console.log(age, typeof age);
+            if(true){
+                // const hobby = "운동"; const, let로 선언된 변수의 범위는 블록영역
+                // let name = "홍길동"
+            }
+            // console.log(hobby, name);
+            console.log(name);
+        </script>
+    </body>
+</html>

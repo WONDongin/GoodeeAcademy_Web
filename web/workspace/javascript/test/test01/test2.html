@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>구구단출력하기</title>
+    <style type="text/css">
+        table { width:100%; border-collapse: collapse;}
+        th,td {border : 3px solid #bcbcbc; text-align: center; padding: 8px;}
+        th {background-color: #e2e2e2; color:#111111;}
+        td {background-color: #f2f2f2;}
+        caption {color:#111111; font-size: 20px; background-color: #ffffff;}
+    </style>
+
+    </head>
+    <body>
+        <input type="button" value="세로출력" onclick="print1()">
+        <input type="button" value="가로출력" onclick="print2()">
+        <input type="button" value="2단출력"  onclick="print3()">
+        <div id="gugudan"></div>
+
+        <script>
+            
+            function print1(){
+                let result = "<table><caption>세로출력</caption>";
+                    
+                for(let i = 2; i <= 9; i++){
+                    result += "<tr><th>" + i + "단</th></tr>";
+                    for(let z = 1; z <= 9; z++){
+                        result += "<tr><td>" + i +"x" + z + "=" + i*z + "</td></tr>";
+                    }
+                }
+                result += "</table>";
+                document.getElementById("gugudan").innerHTML = result;
+            }
+
+            function print2() {
+                let result = "<table><caption>가로출력</caption>";
+                
+                result += "<tr>";
+                for (let i = 2; i <= 9; i++) {
+                    result += "<th>" + i + "단</th>";
+                }
+                result += "</tr>";
+            
+                for (let j = 1; j <= 9; j++) { 
+                    result += "<tr>";
+                    for (let i = 2; i <= 9; i++) { 
+                        result += "<td>" + i + "x" + j + "=" + (i * j) + "</td>";
+                    }
+                    result += "</tr>";
+                }   
+                result += "</table>";
+
+                document.getElementById("gugudan").innerHTML = result;
+            }
+
+            function print3() {
+                let result = "<table><caption>2단출력</caption>";
+                
+                for (let start = 2; start <= 6; start += 4) {  
+                    result += "<tr>";
+                    for (let i = start; i < start + 4; i++) {
+                        result += "<th>" + i + "단</th>";
+                    }
+                    result += "</tr>";
+                
+                    for (let j = 1; j <= 9; j++) {
+                        result += "<tr>";
+                        for (let i = start; i < start + 4; i++) { // 4개 단씩 출력
+                            result += "<td>" + i + "x" + j + "=" + (i * j) + "</td>";
+                        }
+                        result += "</tr>";
+                    }
+                }   
+                result += "</table>";
+
+                document.getElementById("gugudan").innerHTML = result;
+            }
+        </script>
+    </body>
+</html>

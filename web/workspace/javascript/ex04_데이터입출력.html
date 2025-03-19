@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>데이터 입출력</title>
+    </head>
+    <body>
+        <h2>데이터를 출력하는 구문</h2>
+        <ul>
+            <li>[window.]alert("브라우저의 확인창에 출력시킬 메세지")</li>
+            <li>[window.]console.log("브라우저의 콘솔창 출력시킬 메세지")</li>
+            <li>document.write("브라우저의 화면에 출력시킬 메세지")</li>
+            <li>태그.innerHTML = "태그 내부의 출력시킬 메세지"</li>
+        </ul>
+        <div id="test"></div>
+        <script>
+             // alert("브라우저의 확인창에 메세지를 띄웁니다.");
+             document.write("<hr/>")
+             document.write("document.write() 함수를 이용하여 화면에 출력합니다.<br>안녕하세요");
+             let test = document.getElementById("test");
+             test.innerHTML = "<table border='1'><tr><td>innerHTML 테스트</td></tr></table>";
+        </script>
+
+        <h2>데이터를 입력하는 구문</h2>
+        <ul>
+            <li>변수 = [window.]confirm("질문내용");</li>
+            <li>변수 = [window.]prompt("질문내용");</li>
+            <li>변수 = 특정요소.속성(id, className, innerHTML, innerText, ...); </li>
+        </ul>
+        <button onclick="testConfirm();">클릭</button>
+        <div id="area"></div>
+        <script>
+            function testConfirm(){
+                //메세지대화창 : alert("확인창"), confirm("선택창") :확인(true),취소(false)
+                //              prompt("입력창")
+                let result = confirm("홍길동님이시면 확인 아니면 취소를 눌러주세요");
+                console.log(result);
+                const divEl = document.getElementById("area");
+                if(result){
+                    divEl.innerHTML = "<h3>환영합니다</h3>";
+                }else{
+                    divEl.innerHTML = "<h3>안녕히가세요</h3>";
+                }
+            }
+        </script>
+
+        <h3>window.prompt("질문내용");</h3>
+        <p>
+            prompt 호출시 "질문내용"과 입력할 수 있는 "텍스트 상자"와 
+            "확인/취소"버튼이 보여지는 브라우저의 알람창 발생 <br>
+            확인 버튼 클릭시 텍스트 상자에 입력된 value값을 "문자열"로 반환,
+            취소 버튼 클릭시 null 반환 => 변수에 담아서 활용 가능
+        </p>
+        <button onclick="testPrompt1();">클릭</button>
+        <div id="area2"></div>
+        <script>
+            function testPrompt1(){
+                let name = prompt("당신의 이름은 무엇입니까?");
+                let age = prompt("당신의 나이는 몇살입니까?");
+                const divEl = document.getElementById("area2");
+                divEl.innerHTML = "<b>"+ age + "살, " + name + "님.  반갑습니다.</b>";
+            }
+        </script>
+    </body>
+</html>

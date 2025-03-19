@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>반응형 웹</title>
+        <style>
+            /* @media : 화면의 크기별로 다른 css 적용이 가능함 */
+            /* 화면 크기 : 최대 600px 까지 */
+            @media(max-width: 600px){
+                body{background-color: red;}
+            }
+             /* 화면 크기 : 601~999px 까지 */
+            @media(min-width: 601px) and (max-width:999px){
+                body{background-color: green;}
+            }
+             /* 화면 크기 : 1000px ~ * */
+            @media(min-width: 1000px){
+                body{background-color: blue;}
+            }
+        </style>
+    </head>
+    <body>
+        <h1>@media 태그 예제</h1>
+        <p>화면의 크기 별로 바탕색이 달라집니다.</p>
+    </body>
+</html>
