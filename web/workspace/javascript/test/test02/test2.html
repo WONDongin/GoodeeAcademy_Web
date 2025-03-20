@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test2</title>
+</head>
+<body>
+	<h1> 행 열 갯수 각각 입력받아 테이블 만들기 </h1>
+    <P>
+        행:<input type="text" id="row">
+        열:<input type="text" id="col">
+    </P>
+    <button onclick="makeTable();">테이블 생성</button>
+	<div id="box"></div>
+    <script>
+        function makeTable(){
+            let row = document.getElementById("row").value;
+            let col = document.getElementById("col").value;
+            let num = 1;
+
+            let table = '<table border="1">';
+            
+            for(let i = 0; i < row; i++){
+                table += `<tr>`    
+                for(let j = 0; j < col; j++){
+                    table += `<td>${num++}</td>`;
+                }
+                table += `</tr>`    
+            }
+            table += `</table>`;
+
+            document.getElementById("box").innerHTML = table;
+        }
+    </script>
+</body>
+</html>

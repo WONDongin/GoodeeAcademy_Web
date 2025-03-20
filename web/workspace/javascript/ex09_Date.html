@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date</title>
+        <style>
+            .area{width: 500px; height: 500px; border: 1px solid black;}
+        </style>
+    </head>
+    <body>
+        <div id="box" class="area"></div>
+        <script>
+            let box1 = document.querySelector("#box");
+            let now = new Date();
+            box1.innerHTML += now + "<br/>";
+            // 달: -1 
+            let data1 = new Date(2025,(3-1),20,15,20,0) // 2025-03-20 15:20
+            box1.innerHTML += data1 + "<br/>";
+
+            let data2 = new Date(2025,2,20); // 2025-03-20 00:00:00
+            box1.innerHTML += data2 + "<br/>";
+
+            let data3 = new Date("2025-03-20 15:30:00"); // 2025-03-20 15:30:00
+            box1.innerHTML += data3 + "<br/>";
+
+            // 2025,2,20,4,15,35,17
+            // 로컬타임기준
+            let year = now.getFullYear(); // 년도 : 2025
+            let Month = now.getMonth();   // 월 : 3월:2 (0~11)
+            let day = now.getDate();      // 일
+            let weekNo = now.getDay();    // 요일 : 일(0), 월(1), 화(2) ~ 토(6)
+            let hour = now.getHours();    // 시
+            let minute = now.getMinutes();// 분
+            let second = now.getSeconds();// 초
+            box1.innerHTML +=
+                `${year},${Month},${day},${weekNo},${hour},${minute},${second}<br>`;
+
+            // UTC 타임기준
+            year = now.getUTCFullYear(); // 년도 : 2025
+            Month = now.getUTCMonth();   // 월 : 3월:2 (0~11)
+            day = now.getUTCDate();      // 일
+            weekNo = now.getUTCDay();    // 요일 : 일(0), 월(1), 화(2) ~ 토(6)
+            hour = now.getUTCHours();    // 시
+            minute = now.getUTCMinutes();// 분
+            second = now.getUTCSeconds();// 초
+            box1.innerHTML +=
+                `${year},${Month},${day},${weekNo},${hour},${minute},${second}<br>`;
+
+            // 오늘의 요일 출력
+            let arr = ['일','월','화','수','목','금','토'];
+            let weekname = arr[now.getDay()];
+            box1.innerHTML += `2025-03-30 ${weekname}요일`;
+        </script>
+    </body>
+</html>

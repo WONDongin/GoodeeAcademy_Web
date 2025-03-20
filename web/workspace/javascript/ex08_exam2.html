@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam2</title>
+    </head>
+    <body>
+        <p>
+        nums 폴더의 이미지 num0.jpg ~ num9.jpg 이미지를 화면에 출력하기 <br/>
+        위와 같은 img 태그를 구현하여 box1에 출력하기
+        </p>
+        <div id="box1"></div>
+
+        <script>
+            let str = ``;
+            for(let i = 0; i <= 9; i++){
+                str += `<img src="images/num${i}.jpg">`
+            }
+            console.log(str);
+            document.getElementById("box1").innerHTML = str;
+        </script>
+    </body>
+</html>

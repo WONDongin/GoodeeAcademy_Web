@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>문자열</title>
+        <style>
+            .area{width: 500px; border: 1px solid black; overflow: auto;}
+            .big{height: 500px;}
+            .small{height: 250px;}
+        </style>
+    </head>
+    <body>
+        <h3>문자열과 관련 기본메소드</h3>
+        <button onclick="stringTest();">문자열 처리 메소드</button>
+        <div id="area1" class="area big"></div>
+        <script>
+            function stringTest(){
+                const divEL = document.querySelector("#area1");
+                let str1 = "Hello World";
+                divEL.innerHTML = "str1 : " + str1 + "<br/>";
+                // 백틱 : ` ES6 이후 가능
+                divEL.innerHTML = `str1 : ${str1}<br/>`; 
+                divEL.innerHTML += `toUpperCase() : ${str1.toUpperCase()}<br/>`; 
+                divEL.innerHTML += `toLowerCase() : ${str1.toLowerCase()}<br/>`; 
+                divEL.innerHTML += `문자열의 길이() : ${str1.length}<br/>`;
+                for(let i = 0; i < str1.length; i++){
+                    divEL.innerHTML += `${i}번째 인덱스 : ${str1.charAt(i)}<br/>`;
+                }
+                // indexOf : 문자의 위치 리턴
+                divEL.innerHTML += `앞에서부터 첫 l의 위치 : ${str1.indexOf('l')}<br/>`;
+                divEL.innerHTML += `뒷뒷에서부터 첫 l의 위치 : ${str1.lastIndexOf('l')}<br/>`;
+                divEL.innerHTML += `5번 인덱스 부터 첫 l의 위치 : ${str1.indexOf('l',5)}<br/>`;
+                divEL.innerHTML += `a문자의 위치 : ${str1.indexOf('a')}<br/>`;
+                // substring(시작인덱스, 종료인덱스+1) : 부문 문자열
+                // substr(시작인덱스, 글자수)
+                divEL.innerHTML += `substring(시작인덱스) : ${str1.substring(6)}<br/>`;
+                divEL.innerHTML += `substring(시작인덱스, 종료인덱스+1) : ${str1.substring(0,2)}<br/>`;
+                divEL.innerHTML += `substr(시작인덱스) : ${str1.substr(6)}<br/>`;
+                divEL.innerHTML += `substr(시작인덱스, 글자수) : ${str1.substr(1,4)}<br/>`;
+                // startWith, endsWith (true/false)
+                divEL.innerHTML += `startWith(시작문자)로 시작? : ${str1.startsWith('H')}<br/>`;
+                divEL.innerHTML += `endsWith(끝문자)로 끝? : ${str1.endsWith('d')}<br/>`;
+                // 문자의 치환 
+                let str2 = "JavaJavaJavaJavaJavaJava";
+                divEL.innerHTML += `replace(원본문자, 치환문자) : ${str2.replace('Java','자바')}<br/>`;
+                divEL.innerHTML += `replaceAll(원본문자, 치환문자) : ${str2.replaceAll('Java','자바')}<br/>`;
+                // 문자열 분리
+                let str3 = "사과,바나나,복숭아,키위,";
+                let fruits = str3.split(","); // 배열
+                divEL.innerHTML += `fruits : ${fruits}<br/>`;
+                divEL.innerHTML += `fruits의 자료형 : ${typeof(fruits)}<br/>`;
+                divEL.innerHTML += `fruits의 크기 : ${fruits.length}<br/>`;
+                divEL.innerHTML += `배열요소를 하나의 문자열로 : ${fruits.join("-")}<br/>`;
+            }
+        </script>
+
+        <h3>문자열 관련 html 메소드</h3>
+        <button onclick="stringHtmlTest();">문자열 html메소드</button>
+        <div id="area2" class="area small"></div>
+        <script>
+            function stringHtmlTest(){
+                const divEL = document.querySelector("#area2");
+                let str = "javascript";
+                divEL.innerHTML = `str : ${str}<br/>`;
+                divEL.innerHTML += `bold() : ${str.bold()}<br/>`;
+                divEL.innerHTML += `italices() : ${str.italics()}<br/>`;
+                divEL.innerHTML += `sub(),sup() : ${str.sub()}, ${str.sup()}<br/>`;
+                divEL.innerHTML += `link() : ${str.link("https://www.naver.com")}<br/>`;
+            }
+        </script>
+    </body>
+</html>
