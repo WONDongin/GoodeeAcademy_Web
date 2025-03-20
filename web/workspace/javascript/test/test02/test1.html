@@ -20,26 +20,28 @@
 <html>
   <head>
   <meta charset="UTF-8">
-  <title>Insert title here</title>
+  <title>실습문제01</title>
   </head>
   <body>
     <script>
-    
-      var sum = 0;
-      
-      while(sum <= 50){
+      let sum = 0;
 
-        if(getNum() <= 10){
-          sum += getNum();
-          document.write(`<p>${getNum()}만원, 잔액${sum}</p>`); 
-          sum += getNum();
-        } 
+      while(sum <= 100){
+        let num = getNum();
+
+        if(num >= 6){
+          sum += num;
+          document.write(`<p>저축을 많이 하셨습니다. 잘하셨습니다. : ${num}만원, 잔액 : ${sum}만원</p>`); 
+        } else{
+          sum += num;
+          document.write(`<p>좀 더 많이 하세요. : ${num}만원, 잔액 : ${sum}만원</p>`); 
+        }
       }
+      document.write(`<p>저축이 만료되었습니다., 잔액 : ${sum}만원</p>`); 
 
       function getNum(){
         return Math.floor((Math.random() * 10) + 1); 
       }
-
     </script>
   </body>
 </html>
