@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>요소접근</title>
+        <style>
+            .area{width: 300px; height: 100px; border: 1px solid black; overflow: auto;}
+        </style>
+    </head>
+    <body>
+        <!-- 
+        DOM (Document Object Model) : 문서객체모델
+        - HTML 문서의 태그들을 객체로 처리 방식
+        - 객체 조화방식
+        1) doucoment.getElementById("id속성값") : 요소리턴
+        2) doucoment.getElementsByName("name속성값") : 배열리턴
+        3) doucoment.getElementsByTagName("태그명") : 배열리턴
+        4) doucoment.getElementsByClassName("class속성값") : 배열리턴
+        5) doucoment.querySelector("선택자") : 요소리턴
+        6) doucoment.querySelectorAll("선택자") : 배열리턴
+        - 조회할 태그가 반드시 스크립트 실행전에 먼저 인식되어야함
+        - 함수내에서의 DOM처리는 가능함.
+
+
+        -->
+        <h1>html 요소에 접근하기(태그 객체 조회화기)</h1>
+        <h3>아이디 속성을 이용하여 조회하기 : document.getElementById</h3>
+        <!-- 
+        Id 속성은 유일함을 의미함. 한개의 객체만 찾아서 조회함
+        -->
+        <div class="area" id="area1" style="background-color: red;"></div>
+        <button onclick="accessId()">아이디로 접근</button>
+        <script>
+            function accessId(){
+                //divEL = <div id="area1">...</div> 태그 객체. 요소 Element
+                const divEL = document.getElementById("area1");
+                divEL.innerHTML += "아이디로 완료<br/>";
+                divEL.style.color = "blue";
+                
+                //현재 배경색이 red인 경우 yellow로, yellow 인 경우 red인 변경
+                //backgroundColor : css background-color
+                if(divEL.style.backgroundColor == "red"){
+                    divEL.style.backgroundColor = "yellow";
+                } else {
+                    divEL.style.backgroundColor = "red";
+                }
+
+                // divEl태그의 크기 변경
+                divEL.style.width = "200px";
+                divEL.style.height = "200px";
+            }
+        </script><hr/>
+        <h3>태그 이름을 이용하여 조회하기 : document.getElementsByTagName</h3>
+        <ul>
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+            <li>목록5</li>
+        </ul>
+        <button onclick="accessTagName()">태그로 접근</button>
+        <script>
+            function accessTagName(){
+                const liEL = document.getElementsByTagName("li");
+                // 오류발생. 배열로 조회됨. 배열에는 innerHTML 속성이 없음
+                // liEL.innerHTML = "Hello"; 
+                liEL[0].innerHTML = "Hello";
+                console.log(liEL, typeof(liEL));
+                console.log("li 요소의 갯수:", liEL.length);
+                let blueColor = 30;
+                for(let i = 0; i<liEL.length; i++){
+                    liEL[i].innerHTML = "안녕하세요";
+                    liEL[i].style.backgroundColor = "rgb(200,125," + blueColor + ")";
+                    blueColor += 50;
+                }
+            }
+        </script><hr/>
+
+        <h3>name 속성값을 이용하여 조회하기 : document.getElementsByName</h3>
+        <form action="">
+            <fieldset>
+                <legend>취미</legend>
+                <input type="checkbox" id="game" value="game" name="hobby" >
+                <label for="game">게임</label>
+                <input type="checkbox" id="movie" value="movie" name="hobby" >
+                <label for="movie">영화</label>
+                <input type="checkbox" id="redding" value="redding" name="hobby" >
+                <label for="redding">독서</label>
+                <input type="checkbox" id="sports" value="sports" name="hobby" >
+                <label for="sports">운동</label>
+            </fieldset>
+        </form><br/>
+        <button onclick="accessName();">name으로 접근</button>
+        <div class="area" id="area3"></div>
+        <script>
+            function accessName(){
+                // name="속성값" : name 속성의 값으로 요소 조회 : getElementsByName
+                // 현재페이지에서 name 속성값을 가진 모든 요소 조회. => 배열
+                const hobby = document.getElementsByName("hobby"); // 배열
+                const divEL = document.getElementById("area3"); // 요소객체
+                divEL.innerHTML = "";
+                for(let i = 0; i<hobby.length; i++){
+                    // hobby[i].checked : 체크박스 선택 여부 리턴
+                    if(hobby[i].checked){
+                        divEL.innerHTML += hobby[i].value + "<br/>";
+                    }
+                }
+            }
+        </script><hr/>
+
+        <h3>class 속성값을 이용하여 조회하기 : document.getElementsByClassName</h3>
+        <div class="test">
+            <p class="test"></p>
+            <ul class="test">
+                <li></li>
+                <li></li>
+            </ul>
+            <pre class="test test1"></pre>
+            <button onclick="accessClass();">class로 접근</button>
+        </div>
+        <script>
+            function accessClass(){
+                const arr = document.getElementsByClassName("test");
+                for(let i =0; i< arr.length;i++){
+                    console.log(arr[i]);
+                }
+            }
+        </script><hr/>
+
+        <h3>선택자를 이용하여 요소 조회하기 : document.querySelector</h3>
+        <div id="test1">테스트입니다.</div>
+        <div class="test">
+            <h2>안녕</h2>
+            <h2>잘가</h2>
+            <span>ㅎㅎㅎ</span>
+        </div>
+        <span>ㅋㅋㅋ</span>
+        <h2>빠이</h2>
+        <button onclick="accessSelector();">클릭</button>
+        <script>
+            function accessSelector(){
+                const divEL = document.querySelector("#test1"); // 요소
+                console.log(divEL.innerHTML);
+
+                const h2E1 = document.querySelectorAll(".test > h2"); // 배열
+                for(let i =0; i < h2E1.length; i++){
+                    console.log(h2E1[i].innerHTML);
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam3</title>
+    </head>
+    <body>
+        <p>
+            3행 3열짜리 테이블을 생성하고, 내용은 1~9까지의 값을 넣어서<br/>
+            box1 태그에 출력
+        </p>
+        <div id="box1"></div>
+
+        <script>
+            let str = `<table border=1>`
+            let num = 1;
+
+            for(let i = 0; i<3; i++){
+                str += `<tr>`
+                for(let j = 0; j< 3; j++){
+                    str += `<td>${num++}</td>`; 
+                }
+                str += `</tr>`
+            }
+            str += `</table>`;
+
+            document.getElementById("box1").innerHTML = str;
+        </script>
+    </body>
+</html>

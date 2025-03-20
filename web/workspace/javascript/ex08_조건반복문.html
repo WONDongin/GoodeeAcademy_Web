@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>조건/반복문</title>
+    </head>
+    <body>
+        <div>
+            <div>국어점수 <span id="kor">81</span>점</div>
+            <div>영어점수 <span id="eng">93</span>점</div>
+            <div>수학점수 <span id="math">100</span>점</div>
+        </div>
+        <div>
+            <div>평균점수 <span id="avg"></span>점</div>
+            <div>학점 <span id="grade"></span>학점</div>
+        </div>
+        <script>
+            let kor = document.querySelector("#kor").textContent;
+            let eng = document.querySelector("#eng").textContent;
+            let math = document.querySelector("#math").textContent;
+            let avg = ( Number(kor)+Number(eng)+Number(math))/3;
+            document.querySelector("#avg").textContent = avg;
+
+            let grade;
+            /*
+            if(avg >= 90){
+                grade = 'A';
+            }else if(avg >= 80){
+                grade = 'B';
+            }else if(avg >= 70){
+                grade = 'C';
+            }else if(avg >= 60){
+                grade = 'D';
+            }else {
+                grade = 'F';
+            } */
+
+            /* javascript에서는 case 구분에 비교연산 가능함 */
+            switch(true){
+                case avg >= 90 : grade = 'A'; break; 
+                case avg >= 80 : grade = 'B'; break; 
+                case avg >= 70 : grade = 'C'; break; 
+                case avg >= 60 : grade = 'D'; break; 
+                default : grade = 'F'; 
+            }
+
+            document.querySelector("#grade").textContent = grade;
+        </script><hr/>
+
+        <h3>반복문 연습</h3>
+        <div id="box1">while :<br/></div>
+        <div id="box2">for :<br/></div>
+        <div id="box3">do while : <br/></div>
+        <script>
+            let n = 1;
+            while(n <= 5){
+                document.querySelector("#box1").innerHTML += (n + "&nbsp;&nbsp;");
+                n++;
+            }
+
+            for(n = 1; n <= 5; n++){
+                document.querySelector("#box2").innerHTML += (n + "&nbsp;&nbsp;");
+            }
+
+            n=1;
+            do{
+                document.querySelector("#box3").innerHTML += (n + "&nbsp;&nbsp;");
+                n++;
+            }while(n <= 5);
+        </script>
+
+    </body>
+</html>

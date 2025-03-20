@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>실습문제05</title>
+	<style>
+		div {border: 1px solid red;height: 150px;}
+	</style>
+	</head>
+	<body>
+		<h1>기본 문법 문제</h1>
+		문제1. 다음 보기에 있는 텍스트 필드에 작성한 문자열의 길이를 알아올 수 있도록 구현하시오
+		<fieldset>
+			<legend>보기</legend>
+			<input type="text" placeholder="글자를 작성해보세요" size="100" id="text1">
+		</fieldset>
+		<br>
+		<div id="result1"></div>
+		<button onclick="stringLength();"> 확인하기</button>
+
+		<script>
+			function stringLength(){
+				let leg = document.getElementsByTagName("input");
+				let result1 = document.getElementById("result1");
+				result1.innerHTML = `보기의 문자열 길이는 ${leg[0].value.length} 글자 입니다.`;	
+			}
+		</script>
+
+		<br><br>
+		문제2. 다음 보기에 있는 문자열을 ,(콤마) 를 기준으로 잘라내어 하나하나 출력하시오 
+		<fieldset>
+			<legend>보기</legend>
+			<label id="la1">콜라,사이다,햄버거,피자,한약</label>
+		</fieldset>
+		<br>
+		<div id="result2"> </div>
+		<button onclick="stringSplit();"> 확인하기</button>
+		
+		<script>
+			function stringSplit(){
+
+				let divTC = document.querySelector("#la1").textContent;
+				let arr = divTC.split(",");
+				let ans = "";
+
+				for(let i = 0; i < arr.length; i++){
+					ans += `${i+1}.${arr[i]}<br/>`;
+				}
+
+				let result2 = document.getElementById("result2");
+				result2.innerHTML = ans;
+			}
+		</script>
+	</body>
+</html>

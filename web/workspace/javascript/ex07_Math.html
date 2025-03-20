@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Math</title>
+        <style>
+            .area{width: 500px; border: 1px solid black; overflow: auto;}
+            .big{height: 500px;}
+            .small{height: 250px;}
+        </style>
+    </head>
+    <body>
+        <h3>숫자(수학) 관련 메소드</h3>
+        <button onclick="mathTest();">수학관련 메소드</button>
+        <div id="area1" class="area small"></div>
+        <script>
+            function mathTest(){
+                const divEL = document.getElementById("area1");
+                divEL.innerHTML = `절대값 : ${Math.abs(-123)}<br/>`;
+                divEL.innerHTML += `랜덤값 : ${Math.random()}<br/>`;
+                divEL.innerHTML += `반올림 : ${Math.round(123.658)}<br/>`;
+                divEL.innerHTML +=  `반올림(위치지정가능? => x) : ${Math.round(123.658 , 3)}<br/>`;
+                divEL.innerHTML += `버림 : ${Math.floor(123.678)}<br/>`;
+                divEL.innerHTML += `올림 : ${Math.ceil(123.001)}<br/>`;
+            }
+        </script><hr/>
+
+        <h3>문자열과 숫자간의 산술연산 / 형변환</h3>
+        <button onclick="arithmentic();">산술연산</button>
+        <div id="area2" class="area small"></div>
+        <script>
+            function arithmentic(){
+                const divEL = document.getElementById("area2");
+                divEL.innerHTML =  `test1: ${7 + 7}<br/>`;
+                divEL.innerHTML += `test2: ${7 + "7"}<br/>`;
+                divEL.innerHTML += `test3: ${"7" + 7}<br/>`;
+                divEL.innerHTML += `test4: ${"7" + 7 + 7}<br/>`;
+                divEL.innerHTML += `test5: ${"7" - 7}<br/>`;
+                divEL.innerHTML += `test6: ${"7"/ 7}<br>`;
+                divEL.innerHTML += `test7: ${"7" * "7"}<br/>`;
+                /*
+                덧셈 외의 산술연산 가능
+                문자열이 자동형변환된 후 산술연산함.
+                문자열내의 문자는 숫자들로만 존재해야함
+                덧셈연산 => 문자열 연결
+
+                형변환 함수
+                숫자 <= Number(문자열) => 숫자형이 아닌경우 NaN(Not a Number) 리턴
+                정수형숫자 <= parseInt(문자열) => 숫자가 아닌 문자 무시. 숫자만 리턴
+                실수형숫자 <= parseFloat(문자열) => 숫자가 아닌 문자 무시. 숫자만 리턴
+                */
+                divEL.innerHTML += `test8:  ${7 + Number("7")}<br/>` ;
+                divEL.innerHTML += `test9:  ${7 + parseInt("7")}<br/>` ;
+                divEL.innerHTML += `test10: ${7 + parseFloat("7")}<br/>` ;
+                divEL.innerHTML += `test11: ${7 + parseFloat("7.5")}<br/>` ;
+                divEL.innerHTML += `test12: ${7 + "1.234원"}<br/>` ;
+                divEL.innerHTML += `test13: ${7 + Number("1.234원")}<br/>` ;
+                divEL.innerHTML += `test14: ${7 + parseInt("1.234원")}<br/>` ;
+                divEL.innerHTML += `test15: ${7 + parseFloat("1.234원")}<br/>` ;
+                // eval 함수 : 사용하지 않는 것을 권장
+                // 문자열을 수식으로 인식. 결과 리턴
+                let str = "100 + 20 * 3"; // 160
+                divEL.innerHTML += `test16: ${eval(str)}<br>`;
+
+            }
+        </script>
+    </body>
+</html>

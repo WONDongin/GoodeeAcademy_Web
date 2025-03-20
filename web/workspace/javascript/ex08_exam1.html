@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam</title>
+    </head>
+    <body>
+        <p>
+            &lt;select name='mont'&gt;<br/>
+            &lt;option value='1' &gt; 1월&lt;/option&gt;<br/>
+            &lt;option value='2' &gt; 2월&lt;/option&gt;<br/>
+            ...<br/>
+            &lt;option value='12' &gt; 12월&lt;/option&gt;<br/>
+            위와 같은 select 태그를 구현하여 box1에 저장하기
+        </p>
+        <div id="box1"></div>
+        <script>
+            let ans = `<select name='month' style="width:30%; height:50px;">`;
+                
+            for(let i = 1; i<=12; i++){
+                ans += `<option value ${i}'>  ${i}월</option>`;
+            }
+            ans += `</select>`;
+            document.getElementById("box1").innerHTML = ans;
+        </script>
+    </body>
+</html>

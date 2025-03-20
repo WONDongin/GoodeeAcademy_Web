@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam1</title>
+    </head>
+    <body>
+        <p>
+            0~9사이의 임의의 수를 2개 선택하여 연산의 결과를 출력하기<br/>
+            연산의 종류는 +,-,*,/,% 중 한개를 임의의 선택 <br/>
+            결과값을 prompt 창을 이용하여 입력받고, <br/>
+            정답인 경우 : 정답입니다. <br/>
+            정답이 아닌 경우 : 틀렸습니다. 정답:0, 입력값: 1<br/>
+        </p>
+        <script>
+            let op = ['+','-','*','/','%']; //배열
+            let str = getNumber() + getOp() + getNumber(); // 수식
+            let ans = prompt(`숫자를 입력하세요 : ${str} =`,0);
+
+            let result = eval(str);
+            if(ans == result){
+                document.write("<div style='color:blue; font-size:20px;'>정답입니다.</div>");
+            } else{
+                document.write("<div style='color:red; font-size:20px;'>오답입니다.</div>");
+                document.write(`입력한 값: ${ans}<br/>`);
+                document.write(`정답: ${result}<br/>`);
+            }
+  
+
+            function getNumber(){
+                return Math.floor(Math.random() * 10) ; // 0~9사이의 임의의 정수
+            }
+            function getOp(){
+                return op[Math.floor(Math.random() * op.length)];
+            }
+        </script>
+    </body>
+</html>
