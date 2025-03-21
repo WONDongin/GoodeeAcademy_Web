@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- webapp/20230323/imgex2.html -->
+<html>
+   <head>
+   <meta charset="UTF-8">
+   <title>마우스 이벤트를 이용한 이미지 변경</title>
+   </head>
+   <body>
+   <table>
+   <tr><td align="center">
+      <a href="#" onmouseover="mover(0)" onmouseout="mout(0)">
+      <img name="m0" src="img/0_out.jpg"></a>
+   </td></tr>
+   <tr><td align="center">
+      <a href="#" onmouseover="mover(1)" onmouseout="mout(1)">
+      <img name="m1" src="img/1_out.jpg"></a>
+   </td></tr>
+   <tr><td align="center">
+      <a href="#" onmouseover="mover(2)" onmouseout="mout(2)">
+      <img name="m2" src="img/2_out.jpg"></a>
+   </td></tr>
+   </table>
+   <script>
+      function mover(val){
+         let bk = document.querySelector(`img[name=m${val}]`);
+         bk.src = "img/" + `${val}_over.jpg`;
+      }
+      function mout(val){
+         let bk = document.querySelector(`img[name=m${val}]`);
+         bk.src = "img/" + `${val}_out.jpg`;
+      }
+   </script>
+   </body>
+</html>

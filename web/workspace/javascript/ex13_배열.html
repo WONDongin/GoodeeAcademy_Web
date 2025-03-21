@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배열</title>
+        <style>
+            .area{border: 1px solid black; width: 500px; height: 200px;}
+        </style>
+    </head>
+    <body>
+        <h1>배열</h1>
+        <p>
+            자바스크립트에서는 변수 선언시 별도의 자료형을 지정하지 않으므로 어떤 자료형이든<br/>
+            하나의 배열에 저장할 수 있음<br/>
+            크기에 제한 없음. 자바의 ArrayList와 비슷</br>
+            [] 표기법을 사용<br/>
+        </p>
+        <button onclick="arrayTest1();">확인하기</button>
+        <script>
+            function arrayTest1(){  
+                const arr = ['홍길동',20,'서울',true,[1,2,3]]; // 배열의 선언. 초기화
+                console.log(arr);       // 배열객체 전부 
+                console.log(arr[2]);    // 3번째 객체
+                console.log(arr[4]);    // 5번째 객체
+                console.log(arr[4][1]); // 5번째 객체의 2번째 객체
+            }
+        </script>
+        <h3>배열에 값 저장하기</h3>
+        <button onclick="arrayTest2();">확인하기</button>
+        <script>
+            function arrayTest2(){
+                // 배열의 선언
+                const arr1 = new Array();
+                const arr2 = new Array(3);
+                const arr3 = [];
+                console.log(arr1.length, arr2.length, arr3.length);
+                console.log(arr2);
+                // arr3 배열에 값 저장
+                arr3[0] = "바나나";
+                arr3[1] = "사과";
+                arr3[9] = "키위";
+                console.log(arr3, arr3.length); //  10
+                // arr3 배열 출력 : 기존 for 구문이용
+                /*
+                1. 모든배열의 요소가 출력. 값이 없는 경우 undefined 값
+                2. 배열 요소 중 일부만 조회가능.
+                */
+                for(let i=0;i<arr3.length;i++){
+                    console.log(`arr3[${i}] = ${arr3[i]}`);
+                }
+                // for in 구문
+                /*
+                1. undefined 값은 출력안됨.
+                2. 모든요소를 조회함
+                */
+                for(let i in arr3){
+                    console.log(`arr3[${i}] = ${arr3[i]}`);
+                }
+            }
+        </script>
+        <h3>배열 관련 메서드</h3>
+        <h4>배열 .indexOf(요소) : 배열에서 요소의 위치값 리턴</h4>
+        <div class="area" id="area1"></div>
+        <button onclick="indexofTest();">확인하기</button>
+        <script>
+            function indexofTest(){
+                const area1 = document.querySelector("#area1");
+                const arr = ['사과','딸기','레드향','바나나','키위','한라봉'];
+                const search = prompt('위치를 찾고싶은 과일명 입력');
+                let index = arr.indexOf(search);
+
+                area1.innerHTML = `당신이 찾는 과일:${search}은(는)`;
+
+                if(index == -1){ // 리스트에 없는 경우
+                    area1.innerHTML += "판매하지 않습니다.";
+                } else{
+                    area1.innerHTML += `${index+1}번째 인덱스에 있습니다.`;
+                }
+            }
+        </script>
+    </body>
+</html>

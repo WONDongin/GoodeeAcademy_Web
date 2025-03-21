@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam1</title>
+    </head>
+    <body>
+        <form name="f">
+            <table>
+                <tr>
+                    <td>
+                        <select name="s" onchange="drawimg()">
+                            <option value="strawberry.gif">딸기</option>
+                            <option value="banana.jpg">바나나</option>
+                            <option value="apple.gif">사과</option>
+                        </select>
+                    </td>
+                    <td>
+                        <img name="img2" src="images_01/strawberry.gif" width="100" height="120">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function drawimg(){
+                /*
+                // img 태그 중 name=img2인 태그선택
+                let img =  document.querySelector("img[name=img2]");
+                // select 태그 중 name=s 인 태그 선택
+                img.src = "images_01/" + document.querySelector("select[name=s]").value;
+                */
+
+                /*
+                let img =  document.getElementsByTagName("img")[0];
+                img.src = "images_01/" + document.getElementsByTagName("select")[0].value;
+                */
+
+                /*
+                let img =  document.getElementsByName("img2")[0];
+                img.src = "images_01/" + document.getElementsByName("s")[0].value;
+                */
+                
+                // BOM : Browser Object Model 계층도 이용
+                /*  BOM
+                    window
+
+                    location     /  history          /  document                      navigator
+                    현재페이지       history.go(-1)      DOM(HTML(루트태그) ...)
+
+                */
+
+                let img = document.img2; 
+                img.src = "images_01/" + document.f.s.value;
+            }
+        </script>
+    </body>
+</html>
