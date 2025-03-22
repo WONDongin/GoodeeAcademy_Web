@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>이벤트(Event)</title>
+        <style>
+            .area{background-color: lightgray; border: 1px solid black; width: 500px; min-height: 50px; height: auto;}
+        </style>
+    </head>
+    <body>
+        <h1>이벤트(Event)</h1>
+        <h3>기본이벤트</h3>
+        <p>
+            특정 요소객체의 이벤트 속성에 접근 후 이벤트 핸들러 연결 방식
+        </p>
+        <button id="btn1">실행확인1</button>
+        <button id="btn2">실행확인2</button>
+        <div id="area1" class="area"></div>
+        <script>
+            const area1 = document.querySelector("#area1");
+            // 이벤트 핸들러 : 이벤트가 발생시 호출되는 함수
+            document.querySelector("#btn1").onclick = function(){
+                area1.innerHTML += "btn1 버튼이 클릭되었습니다.<br/>"
+            }
+
+            document.querySelector("#btn2").onclick = function(){
+                area1.innerHTML += "btn2 버튼이 클릭되어 btn1이벤트 제거함.<br/>"
+                document.querySelector("#btn1").onclick = null; // 이벤트 핸들러 제거
+            }
+
+        </script>
+
+        <h3>인라인 방식 이벤트</h3>
+        <p>
+            요소내부에 직접 이벤트 속성제시하여 핸들러 정의 방식
+        </p>
+        <button onclick="document.querySelector('#area2').innerHTML+= '첫번째 버튼 클릭<br/>'">실행확인1</button>
+        <button onclick="test1()" >실행확인2</button>
+        <div id="area2" class="area"></div>
+        <script>
+            function test1(){
+                document.querySelector("#area2").innerHTML += '두번째 버튼 클릭<br/>';
+            }
+        </script>
+
+        <h3>표준 이벤트 모델(addEventListener)</h3>
+        <p>w3c에서 공식적으로 지정한 이벤트 모델</p>
+        <button id="btn3">실행확인</button>
+        <script>
+            const btn3 = document.querySelector("#btn3");
+            btn3.addEventListener("click", function(){
+                alert("표준 이벤트 모델 테스트");
+            })
+            btn3.addEventListener("mouseenter",function(){
+                btn3.style.backgroundColor = "red";            
+            })
+            btn3.addEventListener("mouseout",function(){
+                btn3.style.backgroundColor = null;            
+            })
+        </script>
+
+        <h2>이벤트가 발생한 요소에 접근하는 방법</h2>
+        <button id="btn4">고전이벤트방식</button>
+        <button id="btn5">표준이벤트방식</button>
+        <button onclick="test2();">인라인 이벤트방식1</button>
+        <button onclick="test3(this);">인라인 이벤트방식2</button>
+        <!-- this : 버튼 객체 -->
+        <script>
+            function test3(btn){
+                btn.innerHTML = "버튼내용변경2";
+                btn.style.backgroundColor = "red";
+            }
+            function test2(){ // 이벤트 핸들러 기능. 함수
+                console.log("window.event.target",window.event.target);
+                window.event.target.innerHTML = "버튼변경";
+                console.log("this",this); // window 객체.
+            }
+
+            document.querySelector("#btn4").onclick = function(e){
+                // e : 이벤트객체. 이벤트 정보를 저장하고 있는 객체
+                console.log("e:",e);
+                console.log("e.target",e.target); // 이벤트 발생된 요소 객체
+                console.log("window.event",window.event);
+                console.log("window.event.target",window.event.target); //이벤트 발생된 요소 객체
+                console.log("this",this) // 이벤트 발생된 요소 객체
+                e.target.innerHTML = "버튼 클릭됨";
+                window.event.target.style.backgroundColor = "red";
+                this.style.color="white";
+            }
+            document.querySelector("#btn5").addEventListener("click",function(e){
+                console.log("e.target",e.target); // 이벤트 발생된 요소 객체
+                console.log("window.event.target",window.event.target); //이벤트 발생된 요소 객체
+                console.log("this",this);// 이벤트 발생된 요소 객체
+            })
+        </script><hr/>
+        <h4>button 태그의 내용으로 클릭한 경우 배경색을 변경 함수를 구현하기</h4>
+        <button onclick="changeBackground()">red</button>
+        <button onclick="changeBackground()">blue</button>
+        <button onclick="changeBackground()">green</button>
+        <button onclick="changeBackground()">pink</button>
+        <script>
+            function changeBackground(){
+                window.event.target.style.backgroundColor = window.event.target.innerHTML; // textContent 도 된다.
+            }
+        </script>
+
+        <h4>button 태그를 클릭한 버튼1의 배경색을 빨강, 버튼2의 배경색은 파란, 버튼3의 배경색은 초록으로 변경하는 함수를 구현하기</h4>
+        <button onclick="changeBackground2()">버튼1</button>
+        <button onclick="changeBackground2()">버튼2</button>
+        <button onclick="changeBackground2()">버튼3</button>
+        <script>
+            function changeBackground2(){     
+                const btn = window.event.target;
+
+                if(btn.innerHTML == "버튼1"){
+                    btn.style.backgroundColor = "red";
+                } else if(btn.innerHTML == "버튼2"){
+                    btn.style.backgroundColor = "blue";
+                } else{
+                    btn.style.backgroundColor = "green";
+                }
+            }
+        </script>
+    </body>
+</html>

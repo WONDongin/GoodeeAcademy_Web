@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>timer</title>
+    </head>
+    <body>
+        <h3>setTimeout</h3>
+        <ul>
+            <li>한번만 동작하는 타이머 함수</li>
+            <li>let id = setTimeout(함수,밀리초)</li>
+        </ul>
+        <script>
+            /*
+            let timerid = setTimeout(function (){
+                console.log("5초 후 출력");
+            },5000)
+            */
+        </script>
+
+        <h3>setInterval</h3>
+        <ul>
+            <li>반복해서 동작하는 타이머 함수</li>
+            <li>let id = setInterval(함수,밀리초): 밀리초마다 함수를 실행</li>
+            <li>clearInterval(id) : setInterval로 설정된 함수 중지.</li>
+        </ul>
+        <script>
+            let n = 0;
+            timerid = setInterval(function (){
+                console.log(n++);
+            },1000)
+            
+            setTimeout(function (){
+                clearInterval(timerid);
+                console.log(timerid + "중지됨");
+            },5000);
+        </script>
+    </body>
+</html>

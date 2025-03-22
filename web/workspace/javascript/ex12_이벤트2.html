@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Key 이벤트</title>
+    </head>
+    <body>
+        <h2>Key 이벤트</h2>
+        <p>
+            1)keydown | keypress : 키가 눌려질때 발생 이벤트 <br/>
+            - keydown : 키보드에서 키가 눌려질때 발생됨. 모든키<br/>
+            - keypress : 키보드에서 키가 눌려있는 상태. function키, 기능키 등에서는 발생 안됨 <br/><br/>
+            2)keyup : 키가 올라올때 발생되는 이벤트
+        </p>
+        <input type="text" id="userName">
+        <script>
+            document.getElementById("userName").onkeyup = function(e){
+                console.log(e); // key 이벤트.
+                console.log(this.value); // input 태그의 value
+                console.log(e.key); // 눌려진 키의 키값
+                console.log(e.keyCode); // 눌려진 키의 코드 값. enter : 13
+            }
+        </script>
+        <h2>태그별 기본적으로 가지고 있는 이벤트 제거</h2>
+        <p>
+            - a 태그 : 클릭시 href 속성에 쓰여져 있는 url을 요청하는 기본 이벤트 존재<br/>
+            - form 태그의 submit 버튼 : submit 버튼 클릭시, form 태그의 action 속성에 쓰여져있는 url로 입력값들과 함께 요청하는 기본 이벤트 존재<br/>
+            - 태그 내에 기본설정된 이벤트를 실행을 막을때는 return false 로 설정함<br/>
+        </p>
+        <a href="https://www.naver.com" onclick="alert('네이버 연결 못함');return false">네이버로 이동하기</a><br/>
+        <a href="https://www.gogle.com" onclick="return test4();">구글로 이동하기</a><br/>
+        <script>
+            function test4(){
+                /*
+                if(confirm("구글 페이지로 이동하시겠습니까?")){
+                    return true;
+                } else{
+                    return false;
+                }
+                */
+               return confirm("구글 페이지로 이동하시겠습니까?");
+            }
+        </script><br/><br/>
+        
+        <form action="ex11_exam.html" method="get">
+            아이디 : <input type="text" id="userId" name="userId" required><br/>
+            비밀번호 : <input type="password" id="userPw" name="userPw" required><br/>
+           <input type="submit" onclick="return valiadte();" >
+        </form>
+        <script>
+            function valiadte(){
+                // 아이디의 유효성 검사 : 영문자 또는 숫자로만 5글자 이상 12글자 이하 가능
+                // 형식에 맞지 않은 경우 => 알림창 출력. 기본이벤트 막기
+                // 형식에 맞는 경우 => 기본이벤트 실행
+                const userId = document.querySelector("#userId").value;
+/*                
+                if(userId.length >= 5 && userId.length <=12){ // 아이디길이 만족
+                    for(let i=0; i<userId.length; i++){
+                        if(userId.charAt(i) > 0 && userId.charAt(i) <= 9 // 숫자,영문자 가능
+                            || userId.charAt(i) >= 'A' && userId.charAt(i) <= 'Z' // 대문자
+                            || userId.charAt(i) >= 'a' && userId.charAt(i) <= 'z'){ // 소문자
+                        } else { // 숫자,영문자 아닌 경우
+                            alert("숫자 또는 영문자만 가능합니다.");
+                            return false;
+                        }
+                    }
+                } else{ // 아이디 길이 오류
+                    alert("아이디는 5자이상, 12 이하만 가능합니다.");
+                    return false;
+                }
+*/
+                // 정규식을 이용하여 아이디 유효성 검사하기
+                /*
+                /메타문자/
+                [a-z0-9] : 소문자,숫자
+                {m,n}    : m개 이상 n개 이하
+                ^        : 시작문자
+                $        : 종료문자
+                i        : 대소문자 구분없이 
+                */
+                const regExp = /^[a-z0-9]{5,12}$/i;
+                    // .test : 정규표현식과 일치.
+                    if(!regExp.test(userId)){
+                        alert("유효한 아이디의 형식이 아닙니다. 다시 입력해주세요!");
+                        // .select : 내용들을 선택
+                        document.getElementById("userId").select(); 
+                        return false; // submit 기본 이벤트 취소
+                    }
+            }
+        </script>
+    </body>
+</html>
