@@ -21,13 +21,20 @@
    </td></tr>
    </table>
    <script>
-      function mover(val){
-         let bk = document.querySelector(`img[name=m${val}]`);
-         bk.src = "img/" + `${val}_over.jpg`;
+      function changeImg(val, state){
+         let img = document.querySelector(`img[name="m${val}"]`);
+         if(img){
+            let mode = ".jpg"; // 확장자 변경 가능
+            img.src = `images_01/${val}_${state}${mode}`;
+         }
       }
+
+      function mover(val){
+         changeImg(val, "in")
+      }
+      
       function mout(val){
-         let bk = document.querySelector(`img[name=m${val}]`);
-         bk.src = "img/" + `${val}_out.jpg`;
+         changeImg(val, "out")
       }
    </script>
    </body>
