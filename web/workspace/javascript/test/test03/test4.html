@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>달력</title>
     <style>
-        .calendar-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        table { width:calc(100 / 4 -10px); border-collapse: collapse;}
+        .calendar-container {display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 30px;}
+        table { width: calc(100% / 4 - 20px); border-collapse: collapse;}
         th,td {border : 3px solid #bcbcbc; text-align: center; padding: 8px;}
         th {background-color: #e2e2e2; color:#111111;}
         td {background-color: #f2f2f2;}
+        h3{text-align: center;}
         .sunday { color: red; }
         .saturday { color: blue; }
-        .row-break {flex-basis: 100%; height: 20px;}
     </style>
 </head>
 <body>
@@ -36,54 +30,63 @@
     <input type="button" value="달력보기" onclick="show_cal()"><br><br>
     <div id="cal"></div>
 
+    <div style="display: flex;"></div>
+
     <script>
-        function show_cal() {
-            const year = document.getElementById("y").value;
-            let calHtml = '<div class="calendar-container">';
+        function show_cal(){
+            const y = document.getElementById("y").value;
+            let cal =  `<h3>${y}년</h3><br/><div class="calendar-container">`;
 
-            for (let month = 1; month <= 12; month++) {
-                calHtml += generateCalendar(year, month);
+            for(let m = 1; m <= 12; m++){
+                cal += callender(y,m);
+            }
+            cal += `</div>`;
 
-                // 4, 8월 뒤에는 줄 바꿈을 위한 div 추가
-                if (month % 4 === 0 && month !== 12) {
-                    calHtml += '<div class="row-break"></div>';
+            document.getElementById("cal").innerHTML = cal;
+        }
+        
+        // 달력 만드는 함수
+        function callender(y,m){
+            const firstDay  = new Date(y,m-1,1).getDay();
+            const lastDate = new Date(y,m,0).getDate();
+            const dateDay = ['일','월','화','수','목','금','토'];
+
+            let cal = `<table><caption>${m}월</caption><tr>`;
+            // 일~월요일 표시
+            for(let i = 0; i < dateDay.length; i++){
+                cal += `<th class="${i == 0 ? 'sunday' : i == 6 ? 'saturday' : ''}">${dateDay[i]}</th>`;
+            }
+            cal += `<tr/><tr>`
+
+            // 해당 월 1일 앞 빈칸처리
+            for(let i = 0; i < firstDay ; i++){
+                cal += `<td></td>`
+            }
+            // 현재까지의 열 개수 추적
+            let dayCount = firstDay; 
+
+            // 1~31일까지 일자 출력력
+            for(let day = 1; day <= lastDate; day++){
+                let currentDay = (firstDay  + day - 1) % 7;
+                let className = currentDay == 0 ? 'sunday' : currentDay == 6 ? 'saturday' : '';
+                cal += `<td class="${className}">${day}</td>`;
+                dayCount++;
+                // 금요일 줄바꿈, 마지막일자 줄바꿈x
+                if(currentDay === 6 && day != lastDate){
+                    cal += `</tr><tr>`
+                    dayCount = 0;
                 }
             }
-
-            calHtml += '</div>';
-            document.getElementById("cal").innerHTML = calHtml;
-        }
-
-        function generateCalendar(year, month) {
-            const firstDay = new Date(year, month - 1, 1).getDay();
-            const lastDate = new Date(year, month, 0).getDate();
-            const dateNames = ['일', '월', '화', '수', '목', '금', '토'];
-
-            let cal = `<table>
-                        <caption><strong>${year}년 ${month}월</strong></caption>
-                        <tr>${dateNames.map((day, i) => `<th class="${getDayClass(i)}">${day}</th>`).join('')}</tr><tr>`;
-
-            for (let i = 0; i < firstDay; i++) {
+            // 마지막 행에 빈칸 추가해서 7칸 맞추기
+            let remainingCells = (7 - (dayCount % 7)) % 7;
+            for (let i = 0; i < remainingCells; i++) {
                 cal += `<td></td>`;
             }
-
-            for (let day = 1; day <= lastDate; day++) {
-                const currentDay = (firstDay + day - 1) % 7;
-                cal += `<td class="${getDayClass(currentDay)}">${day}</td>`;
-
-                if (currentDay === 6) cal += `</tr><tr>`;
-            }
-
             cal += `</tr></table>`;
             return cal;
         }
-
-        function getDayClass(day) {
-            return day === 0 ? 'sunday' : day === 6 ? 'saturday' : '';
-        }
-
-        window.onload = show_cal;
+        // 윈도우 실행시 바로 실행
+        window.show_cal();
     </script>
-
 </body>
 </html>

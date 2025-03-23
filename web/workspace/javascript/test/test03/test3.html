@@ -47,9 +47,7 @@
             let lastDate = new Date(y, m, 0).getDate(); // 해당 월의 마지막 날짜
 
             let dateNames = ['일', '월', '화', '수', '목', '금', '토'];
-            let cal = `<table>
-                        <caption><strong>${y}년 ${m}월</strong></caption>
-                        <tr>`;
+            let cal = `<table><caption><strong>${y}년 ${m}월</strong></caption><tr>`;
             
             // 요일 헤더 생성
             for (let i = 0; i < 7; i++) {
@@ -62,21 +60,32 @@
                 cal += `<td></td>`;
             }
 
+            // 현재까지의 열 개수 추적
+            let dayCount = firstDay;
+
             // 날짜 채우기
             for (let day = 1; day <= lastDate; day++) {
                 let currentDay = (firstDay + day - 1) % 7; // 현재 요일 계산
                 let className = currentDay === 0 ? 'text-red' : currentDay === 6 ? 'text-blue' : '';
                 cal += `<td class="${className}">${day}</td>`;
+                dayCount++;
 
                 // 토요일이면 줄 바꿈
-                if (currentDay === 6) {
+                if (currentDay === 6 && day != lastDate) {
                     cal += `</tr><tr>`;
+                    dayCount = 0;
                 }
+            }
+            // 마지막 행에 빈칸 추가해서 7칸 맞추기
+            let remainingCells = (7 - (dayCount % 7)) % 7;
+            for (let i = 0; i < remainingCells; i++) {
+                cal += `<td></td>`;
             }
 
             cal += `</tr></table>`;
             document.getElementById("cal").innerHTML = cal;
         }
+        window.show_cal();
     </script>
 
 </body>
