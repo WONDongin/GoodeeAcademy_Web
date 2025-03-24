@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기 호출 함수</title>
+</head>
+<body>
+    <script>
+       /* 1. 자기 호출 함수
+            (1) 함수의 정의와 호출을 합친 형태
+            (2) 함수를 정의하고, 바로 호출될 수 있도록 구상됨
+            (3) 일반 익명함수의 정의와 호출
+       */
+      //일반 익명함수를 정의하고 호출.
+      (function() {
+        console.log("hello World");
+      })();
+      //화살표 함수
+      (() => {console.log("hello World")})();
+      //자기 호출이 필요한 경우 : 
+      let arr = [function() {console.log("안녕")},
+                function() {console.log("홍길동")}  ];
+      (arr[0])();
+      (arr[1])();
+//    let arr2 = [() => {console.log("반가워")},
+//                () => {console.log("김삿갓")} ];
+    </script>
+    <script>
+        /*
+            2. 콜백함수(callback function)
+             1) 어떤 함수를 다른 함수의 인수로 전달
+             2) 인수로 전달된 함수를 콜백함수
+             3) 함수에서 호출되는 함수를 콜백함수라 함.
+        */
+       function info(d1,d2) {
+        console.log(d1,d2);
+       }
+       //함수의 정의
+       function func1(d1,d2,func) {
+        func(d1,d2); //콜백함수
+       }
+       //함수의 호출
+       func1("안녕", "홍길동", info); //info 함수 호출
+       info("안녕","홍길동"); //콜백함수 아님.
+       //익명함수를 이용하여 콜백 함수 정의(주로 사용하는 방식)
+       //함수의 호출 (함수의 정의처럼 생겼지만 아님)
+       func1("안녕", "홍길동", function(data1,data2){
+            console.log("1:", data1);
+            console.log("2:", data2);
+       });
+       //화살표 함수를 이용하여 콜백 함수 정의(주로 사용하는 방식)
+       func1("안녕", "홍길동", (data1,data2)=>{
+            console.log("3:", data1);
+            console.log("4:", data2);
+       });
+    </script>
+</body>
+</html>

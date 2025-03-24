@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>함수(function)</title>
+        <style>
+            .area{border: 1px solid black; width: 500px; height: 200px;}
+        </style>
+    </head>
+    <body>
+        <h1>함수 (function)</h1>
+        <h3 onclick="test1();">* 선언적 함수</h3>
+        <pre>
+            function 함수명([매개변수, 매개변수, ...]) {
+                해당 함수 호출시 시행시킬 소스코드;
+                [return 결과값;]
+            }
+        </pre>
+        <!-- 클릭시 test1() 함수 호출 -->
+        <button onclick="test1()">실행확인</button>
+        <div id="area1" class="area"></div>
+        <script>
+            /*
+            1. 선언 함수
+            1) 함수의 이름이 있다.
+            2) 함수의 정의와 호출로 구분함
+            */
+            function test1(){ // 함수의 정의
+                document.getElementById("area1").innerHTML += "test1 함수 호출됨<br/>"
+            }
+        </script>
+
+        <h3>* 익명 함수 : 이름이 없는 함수</h3>
+        <pre>
+            변수|속성 = function([매개변수, 매개변수, ...]) {
+                해당 함수 호출시 시행할할 소스코드;
+            }
+            특정 변수나 속성에 대입되는 함수 제시시 주로 사용됨
+            (주로 이벤트 핸들러 작성시 사용)
+        </pre>
+        <button id="btn">실행확인</button>
+        <div id="area2" class="area"></div>
+        <script>
+            /*
+            2. 익명함수
+            1) 이름 없는 함수
+            2) 이벤트 처리용, 변수에 익명함수를 저장해서 사용
+            3) 호이스팅 대상이 아님.
+
+            4) 함수 정의
+            (4-1) 일반 익명함수
+            let val1 = function([매개변수...]) {...}
+            (4-2) 화살표(=>)함수
+            let val1 = function([매개변수...]) => {...}
+
+            5) 함수 호출
+            (1) val(). 변수에 익명함수를 저장한 뒤 변수를 함수처럼 사용
+            (2) 이벤트에 등록된 익명함수는 이벤트 발생시 호출       
+            */
+            document.getElementById("btn").onclick = function(){
+                document.getElementById("area2").innerHTML += "이벤트 핸들러를 통해 실행됨 <br/>"
+            }
+        </script>
+
+        <h2>함수의 매개변수</h2>
+        <div id="area3" class="area"></div>
+        <script>
+            function test2(value){
+                console.log(arguments); // 매개변수 정보 저장 객체체
+                document.getElementById("area3").innerHTML = arguments[0] + "<br/>";
+                document.getElementById("area3").innerHTML += arguments[1] + "<br/>";
+                document.getElementById("area3").innerHTML += value;
+            }
+        </script>
+        <!-- 자료형에 상관없이 매개변수를 넣을 수 있다. -->
+        <button onclick="test2('안녕하세요')">실행확인1</button>
+        <button onclick="test2(10)">실행확인2</button>
+        <button onclick="test2([10,20,30])">실행확인3</button>
+
+        <!-- 정의된 매개변수 갯수보다 더 많이 전달시 오류발생. 초과된 전달값은 무시 -->
+        <button onclick="test2('안녕하세요','홍길동입니다.')">실행확인4</button>
+        <!-- 정의된 매개변수 갯수보다 더 적게 전달시 오류발생안함. 매개변수값이 정의되지 않은 상태 : undefined 상태 -->
+        <button onclick="test2()">실행확인5</button>
+
+        <h2>함수의 리턴</h2>
+        <script>
+            // 1~100 사이의 랜덤값 구해서 반환해주는 함수정의
+            function ran(){
+                /*
+                3. 매개변수수와 인수
+
+                1) 매개변수를 선언시 키워드(var,let,const)를 사용하지 않는다. 변수명만 작성함
+                
+                2) 인수: 호출시 전달되는 값
+                (2-1) 정의된 매개변수와 인수값의 갯수는 달라도 됨.
+                (2-2) 전달된 인수가 없는 경우 그 값은 undefined로 됨
+
+                3) 전개 연산자
+                (1) 인수의 갯수가 정해지지 않은 경우 사용되는 매개변수 연산자
+                (2) 매개변수를 배열로 처리함
+                (3) 정의 : function test(...args){}
+
+                4) arguments 객체
+                (1) 전달되는 모든 인수는 arguments 객체에 저장됨
+                (2) arguments 객체는 배열처럼 사용됨
+                */
+                return parseInt(Math.random() * 100 + 1);
+            }
+        </script>
+        <button onclick="alert(ran())">클릭</button>
+        <br>
+
+        <h3>익명함수 리턴</h3>
+        이름 : <input type="text" id="userName">
+        <button onclick="test5()()">실행확인</button> <!-- 함수가 리턴되므로 리턴되는 함수 호출 -->
+        <script>
+            function test5(){
+                const inputEL = document.getElementById("userName");
+                return function(){ // 함수를 리턴
+                    alert(inputEL.value);
+                }
+            }
+            /*
+            4. 반환(return)
+            1) 반환타입의 선언이 없다.
+            2) return 키워드로 함수를 종료함 함수의 끝(}) 을 실행되면 함수 종료
+            3) 값을 반환해야 하는 경우
+            (1) return 값;
+            (2) return 함수();
+            */ 
+        </script>
+    </body>
+</html>

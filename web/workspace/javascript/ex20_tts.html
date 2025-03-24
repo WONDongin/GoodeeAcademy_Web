@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS : Text To Speech</title>
+</head>
+<body>
+    <textarea rows="10" cols="50" id="intext">안녕하세요</textarea>
+    <button onclick="setlang('ko-KR'); ttsTest()">읽기</button>
+    <script>
+        let msg = new SpeechSynthesisUtterance();
+        function setlang(t) {
+            msg.leng = t;
+        }
+        function ttsTest() {
+            msg.text = document.querySelector("#intext").value;
+            speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+</html>

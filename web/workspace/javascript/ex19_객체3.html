@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <script>
+        /*
+            생성자 함수
+            1. 객체를 만드는 함수
+            2. 보통 첫글자를 대문자로 작성한다.
+            3. 생성자 함수의 정의
+                function 함수명(매개변수...) {
+                    this.속성 = 매개변수;
+                    ...
+                }
+            4. 객체 생성
+            let 변수 =  new 함수명(인수,...)
+        */
+       //생성자 함수 정의
+       function Product(code, name, price) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
+       }
+       //생성자 함수 호출(객체 생성)
+       let p1 = new Product('A1000','홈런볼',1000);
+       let p2 = new Product('A1001','치토스',2000);
+       console.log(p1);
+       console.log(p2);   
+    </script>
+    <script>
+        /*
+          프로토타입(prototype)
+          1. 모든 객체들이 공유하는 메모리 공간을 의미함.
+          2. 공통데이터(값, 함수,...)를 프로토타입에 저장해서 사용 가능
+          3. 사용방법
+            1)생성자 함수 내부
+                this.__proto__.속성 = 값 or 함수;
+            2)생성자 함수 외부
+                함수명.prototype.속성 = 값 or 함수;
+        */
+       //생성자 함수의 내부에 구현
+       function Korean(name) {
+        this.name = name;
+        this.__proto__.nation = 'South Korea';
+        this.__proto__.capital = 'Seoul';
+        this.__proto__.slogan = function() {
+            console.log("빨리빨리");
+        }
+       }
+       let person1 = new Korean("길동");
+       let person2 = new Korean("몽룡");
+       console.log(person1);
+       console.log(person2);
+       person1.slogan();
+       person2.slogan();
+
+       //생성자 함수의 외부에 구현
+       function American(name) {
+        this.name = name;
+       }
+       American.prototype.nation = "United State";
+       American.prototype.capital = "Washington D.C";
+       American.prototype.slogan = function() {
+        console.log("unknown");
+       }
+       let person3 = new American("Jack");
+       let person4 = new American("Daniel");
+       console.log(person3);
+       console.log(person4);
+       person3.slogan();
+       person4.slogan();
+    </script>
+    <script>
+       let now = new Date(); //현재 일시
+       //오늘의 요일을 출력하기
+       let weekNames = ['일','월','화','수','목','금','토'];
+       console.log(weekNames[now.getDay()]+"요일");
+
+       //Date 객체의 prototype에 getWeekNames() 함수를 등록하기
+       Date.prototype.getWeekNames = function() {
+        let weekNames = ['일','월','화','수','목','금','토'];
+        return weekNames[now.getDay()];
+       }
+
+       console.log(now.getWeekNames()+"요일"); 
+       // 자바에서 static 클래스, 변수랑 비슷한 기능이고,
+       // 여러 환경에서 공통적으로 사용하고 싶으면 프로토타입 변수, 함수를 설정하여
+       // 간단하게 호출하여 사용 가능하다.
+       // 내가 만든 함수는 물론, 시스템에 등록되어있는 함수 또한
+       // 프로토타입 함수를 직접 제작할 수 있다.
+    </script>
+
+    <textarea rows="10" cols="50" id="intext">안녕하세요</textarea>
+    <button onclick="setlang('ko-KR'); ttsTest();">읽기</button>
+    <script>
+        let msg = new SpeechSynthesisUtterance();
+        function setlang(t) {
+            msg.leng = t;
+        }
+        function ttsTest() {
+            msg.text = document.querySelector("#intext").value;
+            speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+</html>

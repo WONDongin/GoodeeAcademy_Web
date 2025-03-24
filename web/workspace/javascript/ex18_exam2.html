@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam2</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="area1"></div>
+    <script>
+        let contacts = [
+            {name:"길동", phone:'010-1111-2222', email:'kildong@aaaa.bbb'},
+            {name:"삿갓", phone:'010-2222-3333', email:'sakgat@aaaa.bbb'},
+            {name:"몽룡", phone:'010-3333-4444', email:'mongyong@aaaa.bbb'}
+        ]
+        console.log(contacts[0].name)
+        /*
+            contacts 배열을 이용하여 #area1 영역에 테이블로 출력하기
+
+            성명    연락처              이메일
+            길동    010-1111-2222       killdong@aaa.bbb
+        */
+        let table = `<table border="1"><tr><th>성명</th><th>연락처</th><th>이메일</th></tr>`;
+
+        // contacts : 배열객체
+        // contacts[0] : 자바스크립트 객체
+        for(let i = 0; i <= contacts.length; i++){ // 배열객체 요소순회
+            table += `<tr>`;
+            for(let p in contacts[i]){
+                // contacts[인덱스][속성]
+                table += `<td>${contacts[i][p]}</td>`;
+            }
+            table += `</tr>`;
+        }
+        table += `</table>`;
+        document.getElementById("area1").innerHTML += table;
+    </script>
+</body>
+</html>
