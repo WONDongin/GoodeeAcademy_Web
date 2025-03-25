@@ -56,5 +56,16 @@
 		</form>
 	</div>
 
+	<script>
+	function showDiv(test) {
+	    // 모든 검색 입력란 숨기기
+	    let box = document.querySelectorAll(".box");
+		box.forEach(box => box.style.display="none");
+	
+	    // 선택된 입력란만 표시
+	    let selectedBox = document.getElementById(test.id + 'Box');
+	    selectedBox.style.display = 'block';
+	}
+	</script>
 </body>
 </html>

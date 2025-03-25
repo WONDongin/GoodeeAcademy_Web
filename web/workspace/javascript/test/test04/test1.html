@@ -23,25 +23,26 @@
 	<button onclick="arrayTest();"> 내용찾기 </button>    
 	<script>
 		function arrayTest(){
-			let la1 = document.querySelector("#la1").innerHTML;
-			let arr2 = document.querySelector("#la2").innerHTML;
-			let arr3 = document.querySelector("#la3").innerHTML;
-			let arr4 = document.querySelector("#la4").innerHTML;
-			let result = arr1.concat(arr2,arr3,arr4);
-		
-			let arr1 = la1.split(",");
-			console.log(arr1)
+			let result = [
+				document.querySelector("#la1").innerHTML,
+				document.querySelector("#la2").innerHTML,
+				document.querySelector("#la3").innerHTML,
+				document.querySelector("#la4").innerHTML
+			].join(",").split(",");
 
 			let text = document.getElementById("text").value;
+			let found = false;
+			
+			for(let i = 0; i < result.length; i++){
+				if(text == result[i]){
+					alert(result[i] + "는 배열 index " + i + "번에 존재합니다.");
+					found = true;
+					break;
+				} 
+			}
 
-			for(let i =0; i <= result.length; i++){
-				if(-1 != result.valueOf("text")){
-					alert(text + "는 배열" + result.valueOf("text") + "번에 존재합니다.")
-					return;
-				}else{
-					alert("존재하지 않습니다");
-					return;
-				}
+			if(!found){
+				alert("존재하지 않습니다");
 			}
 		}
 	</script>

@@ -21,7 +21,40 @@
 	<input type="text" id="remove" size="25" placeholder="삭제할 음식이름을 입력하세요">
 	<input type="text" id="add" size="25" placeholder="추가할 음식이름을 입력하세요">
     <p style="border:1px solid red;" id="print4">이 부분에 정답이 출력 될 수 있도록 하세요</p>
-	<button onclick="print2Test();"> 처리 및 출력 </button>  
+	<button onclick="print2Test();"> 처리 및 출력 </button> 
+	
+	<script>
+		let arr = document.getElementById("stringla4").textContent;
+		let result = arr.split(" ");
+		
+		function print2Test(){
+			let remove = document.getElementById("remove").value;
+			let add = document.getElementById("add").value;
+
+			if(add !== ""){
+				if(result.includes(add)){
+					alert("음식이 이미 있습니다.")
+					document.getElementById("add").value = "";	
+					return;
+				} else{
+					result.push(add);
+					document.getElementById("add").value = "";	
+				}
+			}
+
+			if(remove != ""){
+				let index = result.indexOf(remove);
+				if(index !== -1){
+					result.splice(index, 1);
+					document.getElementById("remove").value = "";
+				}else{
+					alert("삭제할 음식이 없습니다.")
+					return;
+				}
+			}
+			document.getElementById("print4").innerHTML = result.join(" ");
+		}
+	</script>
 	
 	
 </body>
