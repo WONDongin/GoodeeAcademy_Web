@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체2</title>
+    <style>
+        .area {
+            background: lightgray;
+            border: 1px solid black;
+            width: 400px;
+        }
+        .big{height:400px};
+        .small{height:200px};
+    </style>
+</head>
+<body>
+    <script>
+        //객체 생성하기
+        let obj = {
+            age:30,
+            name:"길동",
+            friend: {
+                name:"삿갓",
+                phone : "010-1111-2222"
+            },
+            hobbies: ["여행", "축구", "피아노"],
+            info : function() {
+                console.log(`이름:${obj.name}, 나이:${obj.age}`);
+                console.log(`이름:${this.name}, 나이:${this.age}`);
+            }
+        };
+        (obj.info)();
+        (obj["info"])();
+        //객체의 속성 확인하기
+        console.log("이름:",obj.name,obj["name"]);
+        console.log("나이:",obj.age,obj["age"]);
+        console.log("친구:",obj.friend.name, obj["friend"]["name"]);
+        console.log("전화번호:",obj.friend["phone"], obj["friend"]["phone"]);
+        console.log("취미:",obj.hobbies, obj["hobbies"]); 
+        for(let i=0; i<obj.hobbies.length; i++) {
+            console.log("취미:", i+1, ":",obj.hobbies[i]);
+        }
+        for(let i=0; i<obj["hobbies"].length; i++) {
+            console.log("취미:", i+1, ":",obj.hobbies[i]);
+        }
+    </script>
+    <script>
+        //객체의 속성을 동적으로 추가가 가능함
+        let computer = {};  //비어 있는 객체
+        //속성 추가
+        computer.model = "gram";
+        computer.price = 150;
+        console.log(computer);
+        //객체의 속성 조회. for in 구문으로 조회 (자바의 foreach 구문과 비슷함)
+        for(let c in computer){
+         // console.log(c,":",computer.c) //for in 구문에서는 마침표를 이용한 속성 참조 불가
+            console.log(c,":",computer[c]); //for in 구문에서는 대괄호를 이용한 속성 참조만 가능
+        }
+        //속성값 변경. 추가와 같은 방법.
+        computer.price = 200;
+        for(let c in computer){
+            console.log(c,":",computer[c]);
+        }
+        //속성 삭제
+        delete computer.price;
+        for(let c in computer){
+            console.log(c,":",computer[c]);
+        }        
+    </script>
+</body>
+</html>

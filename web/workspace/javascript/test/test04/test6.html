@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    #print{
+        height: 100px;
+    }
+</style>
+
+</head>
+<body>
+   <p>
+	다음 입력 버튼을 클릭하면 이름,나이,주소를 prompt로 입력 받은 후 입력 받은 정보를<br> 
+	member 라는 객체에 저장.<br> 
+	이 후 출력 버튼을 클릭하면 member 객체 안에 있는 정보를<br> 
+	출력 창에 출력되도록 만들어보세요.<br> 
+	(단, 입력을 받지 않은 상태에서 출력 버튼 클릭시 입력을 먼저 해달라는 알림을 띄우도록 할 것)<br> 
+	ex)<br> 
+	이름 : OOO<br> 
+	나이 : OO세<br> 
+	주소 : XXX XXX XXXX ...<br>
+    </p>
+	<fieldset>
+		<legend style="color: red;">출력창</legend>
+		<div id="print"></div>
+	</fieldset>
+	<br>
+
+	<button onclick="insertMember();">입력</button>
+	<button onclick="printMember();">출력</button>
+	<script>
+		let member= {};
+
+		function insertMember(){
+			member.name = prompt("이름 입력", "홍길동");
+			member.age = prompt("나이 입력", "29") + "세";
+			member.add = prompt("주소 입력", "서울시");
+			if(member.name == null || member.age == null || member.add == null){
+				alert("다시 입력 부탁드립니다.");
+				return;
+			}
+			return member;
+		}
+
+		function printMember(){
+			if(member.name == null || member.age == null || member.add == null){
+				alert("입력을 먼저 부탁드립니다.");
+				return;
+			}
+		
+			const labels = { name: "이름", age: "나이", add: "주소" };
+			document.getElementById("print").innerHTML = "";
+			for(let i in member){
+				if(member[i] != null) document.getElementById("print").innerHTML += `${labels[i]} : ${member[i]}<br/>`;
+			}
+		}
+	</script>
+</body>
+</html>
