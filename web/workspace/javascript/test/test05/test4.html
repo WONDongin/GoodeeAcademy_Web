@@ -142,18 +142,23 @@
     </div>
     <button onclick="test5();">확인하기</button>
     <div id="checkStr"></div>
-    <script>
+     <script>
+        function test5() {
+            // .data-container 내부의 모든 요소 선택
+            let elements =          document.querySelectorAll(".data-container *");
+            let result = [];
 
-        let arr = document.querySelector(".data-container").textContent;
-        arr.split(" ").join(" ")
-       
+            // 각 요소의 텍스트를 검사하여 3글자 이상인 것만 필터링
+            elements.forEach(el => {
+                let text = el.textContent.trim();
+                if (text.length >= 3) {
+                    result.push(text);
+                }
+            });
 
-        console.log(arr.replace(/^\s+|\s+$/gm,''))
-        console
-        
-   
-
-       
+            // 결과를 #checkStr 내부에 출력
+            document.getElementById("checkStr").innerHTML = result.join("<br>");
+        }
     </script>
 
 </body>
