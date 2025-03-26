@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bom</title>
+        <style>
+            .area{width: 300px; height: 100px; border: 1px solid black; color: red; font-size: 48px;}
+        </style>
+    </head>
+    <body>
+        <script>
+            /*
+            BOM : Browser Object Model (브라우저 객체 모델)
+            1. 브라우저의 구성요소를 객체로 처리할 수 있는 기능
+            => 브라우저의 구성요소가 이미 객체로 생성되어 있음 (내장객체)
+            2. BOM 객체
+            1) window  : 브라우저 창을 의미. 최상위 객체
+            2) screen  : 화면을 의미. 화면의 너비/높이 등 처리
+            3) history : 방문 경로를 저장. 뒤/앞 이동 가능
+            4) location: 현재 브라우저의 경로 처리
+            5) document: 현재 브라우저의 문서를 의미
+                DOM : 문서상의 모든 요소들
+                document
+                    - html
+                        - meta
+                        - title
+                    - body
+                        - div
+                        - ul
+                            - li ...
+                        ...
+                노드(Node) : Html의 요소
+                    - 요소노드(Element Node) : 태그, 요소, 객체
+                    - 텍스트노드(Text Node)  : 태그 내의 내용
+                        <div>텍스트</div>   => 텍스트 노드 존재            
+                        <input type="..."> => 텍스트 노드 존재하지 않음. Empty Tag. 빈태그            
+            */
+        </script>
+
+        <!-- screen 객체 -->
+        <script>
+            console.log("화면너비:", screen.width);
+            console.log("화면높이:", screen.height);
+            console.log("실제너비:", screen.availWidth);
+            console.log("실제높이:", screen.availHeight);
+        </script>
+
+        <!-- history 객체 -->
+        <input type="button" onclick="history.back()" value="뒤로">
+        <input type="button" onclick="history.forward()" value="앞으로">
+        <input type="button" onclick="history.go(-1)" value="뒤로1번">
+        <input type="button" onclick="history.go(-2)" value="뒤로2번">
+        
+        <!-- location 객체 -->
+        <input type="button" onclick="location.href='https://www.naver.com'" value="네이버">
+        <input type="button" onclick="location.href='https://www.google.com'" value="구글">
+
+        <!-- window 객체 -->
+        <div>
+            <input type="button" id="btn_open" value="창열기">
+            <input type="button" id="btn_close" value="창닫기">
+        </div>
+        <script>
+            let nwin; // 전역변수
+            document.getElementById("btn_open").addEventListener("click",() => {
+                let width  = 480;
+                let height = 360;
+
+                // window.innerWidth, window.innerHeight: 현재 브라우저 창의 너비와 높이를 가져옴
+                // window.screenX, window.screenY: 현재 브라우저 창의 좌측 상단 기준 위치를 보정
+                let left  = (window.innerWidth - width) / 2 + window.screenX;
+                let top   = (window.innerHeight - height) / 2 + window.screenY;
+                let feature = `width=${width}, height=${height}, left=${left}, top=${top}`;
+
+                // open(화면에 출력할 페이지의 url 정보, 화면의이름, 옵션) : 새로운 창을 띄우기
+                // nwin : 팝업 페이지의 window 객체임
+                nwin = window.open("ex21_popup.html",'',feature);
+                // let를 붙이지 않으면 함수 내부에서도 전역변수 가능 
+            })
+            // 팝업닫기
+            document.getElementById("btn_close").addEventListener("click", () => {
+                nwin.window.close(); // ex21_popup.html 브라우저 닫기.
+                window.alert("새창 닫기");
+            })
+        </script>
+    </body>
+</html> 

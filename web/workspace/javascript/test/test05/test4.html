@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 실습문제</title>
+    <style>
+        *{box-sizing: border-box;}
+
+        #calculator{
+            margin:auto;
+            border:2px solid black;
+        }
+        #calculator input[type="text"]{
+            width:210px;
+            height:50px;
+            font-size:2em;
+            font-weight: bold;
+            text-align:right;
+            border:1px solid black;
+            overflow:hidden;
+        }
+        #calculator input[type="button"]{
+            font-size:1.5em;
+            font-weight:bold;
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>
+        1. 실행 버튼 클릭시 사용자에게 알람창(prompt)으로 "메세지를 입력하세요"문구를 출력해주고 <br>
+           이때 입력받은 내용이 div#test1에 출력될 수 있도록 하시오. <br>
+           단, 사용자에게 입력받은 값이 없을 경우 "메세지가 입력되지 않았습니다." 가 출력될수 있도록 하시오.
+    </h2>
+    <button onclick="test1();">실행</button>
+    <div id="test1"></div>
+    <script>
+        function test1(){
+            let result = prompt("메세지를 입력하세요");
+            if(result !== ""){
+                document.getElementById("test1").innerHTML = result;
+            }else{
+                alert("메세지가 입력되지 않습니다.");
+                return;
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h2>
+        2. 실행 버튼 클릭시 사용자에게 알람창(confirm)으로 "개인정보활용에 동의하시겠습니까?"를 출력해주고 <br>
+           확인을 누르면 "당신의 개인정보가 유출되었습니다", 취소를 누르면 "당신의 개인정보 유출을 막았습니다" 라는 <br>
+           메세지가 div#test2에 출력될 수 있도록 하시오.
+    </h2>
+    <button onclick="test2();">실행</button>
+    <div id="test2"></div>
+    <script>
+        function test2(){
+            let result = confirm("개인정보활용에 동의하시겠습니까?");
+            if(result){
+                document.getElementById("test2").innerHTML = "당신의 개인정보가 유출되었습니다.";
+            }else{
+                document.getElementById("test2").innerHTML = "당신의 개인정보 유출을 막았습니다.";
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h2>
+        3. 실행 버튼 클릭시 10개의 랜덤(1~100)값을 발생시켜 해당 랜덤값을 담은 배열을 만들고 <br>
+           해당 배열을 내림차순 정렬 한 후 해당 숫자들이 div#test3>ul 안에 총 10개의 li 요소로 출력될 수 있도록 하시오. 
+    </h2>
+    <button onclick="test3();">실행</button>
+    <div id="test3">
+        <ul></ul>
+    </div>
+    <script>
+        function test3(){
+            let arr = [];
+            let result = "";
+            // 10개의 랜덤 정수 반환환
+            for(let i=0; i<=9; i++){
+                let num = Math.round(Math.random() * 100 + 1);
+                arr.push(num);
+            }
+    
+            // 내림차순
+            arr.sort(function(left,right){return right - left});
+
+            // li요소로 저장 
+            result += `<ul>`;
+            for(let i=0; i<arr.length; i++){
+                 result += `<li>${arr[i]}</li>`
+            }
+            result += `</ul>`;
+
+            document.getElementById("test3").innerHTML = result;
+        }
+    </script>
+
+    <hr>
+
+    <h2>
+        4. input[type=text name=img]인 요소에 화면에 출력하고자 하는 이미지의 경로를 입력받은 후에 <br>
+           출력 버튼 클릭하면 div.img-container 요소 내에 사용자가 입력한 주소의 img가 200X200크기로 출력될 수 있도록 하시오.
+    </h2>
+    <input type="text" name="img">
+    <button onclick="test4();">출력</button>
+    <div class="img-container"></div>
+    <script>
+        function test4(){
+            let reult = document.getElementsByName("img")[0].value;
+
+            let img = document.createElement("img");
+            img.setAttribute("width",200);
+            img.setAttribute("height",200);
+            img.setAttribute("src", reult);
+            document.querySelector(".img-container").append(img);
+        }
+    </script>
+
+    <hr>
+
+    <h2>
+        5. 아래 태그의 데이터를 확인하기 버튼을 클릭하면 모두 가져와 3글자 이상인 데이터만 div#checkStr에 출력하기 
+    </h2>
+    <div class="data-container">
+        <p>가나다라</p>
+        <p>abcde</p>
+        <h3>썬칩</h3>
+        <h4>홈런볼</h4>
+        <span>초코칩쿠키</span>
+        <p>칸쵸</p>
+        <h4>초코파이</h4>
+        <h2>칙촉</h2>
+    </div>
+    <button onclick="test5();">확인하기</button>
+    <div id="checkStr"></div>
+    <script>
+
+        let arr = document.querySelector(".data-container").textContent;
+        arr.split(" ").join(" ")
+       
+
+        console.log(arr.replace(/^\s+|\s+$/gm,''))
+        console
+        
+   
+
+       
+    </script>
+
+</body>
+</html>

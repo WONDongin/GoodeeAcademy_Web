@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 주석으로 처리된 결과가 나오도록 Person 객체 생성하기-->
+<script type="text/javascript">
+    function Person(name, blog){
+        this.name = name;
+        this.blog = blog;
+        this.getName = function() {
+            return this.name;
+        }
+        this.getBlog = function() {
+            return this.blog;
+        }
+    }
+
+    let kim = new Person("김삿갓","kimsg.tistory.com");
+    let lee = new Person("이몽룡","leemy.tistory.com");
+
+    
+    document.write(kim.getName(),"<br>")  //김삿갓
+    document.write(kim.getBlog(),"<br>")  //kimsg.tistory.com
+    document.write(lee.getName(),"<br>")  //이몽룡
+    document.write(lee.getBlog(),"<br>")  //leemy.tistory.com
+</script>
+</body>
+</html>
