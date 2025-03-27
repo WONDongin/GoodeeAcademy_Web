@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        출력 버튼을 클릭시 아래의 객체에 저장된 데이터(속성,속성값)의 내용을 ul안에 li요소로 출력되게 하시오.<br>
+        {name:"홍길동", age:23, height:163.5, weight:50.7, addr:"서울시 구로구", birthDay:2000/09/18}
+    </h2>
+    <div class="list-data">
+        <button onclick="test();">출력</button>
+        <ul></ul>
+    </div>
+    <script>
+        function test(){
+            let Member = {
+                name : "홍길동",
+                age : 23,
+                height : 163.5,
+                weight : 50.7,
+                addr : "서울시 구로구",
+                birthDay : "2000/09/18"
+            }
+
+            let arr = "<ul>";
+            for(let i in Member){
+                arr += `<li>${i} : ${Member[i]}</li>`;
+            }
+            arr += "</ul>";
+
+            document.querySelector(".list-data").innerHTML = arr;
+        }
+    </script>
+</body>
+</html>

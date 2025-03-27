@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box;}
+
+        #calculator{
+            margin:auto;
+            border:2px solid black;
+        }
+        #calculator input[type="text"]{
+            width:210px;
+            height:50px;
+            font-size:2em;
+            font-weight: bold;
+            text-align:right;
+            border:1px solid black;
+            overflow:hidden;
+        }
+        #calculator input[type="button"]{
+            font-size:1.5em;
+            font-weight:bold;
+            width:50px;
+            height:50px;
+        }
+    </style>
+   
+</head>
+<body>
+    <h2>
+        계산기 만들기 
+    </h2>
+
+    <table id="calculator">
+        <tr>
+            <th colspan="4">
+                <input type="text" value="0" id="result">
+            </th>
+        </tr>
+        <tr>
+            <th><input type="button" value="("></th>
+            <th><input type="button" value=")"></th>
+            <th><input type="button" value="%"></th>
+            <th><input type="button" value="AC"></th>
+        </tr>
+        <tr>
+            <th><input type="button" value="7"></th>
+            <th><input type="button" value="8"></th>
+            <th><input type="button" value="9"></th>
+            <th><input type="button" value="/"></th>
+        </tr>
+        <tr>
+            <th><input type="button" value="4"></th>
+            <th><input type="button" value="5"></th>
+            <th><input type="button" value="6"></th>
+            <th><input type="button" value="*"></th>
+        </tr>
+        <tr>
+            <th><input type="button" value="1"></th>
+            <th><input type="button" value="2"></th>
+            <th><input type="button" value="3"></th>
+            <th><input type="button" value="-"></th>
+        </tr>
+        <tr>
+            <th><input type="button" value="0"></th>
+            <th><input type="button" value="."></th>
+            <th><input type="button" value="="></th>
+            <th><input type="button" value="+"></th>
+        </tr>
+    </table>
+
+
+</body>
+</html>

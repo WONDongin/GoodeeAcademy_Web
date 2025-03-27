@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box;}
+    </style>
+</head>
+<body>
+    <h2>
+        아래의 input[type=number] 두개는 숫자를, select>option 요소는 연산하고자 하는 연산자를 입력받기 위한 것이다. <br>
+           실행 버튼 클릭시 사용자가 입력한 값들을 가지고 그에 맞는 적절한 연산 후 div#calc-result에 결과가 출력될 수 있도록 하시오. 
+    </h2>
+
+    <div id="cal-container">
+        <input type="number" id="su1">
+        <input type="number" id="su2">
+        <select name="op" id="op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <button onclick="test();">실행</button>
+        <div id="calc-result"></div>
+    </div>
+    <script>
+        function test(){
+            let su1 = Number(document.getElementById("su1").value);
+            let su2 = Number(document.getElementById("su2").value);
+            let op = document.getElementsByName("op")[0].value;
+            let result = "";
+
+            switch(op){
+                case "+" : result = (su1 + su2); break;
+                case "-" : result = (su1 - su2); break;
+                case "*" : result = (su1 * su2); break;
+                case "/" : result = su2 != 0 ? (su1 / su2) : alert("0으로 나눌수 없습니다.") ; break;
+            }   
+          
+            document.getElementById("calc-result").innerHTML = result;
+        }
+    </script>
+
+</body>
+</html>

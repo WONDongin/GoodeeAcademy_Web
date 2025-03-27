@@ -84,7 +84,7 @@
         function test3(){
             let arr = [];
             let result = "";
-            // 10개의 랜덤 정수 반환환
+            // 10개의 랜덤 정수 반환
             for(let i=0; i<=9; i++){
                 let num = Math.round(Math.random() * 100 + 1);
                 arr.push(num);
@@ -116,12 +116,14 @@
     <script>
         function test4(){
             let reult = document.getElementsByName("img")[0].value;
-
+            // 동적요소를 dom요소 객체로 만들기
             let img = document.createElement("img");
             img.setAttribute("width",200);
             img.setAttribute("height",200);
             img.setAttribute("src", reult);
-            document.querySelector(".img-container").append(img);
+            
+            // 부모요소.appendChild(자식태그요소)
+            document.querySelector(".img-container").appendChild(img);
         }
     </script>
 
@@ -145,7 +147,7 @@
      <script>
         function test5() {
             // .data-container 내부의 모든 요소 선택
-            let elements =          document.querySelectorAll(".data-container *");
+            let elements = document.querySelectorAll(".data-container *");
             let result = [];
 
             // 각 요소의 텍스트를 검사하여 3글자 이상인 것만 필터링

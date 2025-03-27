@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>그림 맞추기 게임</title>
+        <style>
+            table,td{border: 1px solid gray;}
+            table{border-collapse: collapse;}
+        </style>
+    </head>
+    <body>
+        <!-- onchange : value 값이 변경된 경우 발생되는 이벤트  
+        this : select 태그 객체
+        -->
+        <select id="level" onchange="gamestart(this)">
+            <option value="2">2x2</option>
+            <option value="4" selected>4x4</option>
+            <option value="6">6x6</option>
+        </select>
+        <div id="board"></div>
+        
+        <script>
+            let level = 4; // 전역변수
+            window.onload = function(){
+                shuffle();  // 이미지 섞기
+                editHtml(); // model 배열의 값을 화면에 출력
+                game();     // 게임시작
+            }
+
+            function shuffle(){
+                // model : 배열객체. 전역변수
+                model = [
+                    "S_1.jpg","S_1.jpg","S_2.jpg","S_2.jpg",
+                    "S_3.jpg","S_3.jpg","S_4.jpg","S_4.jpg",
+                    "S_5.jpg","S_5.jpg","S_6.jpg","S_6.jpg",
+                    "S_7.jpg","S_7.jpg","S_8.jpg","S_8.jpg",
+                    "S_9.jpg","S_9.jpg","S_10.jpg","S_10.jpg",
+                    "pic00.png","pic00.png","pic01.png","pic01.png",
+                    "pic02.png","pic02.png","pic03.png","pic03.png",
+                    "pic04.png","pic04.png","pic05.png","pic05.png",
+                    "pic06.png","pic06.png","pic07.png","pic07.png"
+                ];
+                cnt = level * level; // 사진의 갯수 2*2=4, 4*4=16 6*6=36
+                // 이미지 섞기
+                for(let a=0;a<10000;a++){
+                    let ran = Math.floor(Math.random() * cnt); // 0 ~ cnt-1 까지의 임의의수
+                    let tmp = model[0];
+                    model[0] = model[ran];
+                    model[ran] = tmp;
+                }
+            }
+
+            // model의 값으로 이미지를 화면에 출력
+            function editHtml() {
+                let board = "<table>";
+                for (let i = 0; i<cnt; i++){
+                    if((i%level) == 0) board += "<tr>";
+                    board +=
+                    `<td><img class='pic' id='pic${i}' src='./img/${model[i]}' value='${model[i]}' width='100' height='100'></td>`
+                    if((i%level) == (level - 1)) board += "</tr>";
+                }
+                document.querySelector("#board").innerHTML = `${board}</table>`;
+            };
+            
+            // 게임시작
+            function game(){ 
+                setTimeout(function() { // 2초 후에 function() 실행
+                    let pics = document.querySelectorAll(".pic"); // class="pic"인 모든 img 태그들. 배열객체
+                    // 배열의 모든 요소 순회. 첨자사용 없음
+                    pics.forEach(function(item) { // item : img 객체
+                        // opacity : 투명도(0~1) 1:불투명, 0:투명
+                        item.setAttribute("style", "opacity:0.01");
+                    })
+                }, 2000);
+
+                let total = 0;     // 클릭한 횟수
+                let count = 0;     // 1번째, 2번째 클릭된 이미지 여부 판단
+                let success = 0;   // 쌍인 이미지를 찾은 갯수
+                let onePic = null; // 첫번째 선택된 이미지 저장
+                let twoPic = null; // 두번째 선택된 이미지 저장
+                let pics = document.querySelectorAll(".pic");
+            
+                for(let i =0; i<pics.length; i++){ // for 구문시작
+                    pics[i].onclick = function(){  // 이미지를 클릭한 경우. onclick 이벤트 시작 
+                        // 이미지의 class="diepic"가 아닌경우,  class="diepic" : 이미 이미지의 쌍을 찾은 경우
+                        if(pics[i].getAttribute("class").indexOf("diepic") < 0){ 
+                            total++; // 클릭한 횟수 증가
+                            pics[i].setAttribute("style","opacity:1"); // 이미지를 불투명하게 설정(보여지게)
+                            count++;
+                            if(count == 1){ // 첫번째 이미지 선택
+                                onePic = pics[i];
+                                oneId = onePic.getAttribute('id');
+                            }else if(count == 2){
+                                twoPic = pics[i];
+                                twoId = twoPic.getAttribute('id');
+                                // 이미지 쌍을 찾음
+                                if(onePic.getAttribute("src") == twoPic.getAttribute("src") && (oneId != twoId)){ // 같은 이미지.
+                                    success++;
+                                    onePic.setAttribute("class","diepic"); // class 속성값 변경
+                                    twoPic.setAttribute("class","diepic"); 
+                                    onePic.style.pointerEvents = "none";
+                                    twoPic.style.pointerEvents = "none";        
+                                    // cnt/2 : 사진의 갯수
+                                    if(cnt/2 == success){  // 이미지 찾기 성공
+                                        alert(total + "번 만에 성공. 게임종료");
+                                        setTimeout(function(){
+                                            if(confirm("게임을 계속하시겠습니까?")) location.reload(); // 현재페이지 새로고침
+                                        },2000)
+                                    }
+                                }else{ // 같은 이미지가 아닌경우
+                                    setTimeout(function(){
+                                        onePic.setAttribute("style", "opacity:0.01");
+                                        twoPic.setAttribute("style", "opacity:0.01");
+                                    },50); // 0.05로초에 투명도를 0.01변경. 이미지 안보이도록 설정
+                                }
+                                count = 0; // 2개의 사진 선택 완료됨. 다시 첫번째 사진으로 처리하도록 변수값 초기화
+                            }else{ // count 변수의 값이 1 또는 2가 아닌 경우. 프로그램 오류
+                                alert("프로그램 오류 발생");
+                            }
+                        }
+                    } // onclick 이벤트 종료
+                } // for 구문 종료
+            } // game 함수 종료
+
+            function gamestart(sel){
+                // sel : select 태그 객체
+                level = parseInt(sel.value); // 전역변수 (2,4,6)
+                shuffle();
+                editHtml();
+                game();
+            }
+        </script>
+    </body>
+</html>

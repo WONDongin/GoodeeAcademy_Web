@@ -9,11 +9,80 @@
 <head>
 <meta charset="UTF-8">
 <title>이미지 잡기 게임</title>
-
 </head>
   <body>
     <script>
-      
-    </script>
+      function nextRandomInteger(limit){
+          return Math.round(Math.random() * limit); // 0 ~ limit 까지의 임의의 수 리턴
+      }
+      function randomSpeed(maxSpeed){ // -2 ~ 2 정도 사이의 임의의 수
+          return Math.random() * maxSpeed - Math.random() * maxSpeed;
+      }
+
+      let canvasWith = 700;  // A 글자의 이동 가로 크기
+      let canvasHight = 500; // A 글자의 이동 세로 크기
+      let total = 5; // 글자의 수
+
+      // 객체. 클래스. new  MovingText() 객체화
+      function MovingText(){ // 생성자 => 멤버변수: x,y,vX,vy,body
+          this.x = nextRandomInteger(canvasWith);  // 0 ~ 700사이의 임의의 정수 저장
+          this.y = nextRandomInteger(canvasHight); // 0 ~ 500사이의 임의의 정수 저장
+          this.vX = randomSpeed(2); // -2 ~ 2사이의 임의의 값
+          this.vY = randomSpeed(2); // -2 ~ 2사이의 임의의 값
+          // h1태그. 
+          this.body = document.createElement("img");              
+          this.body.setAttribute("width", 35);             
+          this.body.setAttribute("height", 35);            
+          this.body.setAttribute("src", "banana.jpg");            
+          this.body.style.position = "absolute";                    
+
+          let text = this.body; // img 태그
+          this.body.onclick = function(){ // 클릭 이벤트 등록.
+              --total;
+              alert("남은 바나나 갯수:" + total);
+              text.setAttribute("src", "apple.gif");    // 글자 변경
+          }
+          document.body.appendChild(this.body);
+          
+      }
+      // prototype : 객체 외부에 멤버함수 추가하기
+      // MovingText.move() 추가
+      MovingText.prototype.move = function(){
+          if(this.body.innerHTML == '30%로 상방 VI발동!!') return; // 이미 잡힌 글자. 움직이지 않음
+          if(this.x < 0 || this.x > canvasWith){ // 가로 범위 이탈된 경우 이동 방향 반대로 설정
+              this.vX *= -1;
+          }
+          if(this.y < 0 || this.y > canvasHight){ // 세로 범위 이탈된 경우 이동 방향 반대로 설정
+              this.vY *= -1;
+          }
+          this.x += this.vX; // 가로 위치의 값을 변경
+          this.y += this.vY; // 세로 위치의 값을 변경
+          this.body.style.left = this.x + "px";
+          this.body.style.top = this.y + "px";
+          // <h1 style= "background-color:white; position:absolute; left:123px; top:30px;">A</h1>
+          // h1태그의 위치 설정
+      }
+      // 화면 시작된 경우, 화면이 실행될 준비가 완료경우 발생되는 이벤트
+      window.onload = function(){
+          let movingTexts = []; // 배열 객체  생성
+          for(let i = 0; i < 5; i++){ 
+              movingTexts.push(new MovingText()); //H1 태그 10개를 배열에 저장
+          }
+
+          let game = setInterval(function(){
+              for(let i in movingTexts){
+                  // i : 인덱스값. 
+                  if(total == 0){
+                      alert("게임종료");
+                      clearInterval(game); // setInterval 취소
+                      return; // function 종료
+                  }
+                  //  movingTexts[i] : MoveText 객체
+                  movingTexts[i].move();
+              }
+          },1000/60); // 1초의 60번마다 function 실행
+      }
+
+  </script>
   </body>
 </html>
