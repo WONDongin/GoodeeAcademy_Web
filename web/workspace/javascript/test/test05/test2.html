@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Array 객체에 contain 메서드 추가하기</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            const a = [273,32,103,57,52]
+
+            Array.prototype.contain = function(e) {
+               for(let i=0; i<a.length; i++){
+                if(e == a[i]){
+                    return true;
+                    break;
+                }else{
+                    return false;
+                }
+               }
+            }
+        
+            document.write("273 in [273,32,103,57,52] : "+a.contain(273) + "<br>") //true
+            document.write("0 in [273,32,103,57,52] : "+a.contain(0) + "<br>") //false
+        </script>
+    </body>
+</html>
