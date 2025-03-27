@@ -83,7 +83,7 @@
     <script>
         function test3(){
             let arr = [];
-            let result = "";
+            document.querySelector("div#test3>ul").innerHTML = ""; //초기화
             // 10개의 랜덤 정수 반환
             for(let i=0; i<=9; i++){
                 let num = Math.round(Math.random() * 100 + 1);
@@ -94,13 +94,9 @@
             arr.sort(function(left,right){return right - left});
 
             // li요소로 저장 
-            result += `<ul>`;
-            for(let i=0; i<arr.length; i++){
-                 result += `<li>${arr[i]}</li>`
-            }
-            result += `</ul>`;
-
-            document.getElementById("test3").innerHTML = result;
+            arr.forEach(function(item){ // 매개변수를 써두면 매번 각인덱스에 담겨있는 value값이 순차적으로 전달되어 대입됨! 
+                document.querySelector("div#test3>ul").innerHTML += "<li>" + item + "</li>";
+            })
         }
     </script>
 

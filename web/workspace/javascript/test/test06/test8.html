@@ -71,7 +71,15 @@
             <th><input type="button" value="+"></th>
         </tr>
     </table>
+    <script>
+        let result = document.getElementById("result");
+        let btn =  document.querySelectorAll("input");
 
-
+        btn.forEach(btn => {
+            btn.addEventListener("click", function(e){
+                result.value = this.value;
+            })
+        })
+    </script>
 </body>
 </html>

@@ -16,22 +16,15 @@
     </div>
     <script>
         function test(){
-            let Member = {
-                name : "홍길동",
-                age : 23,
-                height : 163.5,
-                weight : 50.7,
-                addr : "서울시 구로구",
-                birthDay : "2000/09/18"
-            }
+            let result = "";
 
-            let arr = "<ul>";
+            let Member = {name:"홍길동", age:23, height:163.5, weight:50.7, addr:"서울시 구로구", birthDay:"2000/09/18"};
+            
             for(let i in Member){
-                arr += `<li>${i} : ${Member[i]}</li>`;
+                result += `<li>${i} : ${Member[i]}</li>`;
             }
-            arr += "</ul>";
-
-            document.querySelector(".list-data").innerHTML = arr;
+          
+            document.querySelector("div.list-data>ul").innerHTML = result;
         }
     </script>
 </body>

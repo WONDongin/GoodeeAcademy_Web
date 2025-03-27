@@ -16,6 +16,19 @@
     비밀번호 확인 : <input type="password" id="input-pwdck" onkeyup="test();"><br>
 
     <span id="pwd-result"></span>
+    <script>
+        function test(){
+            let pwd = document.getElementById("input-pwd").value.trim();
+            let pwdck = document.getElementById("input-pwdck").value.trim();
+            let result = document.getElementById("pwd-result");
 
+            if(!pwdck){
+                result.innerHTML = "";
+                return;
+            }
+
+            result.innerHTML = pwd === pwdck ? `<p style="color:green;">일치합니다.</p>` : `<p style="color:red;">일치하지 않습니다.</p>`;
+        }
+    </script>
 </body>
 </html>

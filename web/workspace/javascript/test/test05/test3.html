@@ -40,7 +40,7 @@
           this.body.onclick = function(){ // 클릭 이벤트 등록.
               --total;
               alert("남은 바나나 갯수:" + total);
-              text.setAttribute("src", "apple.gif");    // 글자 변경
+              text.src = "apple.gif";    // 글자 변경
           }
           document.body.appendChild(this.body);
           
@@ -48,7 +48,8 @@
       // prototype : 객체 외부에 멤버함수 추가하기
       // MovingText.move() 추가
       MovingText.prototype.move = function(){
-          if(this.body.innerHTML == '30%로 상방 VI발동!!') return; // 이미 잡힌 글자. 움직이지 않음
+          let pos = this.body.src.indexOf("apple.gif");
+          if(pos > 0) return; // 이미 잡힌 글자. 움직이지 않음
           if(this.x < 0 || this.x > canvasWith){ // 가로 범위 이탈된 경우 이동 방향 반대로 설정
               this.vX *= -1;
           }
