@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        아래의 텍스트 상자에서 사용자가 입력할 때 마다 현재 입력된 글자와 글자수를 
+         div#text-container에 출력되게끔 구현하시오. 
+    </h2>
+    <input type="text" class="input-data" onkeyup="test12();">
+    <div id="text-container"></div>
+    <script>
+        function test12(){
+            let result = document.querySelector(".input-data").value;
+            document.getElementById("text-container").innerHTML = `글자 : ${result}<br/> 글자수 : ${result.length}`;
+        }
+    </script>
+</body>
+</html>

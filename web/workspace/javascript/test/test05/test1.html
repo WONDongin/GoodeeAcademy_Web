@@ -10,17 +10,18 @@
     function Person(name, blog){
         this.name = name;
         this.blog = blog;
-        this.getName = function() {
+        // 맴버변수. 내부지정방식
+        this.getName = function() { 
             return this.name;
         }
-        this.getBlog = function() {
-            return this.blog;
-        }
+    }
+    // 외부지정방식
+    Person.prototype.getBlog = function(){
+        return this.blog;
     }
 
     let kim = new Person("김삿갓","kimsg.tistory.com");
     let lee = new Person("이몽룡","leemy.tistory.com");
-
     
     document.write(kim.getName(),"<br>")  //김삿갓
     document.write(kim.getBlog(),"<br>")  //kimsg.tistory.com

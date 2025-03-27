@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        아래의 텍스트 상자를 이용해서 사용자에게 비밀번호를 두번 입력 받는다. <br>
+         이때 비밀번호와 비밀번호 확인 텍스트상자에 사용자가 입력할때 마다 두개의 입력된 비밀번호를 비교해서 <br>
+         두개가 일치하면 초록색 문구로 "일치합니다.", 일치하지 않으면 빨강색으로 "일치하지 않습니다." 문구를 <br>
+         span#pwd-result에 출력하시오.
+    </h2>
+    비밀번호 : <input type="password" id="input-pwd" onkeyup="test();"><br>
+    비밀번호 확인 : <input type="password" id="input-pwdck" onkeyup="test();"><br>
+
+    <span id="pwd-result"></span>
+    <script>
+        function test(){
+            let pwd = document.getElementById("input-pwd").value.trim();
+            let pwdck = document.getElementById("input-pwdck").value.trim();
+            let result = document.getElementById("pwd-result");
+
+            if(!pwdck){
+                result.innerHTML = "";
+                return;
+            }
+
+            result.innerHTML = pwd === pwdck ? `<p style="color:green;">일치합니다.</p>` : `<p style="color:red;">일치하지 않습니다.</p>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1"></table>
+    <h2>
+        1. 출력하기 버튼 클릭시 아래의 객체배열로 저장된 데이터를 div#data-table영역안에 table 요소를 만들어서 출력하시오.<br>
+        [{no:1,title:"첫번째",writer:"유저1",enrolldate:오늘날짜} <br>
+         {no:2,title:"두번째",writer:"유저2",enrolldate:오늘날짜} <br>
+         {no:3,title:"세번째",writer:"유저3",enrolldate:오늘날짜} <br>
+         {no:4,title:"네번째",writer:"유저4",enrolldate:오늘날짜}] <br>
+        * 이때 위의 객체배열을 전역변수로 만들어 둘 것 *
+    </h2>
+    <button onclick="test1();">출력하기</button>
+    <div id="data-table"></div>
+    <script>
+        arr = [
+            {no:1,title:"첫번째",writer:"유저1",enrolldate:new Date()},
+            {no:2,title:"두번째",writer:"유저2",enrolldate:new Date()},
+            {no:3,title:"세번째",writer:"유저3",enrolldate:new Date()},
+            {no:4,title:"네번째",writer:"유저4",enrolldate:new Date()}
+        ];
+
+        function test1(){
+            let result = `<table border="1"><thead>`;
+
+
+            arr.forEach(({no, title, writer, enrolldate}) => {
+                result += 
+                `<tr>
+                    <td>${no}</td>
+                    <td>${title}</td>
+                    <td>${writer}</td>
+                    <td>${enrolldate}</td>
+                </tr>`
+            });    
+
+            // for(let i=0; i<arr.length; i++){
+            //     result += `<tr>`;
+            //     for(let j in arr[i]){
+            //         result += `<td>${arr[i][j]}</td>`
+            //     }
+            //     result += `</tr>`;
+            // }
+
+            result += `</thead></table>`;
+            document.getElementById("data-table").innerHTML = result;
+        }
+    </script>
+
+    <hr>
+    <h2>
+       2. 아래의 input태그들을 이용해서 사용자로부터 글번호, 제목, 작성자명, 작성일을 입력받고 <br>
+          추가 버튼 클릭시 위 10번 문제에서 세팅해둔 전역 객체배열에 추가한 후 table에도 한 행 추가 되는 기능을 구현하시오. <br>
+          (테스트시 1번 실행 후 2번 실행하기)
+    </h2>
+
+    글번호 : <input type="number" id="boardNo"> <br>
+    제목 : <input type="text" id="boardTitle"> <br>
+    작성자 : <input type="text" id="boardWriter"> <br>
+    작성일 : <input type="date" id="boardDate"> <br>
+
+    <button onclick="test2();">추가</button>
+    <script>
+        function test2(){
+            const val1 = document.getElementById("boardNo").value;
+            const val2 = document.getElementById("boardTitle").value;
+            const val3 = document.getElementById("boardWriter").value;
+            const val4 = new Date(document.getElementById("boardDate").value);
+
+            if (!val1 || !val2 || !val3 || !val4) {
+                alert("모든 입력 값을 채워주세요.");
+                return;
+            }
+            
+            let newEntry = {no:val1,title:val2,writer:val3,enrolldate:val4};
+            arr.push(newEntry);
+            test1();
+        }
+    </script>
+</body>
+</html>
