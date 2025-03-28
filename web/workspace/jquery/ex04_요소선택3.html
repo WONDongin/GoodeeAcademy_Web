@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>상태(checked, selected, enabled, disabled) 선택자</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <h3>상태(checked, selected, enabled, disabled) 선택자</h3>
+        <h4>- checked 상태 선택자 (radio, checkbox)</h4>
+        취미 :
+        <input type="checkbox" name="hobby" value="game"><label for="game">게임</label>
+        <input type="checkbox" name="hobby" value="movie"><label for="movie">영화</label>
+        <input type="checkbox" name="hobby" value="music"><label for="music">음악</label>
+        <br/>
+        <button id="btn" type="button">실행확인</button>
+        <script>
+            // 실행 확인 버튼 클릭시 checked 상태인 요소를 선택하여 크기 변경하기
+            // $("#btn").click(function(){ // 이벤트 핸들러
+            //     $("input:checked").css({width:"50px", height:"50px"});
+            // })
+
+            // checkbox 요소 : 선택상태 : 크기를 크게, 선택해제 : 크기를 작게
+            // change : onchange 이벤트를 처리하는 함수, 값이 변경되는 경우 발생되는 이벤트 처리
+            $(":checkbox").change(function(){
+                if($(this).prop("checked")){ // checked 속성값이 있는 경우
+                    $(this).css({width:"50px", height:"50px"});
+                    // label 값의 글자크기 변경, em : 상대단위, 기본폰트*2배
+                    $(this).next().css("font-size","2em");
+                }else{ // checked 속성이 없는 경우
+                    $(this).css({width:"", height:""});
+                    $(this).next().css("font-size","");
+                }
+            });
+        </script><hr/>
+
+        <h4>selected 상태 선택자 (selected > option)</h4>
+        국적 : 
+        <select name="national">
+            <option value="x">선택안함</option>
+            <option value="ko">한국</option>
+            <option value="us">미국</option>
+            <option value="eu">영국</option>
+        </select>
+
+        <button type="button" onclick="test();">확인</button><br/>
+        선택한 나라 : <span id="result">선택안함</span>
+
+        <script>
+            // 확인 버튼 클릭시 선택된 option의 값을 #result 영역에 출력하기
+            function test(){
+                // ("option:selected") : option 태그 중 상태 값이 selected 인 태그
+                $("#result").html($("option:selected").html() + ", " + $("option:selected").val());
+            }
+        </script><hr/>
+
+        <h4>disabled, enabled 상태 선택자 (input요소들, button 등)</h4>
+        <button type="button">활성화 버튼</button>
+        <button type="button" disabled>비 활성화 버튼</button>
+        <script>
+            $("button:enabled").css("backgroundColor","yellowgreen");
+            $("button:disabled").css("backgroundColor","orangered");
+        </script>
+    </body>
+</html>
