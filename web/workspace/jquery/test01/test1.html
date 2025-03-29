@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>실습문제 1</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <p>결과와 같이 출력되도록  jQuery를 이용하여 구현하기</p>
+        <h1>Jquery1
+            <p>Jquery1</p>
+        </h1>
+
+        <h1>Jquery1</h1>
+
+        <p>Jquery1</p>
+
+        <h1 class="item">Jquery1 class=item</h1>
+
+        <h1 id="selected">Jquery1 id=selected</h1>
+
+        <h2>Jquery2</h2>
+
+        <h3>Jquery3</h3>
+
+        <script>
+            $(function(){
+                $("h1").first().css("color","red");
+                $("h1").odd().css("color","red");
+                $("p").css("color","blue")
+                $("h1 > p").css("color","blue");
+                $("h1.item").css("color","green");
+                $("h1#selected").css("color","orange");
+                $("h2, h3").css("color","pink")
+
+            })
+        </script>
+    </body>
+</html>    

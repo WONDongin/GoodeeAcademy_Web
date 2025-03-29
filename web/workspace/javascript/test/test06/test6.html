@@ -14,7 +14,8 @@
     <div id="text-container"></div>
     <script>
         function test12(){
-            let result = document.querySelector(".input-data").value;
+            const result = window.event.target.value;
+            // let result = document.querySelector(".input-data").value;
             document.getElementById("text-container").innerHTML = `글자 : ${result}<br/> 글자수 : ${result.length}`;
         }
     </script>

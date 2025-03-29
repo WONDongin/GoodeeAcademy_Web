@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습문제5</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	<h2>간이 계산기 만들기</h2>
+	첫번째 값 : <input type="number" id="num1"><br>
+	두번째 값 : <input type="number" id="num2"><br>
+	
+	<input type="button" value="+" onclick="calculator(this.value);"> 
+	<input type="button" value="-" onclick="calculator(this.value);"> 
+	<input type="button" value="x" onclick="calculator(this.value);"> 
+	<input type="button" value="/" onclick="calculator(this.value);"> 
+	<input type="button" value="%" onclick="calculator(this.value);"> <br><br>
+   	 계산결과 : <span id="result"></span>
+    
+	<hr>
+	<pre>
+	참고 : 각 연산(+, -, *, /, %)들의 버튼들은 input type="button" 으로 작업하시오.
+	
+	<b>Hint</b> 
+	1. 함수에 인자값을 넘길 경우 함수 처리 방법   
+	ex) -> onclick="calculator(this.value)"; 와 같이 
+		   해당 태그의 value값을 함수에 인자값으로 넘길 수 있음 
+
+	    -> function calculator(val) { val을 통해 조건처리 } 처리 할 수 있음 
+	
+	2. switch 문은 자바에서 사용한 switch 문과 동일 합니다.
+	</pre>
+
+	<script>
+		function calculator(e){
+			
+			$("#result").html(   $("#num1").val() + e +  $("#num2").val()   )
+		}
+	</script>
+
+</body>
+</html>

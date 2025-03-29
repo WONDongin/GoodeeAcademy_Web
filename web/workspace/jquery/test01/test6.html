@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습문제6</title>
+<style>
+    div {
+        border: 1px solid black;
+        background-color: black;
+        height: 100px;
+        width: 100px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	<h3>문제 1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h3>
+
+	<div id="div1"></div>
+
+	<input type="color" id="selectColor">
+	<button onclick="changeColor();">변경</button>
+	<hr>
+	<br>
+	<br>
+
+	<h3>문제 2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h3>
+
+	<div id="div2"></div>
+
+	<button onclick="sizeChange(50);">50x50</button>
+	<button onclick="sizeChange(100);">원본(100x100)</button>
+	<button onclick="sizeChange(200);">200x200</button>
+</body>
+</html>
