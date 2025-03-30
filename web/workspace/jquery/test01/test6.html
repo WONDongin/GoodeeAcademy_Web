@@ -23,6 +23,12 @@
 	<hr>
 	<br>
 	<br>
+	<script>
+		function changeColor(){
+			let color = $("#selectColor").val();
+			$("#div1").css("backgroundColor",color);
+		}
+	</script>
 
 	<h3>문제 2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h3>
 
@@ -31,5 +37,10 @@
 	<button onclick="sizeChange(50);">50x50</button>
 	<button onclick="sizeChange(100);">원본(100x100)</button>
 	<button onclick="sizeChange(200);">200x200</button>
+	<script>
+		function sizeChange(e){
+			$("#div2").css({width:e+"px", height:e+"px"})
+		}
+	</script>
 </body>
 </html>

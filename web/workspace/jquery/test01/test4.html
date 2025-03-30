@@ -43,13 +43,17 @@
 
 		<script>
 			function stringSplit(){
-				
-				$("#result2").html(
-					"1." + $("#la1").html().split(",")[0] + "<br/>" + 
-					"2." + $("#la1").html().split(",")[1] + "<br/>" + 
-					"3." + $("#la1").html().split(",")[2] + "<br/>" + 
-					"4." + $("#la1").html().split(",")[3] + "<br/>" + 
-					"5." + $("#la1").html().split(",")[4]);
+
+				let arr = $("#la1").html().split(",");
+
+				// 자바스크립트 방식
+				// arr.forEach((val, i) => {
+				// 	result += `${i+1}. ${val}<br/>`;
+				// });
+
+				$(arr).each(function(i, el){
+					$("#result2").append(`${i+1}. ${el}<br/>`);
+				})
 			}
 		</script>
 	</body>

@@ -32,9 +32,35 @@
 	</pre>
 
 	<script>
-		function calculator(e){
-			
-			$("#result").html(   $("#num1").val() + e +  $("#num2").val()   )
+		function calculator(e) {
+		    let num1 = $("#num1").val().trim(); // 앞뒤 공백 제거
+		    let num2 = $("#num2").val().trim();
+		    let resultText = "";
+		
+		    // 빈 칸 또는 숫자가 아닌 경우 체크
+		    if (num1 === "" || num2 === "" || isNaN(num1) || isNaN(num2)) {
+		        resultText = "올바른 숫자를 입력하세요.";
+		    } else {
+		        num1 = Number(num1);
+		        num2 = Number(num2);
+				
+		        switch (e) {
+		            case "+": resultText = num1 + num2; break;
+		            case "-": resultText = num1 - num2; break;
+		            case "x": resultText = num1 * num2; break;
+		            case "/": 
+		                resultText = num2 === 0 ? "0으로 나눌 수 없습니다." : num1 / num2;
+		                break;
+		            case "%": 
+		                resultText = num2 === 0 ? "0으로 나머지 연산을 할 수 없습니다." : num1 % num2;
+		                break;
+		            default:
+		                resultText = "올바른 연산자를 입력하세요.";
+		        }
+		    }
+		
+		    // 결과 출력
+		    $("#result").html(resultText);
 		}
 	</script>
 

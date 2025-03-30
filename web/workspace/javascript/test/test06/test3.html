@@ -14,19 +14,39 @@
     
     <div class="input-container"></div>
     <script>
-        let arr = [];
-        
+        let count = 0;
         function test(){
-            let input = `<input type="text"><br/>`;
-
-            if(arr.length < 10){
-                arr.push(input);
-                document.querySelector(".input-container").innerHTML = arr.join("");
-                return arr;
+            /* ---- 동적인 요소를 문자열로 만드는 방법 -----
+            const inputEl = "<input type='text'>";
+            if(count < 10){
+                document.querySelector("div.input-container").innerHTML += inputEl + "<br>";
+                count++;
             }else{
-                alert("10개 까지만 추가 가능합니다.");
-                return;
+                alert("10개까지만 추가 가능합니다.");
             }
+            // 위의 같은 방법으로 하게 되면 중간에 특정 텍스트상자에 뭔가를 기술한후 추가 버튼을 누르면
+            // 기존에 입력했던게 사라지게 됨
+            // 왜? => div요소안에 innerHTML이 덮어씌워지기 때문에 기존께 사라지는거임
+            // 따라서 기존 요소객체는 그대로 유지하면서 그 뒤에 추가하는 방향으로 수정하고자 한다면
+            // 아래와 같은 방법으로 하면됨
+            ----------------------------------------- */
+
+            // ---- 동적인 요소를 요소객체로 만드는 방법 ----
+            const inputEl = document.createElement("input");//<input >
+            inputEl.type = "text";  //<input type="text">
+
+            if(count < 10){
+                // append 메소드 호출하면 여러개의 요소를 한꺼번에 자손으로 추가할 수 있다. 
+                // appendChild는 한개의 요소객체만 추가 가능 
+                document.querySelector("div.input-container").append(inputEl, document.createElement("br"));
+                count++;
+            }else{
+                alert("10개까지만 추가 가능합니다.");
+            }
+            // 이 방법으로 하게되면 기존에 input요소 뒤에 매번 추가되는 거기 때문에
+            // 특정 텍스트 상자에 뭔가 입력한 후 추가 버튼을 눌러도 
+            // 기존꺼는 그대로 유지되어있음
+            // -------------------------------------------
         }
     </script>
 </body>

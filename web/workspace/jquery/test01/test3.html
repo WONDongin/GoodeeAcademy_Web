@@ -33,7 +33,14 @@
 
 	<script>
 		function printValue(){
-			$("#area").html("구매자 : " + $(":text").eq(0).val() + "<br/>" + "구입상품 : " + $(":text").eq(1).val() + "<br/>" + "구매가격 : " + $(":text").eq(2).val());
+			let name = $(":text").eq(0).val();
+			let pname = $("#pname").val();
+			let price = $("input[name=price]").eq(0).val();
+
+			$("#area").html(
+				"구매자 : " + name + "<br/>" 
+				+ "구입상품 : " + pname + "<br/>" 
+				+ "구매가격 : " + price);
 		}
 	</script>
 	

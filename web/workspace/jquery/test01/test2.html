@@ -16,7 +16,12 @@
 		</select>
 		<script>
 			$(function(){
-				setTimeout(() => alert($("#sel").val()),3000);
+				setTimeout(() => {
+					alert($("#sel").val());
+				},3000);
+				// setTimeout(function(){
+				// 	alert($("#sel").val());
+				// }, 3000)
 			})
 		</script>
 	</body>

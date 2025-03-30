@@ -67,10 +67,16 @@
     <button onclick="test2();">추가</button>
     <script>
         function test2(){
-            const val1 = document.getElementById("boardNo").value;
-            const val2 = document.getElementById("boardTitle").value;
-            const val3 = document.getElementById("boardWriter").value;
-            const val4 = new Date(document.getElementById("boardDate").value);
+            let val1 = Number(document.getElementById("boardNo").value);
+            let val2 = document.getElementById("boardTitle").value;
+            let val3 = document.getElementById("boardWriter").value;
+            let val4 = document.getElementById("boardDate").value.split("-");
+            //document.getElementById("boardDate").value : yyyy-mm-dd 형식
+            //boardDateArr[0] : 년도
+            //boardDateArr[1] : 월
+            //boardDateArr[2] : 일
+            val4 = new Date(val4[0], val4[1]-1, val4[2]);
+            console.log(val4)
 
             if (!val1 || !val2 || !val3 || !val4) {
                 alert("모든 입력 값을 채워주세요.");

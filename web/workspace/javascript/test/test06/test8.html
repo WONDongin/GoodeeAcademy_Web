@@ -72,14 +72,53 @@
         </tr>
     </table>
     <script>
-        let result = document.getElementById("result");
-        let btn =  document.querySelectorAll("input");
+        document.addEventListener("DOMContentLoaded", function () {
+            let result = document.getElementById("result");
+            let buttons = document.querySelectorAll("#calculator input[type='button']");
+            let expression = "";
+        
+            buttons.forEach(button => {
+                button.addEventListener("click", function () {
+                    let value = this.value;
+                
+                    if (value === "=") {
+                        try {
+                            if (expression.slice(-1).match(/[\+\-\*/%]/)) {
+                                expression += expression.slice(0, -1); // 마지막 연산자를 제외한 값 추가
+                            }
+                            result.value = eval(expression); // 계산 실행
+                            expression = result.value; // 결과 유지
+                        } catch (e) {
+                            result.value = "Error";
+                            expression = "";
+                        }
+                    } else if (value === "AC") {
+                        expression = "";
+                        result.value = "0";
+                    } else {
+                        if (expression === "" && value.match(/[\+\-\*/%]/)) {
+                            return; // 연산자로 시작 방지
+                        } else if (
+                            expression.slice(-1).match(/[\+\-\*/%]/) && value.match(/[\+\-\*/%]/) // 연산자 연속 입력 방지
+                            || expression.slice(-1) === "(" && value.match(/[\*/%,<>=]/) // ( 뒤에는 -, 숫자 가능 (음수 허용)
+                            || expression.slice(-1) === ")" && value.match(/[0-9]/) // ) 뒤에는 숫자가 바로 올 수 없음
+                        ) {
+                            return; // 잘못된 입력 방지
+                        }
+                    
+                        // 앞이 "0"이고, 뒤에 숫자가 오는 경우 "0"을 제거
+                        if (expression.match(/(^|[\+\-\*/%])0$/) && value.match(/[0-9]/)) {
+                            expression = expression.slice(0, -1); // 마지막 "0" 제거
+                        }
+                    
+                        // 결과 출력
+                        expression += value;
+                        result.value = expression;
+                    }
+                });
+            });
+        });
 
-        btn.forEach(btn => {
-            btn.addEventListener("click", function(e){
-                result.value = this.value;
-            })
-        })
     </script>
 </body>
 </html>

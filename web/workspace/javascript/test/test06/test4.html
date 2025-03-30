@@ -16,16 +16,14 @@
     </div>
     <script>
         function test(){
-            let result = "";
+            let result = document.querySelector("div.list-data>ul");
 
             let Member = {name:"홍길동", age:23, height:163.5, weight:50.7, addr:"서울시 구로구", birthDay:"2000/09/18"};
             // Member : 객체
             // Member["name"] → 홍길동
             for(let i in Member){
-                result += `<li>${i} : ${Member[i]}</li>`;
+                result.innerHTML += `<li>${i} : ${Member[i]}</li>`;
             }
-          
-            document.querySelector("div.list-data>ul").innerHTML = result;
         }
     </script>
 </body>
