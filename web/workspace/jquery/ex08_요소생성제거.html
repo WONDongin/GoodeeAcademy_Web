@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>요소생성제거</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+        <style>
+            .item{
+                background:yellowgreen;
+                width:100px;
+                height:100px;
+                text-align:center;
+                line-height:100px;
+                margin:10px;
+                font-size:25px;
+                color:white;
+                font-weight:bold;
+            }
+            .purple{
+                background:purple;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>요소의 생성</h1>
+        <h3>동적으로 요소 생성</h3>
+        <button id="btn">요소생성</button>
+        <div id="area1"></div>
+        <script>
+            $(function(){
+                $("#btn").click(function(){
+                    // 1. 문자열로 생성
+                    let el1 = "<p>Create Element By String</p>"
+
+                    // 2. DOM 함수를 이용하기 : createElement, createTextNode
+                    let el2 = document.createElement("p"); // <p></p>
+                    let text = document.createTextNode("Create Element By DOM");
+                    el2.appendChild(text); // <p>Create Element By DOM</p>
+                    $("#area1").append(el1,el2);
+
+                    // 3. jQuery로 요소 생성
+                    let el3 = $("<p></p>").text("Create Element By jQuery"); // <p>Create Element By jQuery</p>
+                    $("#area1").append(el1,el2,el3);
+                    console.log(el1) // <p>Create Element By String</p>
+                    console.log(el2) // <p>Create Element By DOM</p>
+                    console.log(el3) // ce.fn.init {0: p, length: 1}
+                })
+            })
+        </script><hr/>
+
+        <h3>삽입 관련 메서드</h3>
+        <h1 id="test1"><span>A</span></h1>
+        <h1 id="test2"><span>A</span></h1>
+        <h1 id="test3"><span>A</span></h1>
+        <h1 id="test4"><span>A</span></h1>
+        <script>
+            $(function(){
+                // $(A).append(B) : A요소 내에 뒷부분에 B를 추가 (자손/하위)
+                $("#test1").append("<span>B</span>");
+                // $(A).prepend(B) : A요소 내에 앞부분에 B를 추가 (자손/하위)
+                $("#test2").prepend("<span>B</span>");
+                // $(A).before(B) : A요소 앞 부분에 B를 추가 (동위)
+                $("#test3").before("<span>B</span>");
+                // $(A).before(B) : A요소 뒷 부분에 B를 추가 (동위)
+                $("#test4").after("<span>B</span>");
+
+                // $(C).appendTo(A) : C를 A요소 내에  뒷 부분에 추가 (하위요소)
+                $("<span>C</span>").appendTo("#test1");
+                // $(C).prependTo(A) : C를 A요소 내에  앞 부분에 추가 (하위요소)
+                $("<span>C</span>").prependTo("#test2");
+                // $(C).insertBefore(A) : C를 A요소 뒤 부분에 추가 (동위)
+                $("<span>C</span>").insertBefore("#test3");
+                // $(C).insertBefore(A) : C를 A요소 앞 부분에 추가 (동위)
+                $("<span>C</span>").insertAfter("#test4");
+            })
+        </script><hr/>
+
+        <h3>요소 복제 메서드</h3>
+        <div id="clone-test">
+            <div id="item1" class="item"><span>안녕</span></div>
+        </div>
+        <button id="clone">복제</button>
+        <div id="clone-result"></div>
+        <script>
+            $(function(){
+                $(".item").hover(function(){
+                    $(this).addClass("purple");
+                }, function(){
+                    $(this).removeClass("purple");
+                });
+
+                $("#clone").click(function(){
+                    // $("#clone-result").append($("#item1")); // 복제가 아니고 이동됨
+
+                    // clone() : 기본값(false)
+                    // const copyEl = $("#item1").clone(); // 요소복제 ok, 이벤트 복제 x
+                    // $("#clone-result").append(copyEl);
+
+                    // clone(true) : 요소와 이벤트를 모두 복제.
+                    // $("#clone-result").append($("#item1").clone(true));
+
+                    $("#item1").clone(true).appendTo($("#clone-result"));
+
+                })
+            })
+        </script><hr/>
+
+        <h1>요소 제거</h1>
+        <h3>요소 객체 제거 및 잘라내기 메서드</h3>
+        <div id="remove-test">
+            <div id="item2" class="item"><span>안녕</span></div>
+            <h1>안녕하세요</h1>
+        </div>
+        <button id="empty">비우기</button>
+        <button id="remove">제거하기</button>
+        <button id="detach">잘라내기</button>
+        <div id="remove-result"></div>
+        <script>
+            $(function(){
+                $("#empty").click(function(){
+                    $("#remove-test").empty(); // #remove-test 안 요소 모두 제거
+                })
+
+                $("#remove").click(function(){
+                    const removeEl = $("#item2").remove(); // 제거된 요소 리턴, 등록된 이벤트는 리턴x
+                    $("#remove-result").append(removeEl);
+                })
+
+                $("#detach").click(function(){
+                    const detachEl = $("#item2").detach(); // 제거된 요소 리턴, 등록된 이벤트도 리턴o
+                    $("#remove-result").append(detachEl);
+                })
+            })
+        </script>
+    </body>
+</html>

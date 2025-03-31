@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>요소탐색2</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+        <style>
+            .wrap, .wrap *{border: 1px solid lightgray; display: block; padding: 5px; margin: 15px; color: #333;}
+        </style>
+    </head>
+    <body>
+        <h3>
+            Sideways(동위) 메소드 : <br/>
+            기준이 요소와 같은 레벨에 있는 다른 요소들을 선택할 수 있는 메소드
+        </h3>
+        <div class="wrap">
+            <p>p</p>
+            <span>span</span>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <p>p</p>
+        </div>
+        <script>
+            $(function(){
+                const style1 = {color: "red", border: "2px solid red"};
+                const style2 = {color: "blue", border: "2px solid blue"};
+                const style3 = {color: "yellow", border: "2px solid yellow"};
+                const style4 = {backgroundColor: "aqua", color: "red"};
+                // $("선택자").siblings() :
+                // 선택된 요소와 같은 레벨의 다른 요소 모두를 선택
+                $("h2").siblings().css(style1);
+
+                // $("선택자").siblings("선택자") :
+                // 선택된 요소와 같은 레벨의 다른 요소 중 선택된 요소를 선택
+                $("h2").siblings("p").css(style2);
+
+                // next() | prev()     : 선택자의 바로 | 앞 다음 요소 한개 
+                // nextAll() | prevAll : 선택자의 바로 다음 | 앞 요소 모두
+                $("h2").next().css(style3);
+                $("h2").nextAll().css(style4);
+                $("h2").prev().css("backgroundColor","pink");
+                $("h2").prevAll().css(style4);
+
+                // nextUntil("p") : 선택 이후의 p태그 앞까지
+                $("h2").nextUntil("p").css("font-size","3em");
+
+                // prevUntil("p") : 선택 이전의 p태그 앞까지
+                $("h2").prevUntil("p").css("border-style","dotted");
+            })
+        </script>
+    </body>
+</html>

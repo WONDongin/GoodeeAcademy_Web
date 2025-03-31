@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>시각적효과1</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <h3>show(), hide(), toggle()</h3>
+        <p>선택된 요소가 점점 커지면서 보여지고, 점점 작이지면서 사라지게 하는 메소드</p>
+        <button id="hide">숨기기</button>
+        <button id="show">보여주기</button>
+        <button id="toggle">토글</button>
+        <br/><br/>
+        <div id="area" style="background-color: red; width: 100px; height: 100px;"></div>
+        <img id="flower" src="../html/images/flower1.jpg"  width="200">
+        <script>
+            $(function(){
+                $("#hide").click(function(){
+                    $("#flower").hide(3000); // 안보이게.
+                    $("#area").hide(3000);   // hide(밀리초) : 밀리초 동안 안보이게.
+                })
+                $("#show").click(function(){
+                    $("#flower").show(3000); // show(밀리초) : 밀리초 동안 보이게.
+                    $("#area").show(2000);
+                })
+                $("#toggle").click(function(){
+                    $("#flower").toggle(1000); // 현재상태가 보이는 경우는 안보이도록
+                    $("#area").toggle(1000);   // 현재상태가 안보이는 경우는 보이도록
+                })
+            })
+        </script>
+    </body>
+</html>

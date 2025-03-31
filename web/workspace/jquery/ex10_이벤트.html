@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>이벤트</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <h1>이벤트핸들러 연결 방법</h1>
+        <h3>이벤트 메소드 이용</h3>
+        <h4 id="test1">클릭해 보세요</h4>
+        <script>
+            $(function(){
+                $("#test1").click(function(){
+                    // this : 이벤트소스. target
+                    $(this).text("클릭되었습니다!!");
+                })
+                // dblclick : 더블클릭
+                $("#test1").dblclick(function(){
+                    $(this).css("color","red");
+                })
+                $("#test1").click(function(){
+                    $(this).css("backgroundColor","yellow");
+                })
+            });
+        </script><hr/>
+
+        <h3>on 메소드 이용</h3>
+        <h4 id="test2">마우스 클릭 및 올려보세요</h4>
+        <script>
+            $(function(){
+                // $("#test2").on("mouseenter", function(){ });
+                // $("#test2").on("mouseout", function(){ });
+                
+                // on 메소드 이용시 하나의 요소에 여러개의 이벤트를 등록가능
+                $("#test2").on({mouseenter:function(){ // mouseenter 이벤트 등록
+                    $(this).css("backgroundColor","yellowgreen").text("마우스 올라감");
+                }, mouseout:function(){ // mouseout 이벤트 등록
+                    $(this).css("backgroundColor","yellow").text("마우스 빠져나감");
+                }, click:function(){ // click 이벤트 등록
+                    // off(이벤트명) : 이벤트 핸들러 제거. 이벤트 등록취소
+                    $(this).off("mouseenter").off("mouseout").css("backgroundColor","orangered").text("이벤트 제거됨");
+                }})
+            })
+        </script><hr/>
+
+        <h3>on 메서드 이용 2</h3>
+        <div id="wrap">
+            <h4>h4 클릭해보시오</h4>
+            <h5>h5 클릭해보시오</h5>
+        </div>
+        <h5>div 바깥쪽 h5</h5>
+        <script>
+            $(function(){
+                /*
+                $("상위요소").on("이벤트명", 하위요소선택자(이벤트등록을 위한 요소), function(){
+                    선택된 상위요소의 하위요소에서 이벤트 발생한 경우 실행되는 내용
+                })
+                */
+                $("#wrap").on("click", "h4, h5", function(){
+                    $(this).html("안녕");
+                });
+                $(document).on("click","h5", function(){
+                    $(this).css("color","pink");
+                })
+            });
+        </script><hr/>
+
+        <h3>동적으로 생성된 요소에 이벤트적용</h3>
+        <div id="area2" style="border: 1px solid red;">
+            <h6>문서에 존재하는 h6 요소</h6>
+        </div>
+        <script>
+            $(function(){
+                // 1. 이벤트 함수 사용
+                // #area2 > h6 클릭시  h6 태그를 동적으로 요소 만들기
+                // <h6>문서에 존재하는 h6요소</h6> 에만 이벤트 설정됨
+                $("#area2 > h6").click(function(){ 
+                    $("#area2").append("<h6>클릭을 이용해 동적으로 만들어진 h6요소</h6>");
+                });
+
+                // 2. on 함수를 이용 : 동적태그는 이벤트 등록 안됨
+                // $("#area2 > h6").on("click", function(){ 
+                //     $("#area2").append("<h6>클릭을 이용해 동적으로 만들어진 h6요소</h6>");
+                // });
+
+                // 3. on 함수를 이용 : 동적태그는 이벤트 등록
+                // $("#area2").on("click", "h6", function(){ 
+                //     $("#area2").append("<h6>클릭을 이용해 동적으로 만들어진 h6요소</h6>");
+                // });
+            })
+        </script><hr/>
+
+        <h3>일회성 이벤트</h3>
+        <h6 id="test3">딱 한번만 실행</h6>
+        <script>
+            $(function(){
+                $("#test3").one("click", function(){
+                    alert("한번 실행 후 다시 실행 안함");
+                })
+            })
+            /*
+            1. 이전에 사용하던 메소드 => 사용을 권장하지 않음
+            - bind()
+            - live()
+            - delegate()
+
+            2. jQurey 이벤트 처리방식
+            (1) on()
+            - 하나의 요소에 여러개의 이벤트 등록이 가능하다.
+            - 동적 생성요소에 이벤트 등록 가능
+            - 이벤트 등록 방식
+            정적/동적 요소에 등록
+            $(이벤트대상).on("이벤트타입",이벤트핸들러)
+
+            동적 요소에 등록
+            $(부모).on("이벤트타입",이벤트대상요소(하위객체), 이벤트핸들러)
+
+            (2) one()
+            - 일회성 이벤트로 등록
+            - 이벤트 등록방식
+            $(이벤트대상).one("이벤트타입", 이벤트핸들러)
+
+            (3) off()
+            - 등록된 이벤트 제거
+            - 이벤트 제거 방식
+            $(이벤트대상).off("이벤트타입");
+            */
+        </script>
+    </body>
+</html>
