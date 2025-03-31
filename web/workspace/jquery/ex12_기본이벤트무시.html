@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>기본 이벤트 무시</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <h1><a href="https://www.google.com">구글</a></h1>
+        <h1>Header 1</h1>
+        <script>
+            $(function(){
+                $("h1").click(function(){
+                    $(this).css("backgroundColor","red");
+                });
+
+                $("a").click(function(e){
+                    $(this).css("backgroundColor","blue");
+                    // e.preventDefault(); // 기본이벤트 취소
+                    // e.stopPropagation(); // 이벤트 전파 방지. 부모태그의 이벤트 취소
+                    return false; // 기본이벤트 취소 + 이벤트 전파 방지
+                })
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>이벤트 발생요소의 위치검색</title>
+        <script src="resource/jquery-3.7.1.min.js"></script>
+        <style>
+            table{border-spacing: 0; border-collapse: collapse;}
+            .hover{background-color: green; color: yellow;}
+            .reverse{background-color: blue; color: white;}
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr><th>이름</th><th>혈액형</th><th>지역</th><th>성별</th><th>전화</th></tr>
+            <tr><td>강민</td><td>AB형</td><td>서울</td><td>남</td><td>1234</td></tr>
+            <tr><td>구지연</td><td>AB형</td><td>미국</td><td>여</td><td>1234</td></tr>
+            <tr><td>김미화</td><td>A형</td><td>부산</td><td>여</td><td>1234</td></tr>
+            <tr><td>김선화</td><td>B형</td><td>대구</td><td>여</td><td>1234</td></tr>
+            <tr><td>남기주</td><td>0형</td><td>전주</td><td>남</td><td>1234</td></tr>
+            <tr><td>윤미란</td><td>B형</td><td>대전</td><td>여</td><td>1234</td></tr>
+        </table>
+        <script>
+             let select;
+            $(function(){
+                
+                $("th").hover(function(){ // mouseenter 이벤트 처리
+                    /*
+                    $(this) : 마우스 커서를 가진 th 태그
+                    $(this).parent() : 마유스 커서를 가진 th 태그의 상위태그. => tr 태그
+                    $(this).parent().children() : tr 태그의 하위 태그들 => th 태그들
+                    $(this).parent().children().index(this) : th 태그들 중 this의 위치 인덱스 값(0) 리턴
+                    */
+                    
+                    console.log($(this).parent().children().index(this) + 1, "위치")
+
+                    $(this).addClass("hover");
+                    select = $(this).parent().children().index(this) + 1;
+                    // nth-child(숫자) : 1부터 시작. 숫자번째
+                    $("td:nth-child("+select+")").addClass("hover");
+                }, function(){ // mouseout 이벤트 처리
+                    $(this).removeClass("hover"); // 마우스커서가 벗어난 th 태그
+                    $("td:nth-child("+select+")").removeClass("hover");
+                })
+            })
+        </script>
+    </body>
+</html>
