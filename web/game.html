@@ -50,7 +50,7 @@
             </div>
 
             <div id="boxList">
-                <div class="box"><span>시드 :</span><input type="text" id="seed" value="500000" readonly></div>
+                <div class="box"><span>시드 :</span><input type="text" id="seed" value="300000" readonly></div>
                 <div class="box"><span>종목주가 :</span><input type="text" id="stockPrice" value="10000" readonly></div>
                 <div class="box"><span>등락률 :</span><input type="text" id="udRate" value="0.00%" readonly></div>
                 <div class="box"><span>평가금액 :</span><input type="text" id="myPrice"  readonly></div>
@@ -155,8 +155,8 @@
                         createdCount++;
 
                         myPrice = shares * stockPrice; 
-                        // 청산 (시드 = 0, 초기순서x)
-                        if (myPrice < 1 &&  myPrice !== 0 ) {
+                        // 청산 (시드 < 10000)
+                        if (myPrice < 10000  ) {
                             clearInterval(interval);
                             interval = null;
                             // 시작버튼 비활성화 
@@ -229,10 +229,10 @@
                         if (seed >= 1000000) {
                             document.getElementById("rank").innerHTML = "챌린저";
                             document.getElementById("rankImage").src = "images/icon_01.png";
-                        } else if (seed <= 50000) {
+                        } else if (seed >= 700000) {
                             document.getElementById("rank").innerHTML = "마스터";
                             document.getElementById("rankImage").src = "images/icon_02.png";
-                        } else if (seed <= 30000) {
+                        } else if (seed >= 500000) {
                             document.getElementById("rank").innerHTML = "플레티넘";
                             document.getElementById("rankImage").src = "images/icon_03.png";
                         } else{
