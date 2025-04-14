@@ -90,7 +90,7 @@
                 stockPrice = parseFloat(document.getElementById("stock").value);
                 document.getElementById("stockPrice").value = stockPrice.toLocaleString();
             }
-        
+
             // 상승/하락 (주가 변동)
             function getChangeAmount(chartY) {
                 let isUp = Math.random() < 0.5; // 상승/하락(50%)
@@ -140,6 +140,8 @@
             
             //  게임 실행
             function game() {
+                // 코인 선택 비활성화
+                document.getElementById("stock").disabled = true; 
                 // 5,10,30턴 만큼 실행
                 let count = parseInt(document.querySelector(".cnt").value);
                 let createdCount = 0;
@@ -156,7 +158,7 @@
 
                         myPrice = shares * stockPrice; 
                         // 청산 (시드 < 10000)
-                        if (myPrice < 10000  ) {
+                        if (myPrice < 10000 && myPrice != 0 ) {
                             clearInterval(interval);
                             interval = null;
                             // 시작버튼 비활성화 
@@ -220,8 +222,9 @@
             //  게임종료
             function endGame(myRate) { 
                 // 최종 수익금
-                let profit = seed - updateSeed;
+                let profit = seed - updateSeed ;
                 setTimeout(() => {
+                    document.getElementById("stock").disabled = false; // 코인 선택 다시 가능
                     if (confirm("거래 종료!\n시드: " + Math.round(seed).toLocaleString() + "원\n코인 등락률: " + ((udRate - 1) * 100).toFixed(2) + "%\n내 수익률: " + myRate.toFixed(2) + "%\n수익: " + Math.round(profit).toLocaleString() + "원\n게임을 다시 하시겠습니까?\n취소 : 투자 티어를 확인 할 수 있습니다.")) {
                         resetGame();
                     } else {
